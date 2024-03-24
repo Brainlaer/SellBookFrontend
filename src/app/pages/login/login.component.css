@@ -1,0 +1,22 @@
+
+.columna-1{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.columna-4{
+    display: flex;
+    flex-direction: column;
+    flex: 4;
+}
+
+.recuperar-contra{
+    font-size: small;
+    color: black;
+}
+
+
+
+
+
+

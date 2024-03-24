@@ -1,0 +1,14 @@
+.info{
+    width: 70%;
+}
+.info-inicio{
+    width: 50%;
+}
+.columna{
+
+    align-items: center;
+    flex: 1
+}
+
+
+

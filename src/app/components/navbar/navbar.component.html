@@ -1,0 +1,62 @@
+<div class="bar">
+  <div class="column">
+    <div class="fluid">
+      <img class="log me-3" src="../../../assets/logo.png" alt="">
+      <h1 class="title">SellBook</h1>
+      <ul class="nav">
+        <li><a href="">Categorias</a>
+          <ul class="menu">
+            <li><a href="" (click)="asignarCategoria(categoria='1')">Aventura</a></li>
+            <li><a href="" (click)="asignarCategoria(categoria='2')">Literatura Contemporánea</a></li>
+            <li><a href="" (click)="asignarCategoria(categoria='3')">Thriller</a></li>
+            <li><a href="" (click)="asignarCategoria(categoria='4')">Fantasía</a></li>
+            <li><a href="" (click)="asignarCategoria(categoria='5')">Novela Histórica</a></li>
+            <li><a href="" (click)="asignarCategoria(categoria='6')">Horror</a></li>
+            <li><a href="" (click)="asignarCategoria(categoria='7')">Humor</a></li>
+            <li><a href="" (click)="asignarCategoria(categoria='8')">LGBTQ+</a></li>
+            <li><a href="" (click)="asignarCategoria(categoria='9')">Misterio</a></li>
+            <li><a href="" (click)="asignarCategoria(categoria='10')">No Ficción</a></li>
+            <li><a href="" (click)="asignarCategoria(categoria='11')">Paranormal</a></li>
+            <li><a href="" (click)="asignarCategoria(categoria='12')">Poesía</a></li>
+            <li><a href="" (click)="asignarCategoria(categoria='13')">Romance</a></li>
+            <li><a href="" (click)="asignarCategoria(categoria='14')">Ciencia Ficción</a></li>
+            <li><a href="" (click)="asignarCategoria(categoria='15')">Ficción Juvenil</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a href="#">Mostrar Todos</a></li>
+          </ul>
+        </li>
+      </ul>
+          
+
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="fluid">
+      <form class="fluid" action="">
+        <div class=" me-1" (click)="clickTitulo()">
+          <input class="radio" type="radio" name="flexRadioDefault" id="titulo" [checked]="titulo">
+          <label for="titulo">Titulo</label>
+        </div>
+        <div class=" me-1" (click)="clickAutor()">
+          <input class="radio" type="radio" name="flexRadioDefault" id="autor" [checked]="autor">
+          <label for="autor">Autor</label>
+        </div>
+        <div class="fluid me-1">
+          <input class="inp-search inp-cyan placeholder" type="text">
+          <button class="btn-search btn-cyan">Buscar</button>
+        </div>
+      </form>
+      <button class="btn btn-cyan me-1">
+        <img class="svg me-1" src="../../../assets/add-user.svg" alt="">
+        Registrar
+      </button>
+      <button class="btn btn-cyan me-1">
+        <img class="svg" src="../../../assets/shop.svg" alt="">
+      </button>
+      <img class="log" src="../../../assets/profile.png" alt="">
+    </div>
+  </div>
+</div>

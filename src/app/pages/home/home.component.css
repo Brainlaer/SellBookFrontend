@@ -1,0 +1,32 @@
+.title{
+    color: #6B3382;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+.log{
+    width: 160px;
+}
+
+h1{
+    font: bolder;
+}
+.centro{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+}
+.categorias{
+    text-align: center;
+}
+.altura-post{
+    height: 420px;
+}
+.columna{
+
+    align-items: center;
+    flex: 1
+}
+.filtro{
+    flex: 2;
+}

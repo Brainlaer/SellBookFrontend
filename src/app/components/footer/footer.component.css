@@ -1,0 +1,24 @@
+.footer{
+    background-color: rgb(34, 27, 19);
+}
+.conte-blanco{
+    color: white;
+}
+.info{
+    font-size: small;
+    margin-bottom: 0;
+}
+.columna{
+
+    align-items: center;
+    flex: 1
+}
+.centro{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+}
+.centrar{
+    flex: 1;
+}
