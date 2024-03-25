@@ -1,6 +1,19 @@
+.column{
+    display: flex;
+    flex-direction: column;
+}
+.fluid{
+    display: flex;
+    flex-direction: row;
+}
+.centre{
+    justify-content: center;
+}
+.center{
+    text-align: center;
+}
 .title{
     color: #6B3382;
-    font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
 }
 .log{
