@@ -1,73 +1,111 @@
-<div class="column">
-    <div class="fluid centre">
-        <div class="center">
-            <h1 class="title mt-5">Welcome To SellBook</h1>
-            <img src="../../../assets/logo.png" alt="" class="log mt-3 mb-5">
+<div class="container">
+    <div class="center mt-5 mb-5">
+        <div class="text-center">
+            <img class="brand" src="../../../assets/logo.png" alt="">
+            <h1 class="motto txt-cyan">Desde libros de ocio hasta libros educativos, encuentra tu libro aquí en SellBook
+            </h1>
+            <p class="txt-cyan">Compra tus libros favoritos en sellbook.com y recibe en la puerta de tu casa</p>
         </div>
     </div>
-    <div class="fluid">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-            class="bi bi-clock-history me-3" viewBox="0 0 16 16">
-            <path
-                d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7 7 0 0 0-.985-.299l.219-.976q.576.129 1.126.342zm1.37.71a7 7 0 0 0-.439-.27l.493-.87a8 8 0 0 1 .979.654l-.615.789a7 7 0 0 0-.418-.302zm1.834 1.79a7 7 0 0 0-.653-.796l.724-.69q.406.429.747.91zm.744 1.352a7 7 0 0 0-.214-.468l.893-.45a8 8 0 0 1 .45 1.088l-.95.313a7 7 0 0 0-.179-.483m.53 2.507a7 7 0 0 0-.1-1.025l.985-.17q.1.58.116 1.17zm-.131 1.538q.05-.254.081-.51l.993.123a8 8 0 0 1-.23 1.155l-.964-.267q.069-.247.12-.501m-.952 2.379q.276-.436.486-.908l.914.405q-.24.54-.555 1.038zm-.964 1.205q.183-.183.35-.378l.758.653a8 8 0 0 1-.401.432z" />
-            <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0z" />
-            <path
-                d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5" />
-        </svg>
-        <h2>Libros Recientes</h2>
+
+    <div class="row aling-self">
+        <img class="icon me-1" src="../../../assets/recent.svg" alt="">
+        <h2 class="txt-purple">Libros Recientes</h2>
     </div>
 
-    <div class="fila centro">
-
-        <div class="card" style="width: 16rem; margin-bottom: 10px;" *ngFor="let libroDto of librosDto.slice(0,4)">
-            <img src={{libroDto.image}} class="card-img-top altura-post" alt="...">
+    <div class="row card-center mb-5">
+        <div class="card">
+            <img class="card-img"
+                src="https://libreriadelau.vtexassets.com/arquivos/ids/34368949-800-auto?v=638446706468130000&width=800&height=auto&aspect=true"
+                alt="...">
             <div class="card-body">
-                <h5 class="card-title">{{libroDto.titulo}}</h5>
-                <p class="card-text">{{libroDto.costo}} COP</p>
-                <P class="card-text">{{libroDto.autor}}</P>
-                <button class="btn btn-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-basket me-2" viewBox="0 0 16 16">
-                        <path
-                            d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9zM1 7v1h14V7zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5" />
-                    </svg>
-                    Añadir al carrito
-                </button>
+                <h5 class="card-title">Alas de hierro - Empíreo 2</h5>
+                <p class="card-text">$99.000 COP</p>
+                <P class="card-text">Rebecca Yarros</P>
+                <div class="card-center mb-1">
+                    <button class="btn btn-cyan btn-content">
+                        <img src="../../../assets/shop.svg" alt="">
+                        Añadir al carrito
+                    </button>
+                </div>
             </div>
         </div>
+        <div class="card">
+            <img class="card-img"
+                src="https://libreriadelau.vtexassets.com/arquivos/ids/34368949-800-auto?v=638446706468130000&width=800&height=auto&aspect=true"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Alas de hierro - Empíreo 2</h5>
+                <p class="card-text">$99.000 COP</p>
+                <P class="card-text">Rebecca Yarros</P>
+                <div class="card-center mb-1">
+                    <button class="btn btn-cyan btn-content">
+                        <img src="../../../assets/shop.svg" alt="">
+                        Añadir al carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img"
+                src="https://libreriadelau.vtexassets.com/arquivos/ids/34368949-800-auto?v=638446706468130000&width=800&height=auto&aspect=true"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Alas de hierro - Empíreo 2</h5>
+                <p class="card-text">$99.000 COP</p>
+                <P class="card-text">Rebecca Yarros</P>
+                <div class="card-center mb-1">
+                    <button class="btn btn-cyan btn-content">
+                        <img src="../../../assets/shop.svg" alt="">
+                        Añadir al carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img"
+                src="https://libreriadelau.vtexassets.com/arquivos/ids/34368949-800-auto?v=638446706468130000&width=800&height=auto&aspect=true"
+                alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Alas de hierro - Empíreo 2</h5>
+                <p class="card-text">$99.000 COP</p>
+                <P class="card-text">Rebecca Yarros</P>
+                <div class="card-center mb-1">
+                    <button class="btn btn-cyan btn-content">
+                        <img src="../../../assets/shop.svg" alt="">
+                        Añadir al carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    </div>
-</div>
-
-<div>
-    <div class="fila">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-collection me-3"
-            viewBox="0 0 16 16">
-            <path
-                d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z" />
-        </svg>
-        <h2>Categorias</h2>
+    <div class="row aling-self">
+        <img class="icon me-1" src="../../../assets/category.svg" alt="">
+        <h2 class="txt-purple">Categorias</h2>
     </div>
 
-    <div class="categorias">
-        <button class="btn btn-secondary me-2 mb-5">Aventura</button>
-        <button class="btn btn-secondary me-2 mb-5">Literatura Contemporánea</button>
-        <button class="btn btn-secondary me-2 mb-5">Thriller</button>
-        <button class="btn btn-secondary me-2 mb-5">Fantasía</button>
-        <button class="btn btn-secondary me-2 mb-5">Novela Histórica</button>
-    </div>
-    <div class="categorias">
-        <button class="btn btn-secondary me-2 mb-5">Horror</button>
-        <button class="btn btn-secondary me-2 mb-5">Humor</button>
-        <button class="btn btn-secondary me-2 mb-5">LGBTQ+</button>
-        <button class="btn btn-secondary me-2 mb-5">Misterio</button>
-        <button class="btn btn-secondary me-2 mb-5">No Ficción</button>
-    </div>
-    <div class="categorias">
-        <button class="btn btn-secondary me-2 mb-5">Paranormal</button>
-        <button class="btn btn-secondary me-2 mb-5">Poesía</button>
-        <button class="btn btn-secondary me-2 mb-5">Romance</button>
-        <button class="btn btn-secondary me-2 mb-5">Ciencia Ficción</button>
-        <button class="btn btn-secondary me-2 mb-5">Ficción Juvenil</button>
+    <div class="column aling-self mb-5">
+        <div class="row">
+            <button class="btn btn-cyan btn-content me-2 mb-5">Literatura Contemporánea</button>
+            <button class="btn btn-cyan btn-content me-2 mb-5">Thriller</button>
+            <button class="btn btn-cyan btn-content me-2 mb-5">Aventura</button>
+            <button class="btn btn-cyan btn-content me-2 mb-5">Fantasía</button>
+            <button class="btn btn-cyan btn-content me-2 mb-5">Novela Histórica</button>
+        </div>
+        <div class="row">
+            <button class="btn btn-cyan btn-content me-2 mb-5">Horror</button>
+            <button class="btn btn-cyan btn-content me-2 mb-5">Humor</button>
+            <button class="btn btn-cyan btn-content me-2 mb-5">LGBTQ+</button>
+            <button class="btn btn-cyan btn-content me-2 mb-5">Misterio</button>
+            <button class="btn btn-cyan btn-content me-2 mb-5">No Ficción</button>
+        </div>
+        <div class="row">
+            <button class="btn btn-cyan btn-content me-2 mb-5">Paranormal</button>
+            <button class="btn btn-cyan btn-content me-2 mb-5">Poesía</button>
+            <button class="btn btn-cyan btn-content me-2 mb-5">Romance</button>
+            <button class="btn btn-cyan btn-content me-2 mb-5">Ciencia Ficción</button>
+            <button class="btn btn-cyan btn-content me-2 mb-5">Ficción Juvenil</button>
+        </div>
     </div>
 </div>

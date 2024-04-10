@@ -1,20 +1,87 @@
-.centrar{
-justify-content: center;
-text-align: center;
-align-items: center;
-}
-.ajustar-derecha{
-    text-align: end;
-    align-self: end;
-}
-.fila{
-    display: flex;
-    flex-direction: row;
-}
-.columna{
+.column{
     display: flex;
     flex-direction: column;
+}.row{
+    display: flex;
+    flex-direction: row;
+}.text-center{
+    text-align: center;
+}.center{
+    display: flex;
+    justify-content: center;
+}.aling-self{
+    display: flex;
+    align-items: center;
 }
+
+/*---searchBar---*/
+.search-bar{
+    display: flex;
+    flex-direction: row;
+}.search-bar>input{
+    border-radius: 20px 0px 0px 20px;
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 15px;
+    padding: 0px 10px;
+    outline: none;
+}.search-bar>button{
+    border-radius: 0px 20px 20px 0px;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 0px 20px;
+}
+
+/*---elementos---*/
+/*input*/
+.inp{
+    border-radius: 20px;
+    min-width: 40px;
+    min-height: 40px;
+    outline: none;
+}
+/*button*/
+.btn{
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    min-width: 40px;
+    min-height: 40px;
+}.btn-content{
+    display: flex;
+    padding: 0px 20px;
+    align-self: center;
+}.btn-content>img{
+    width: 20px;
+    height: 20px;
+}
+
+/*---coloresInput---*/
+.inp-cyan{
+    color: #179D8D;
+    background-color: white;
+    box-shadow: inset 0 0 0 3px #179D8D;
+    border: none;
+}
+/*coloresButton*/
+.btn-cyan{
+    color: #DCEEEC;
+    background-color: #179D8D;
+    border: #179D8D;
+}.btn-cyan:hover{
+    background-color: #148376;
+}
+/*coloresTxt*/
+.txt-cyan{
+    color: #179D8D;
+}.txt-purple{
+    color: #6F3B86;
+}
+
+
+
+
+
 
 .mt-1{
     margin-top: 10px;
