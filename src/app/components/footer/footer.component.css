@@ -1,25 +1,31 @@
 .footer{
-    background-color: #9F9943;
-    border-radius: 20px 20px 0px 0px;
-}
-.conte-blanco{
-    color: white;
-}
-.info{
-    font-size: small;
-    margin-bottom: 0;
-}
-.columna{
-
+    background-color: #0A473F;
+    border-radius: 20px;
+}.about>.column{
     align-items: center;
     flex: 1
+}.pay>.column{
+    align-items: center;
+    flex: 1
+}.channels>.column{
+    align-items: end;
+    flex: 1
+}.compact{
+    margin-left: 150px;
+    margin-right: 150px;
 }
-.centro{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    
+
+/*elementos*/
+.channels>div>div *{
+    margin-right: 10px;
+}.channels>div>div>img{
+    width: 20px;
+    height: 20px;
+}.foot-icon{
+    width: 40px;
+    height: 40px;
 }
-.centrar{
-    flex: 1;
-}
+
+
+
+

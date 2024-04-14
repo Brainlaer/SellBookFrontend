@@ -12,41 +12,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-}.nav *{
-    padding: 0px;
-    margin: 0px;
-}.nav> li{
-    margin-right: 20px;
-}.nav li:hover >ul{
-    display: block;
-}.nav li ul{
-    display: none;
-    position: absolute;
-}ul{
-    list-style:none;
-}.nav>li>a{
-    color: #179D8D;
-    font-size: medium;
-    font-weight: bolder;
-    text-decoration: none;
-}.nav> li> a> img{
-    margin-right: 10px;
-}.nav-menu{
-    border-radius: 20px;
-    background-color: #179D8D;
-}.nav-menu li a{
-    font-size: small;
-    text-decoration: none;
-    color: #DCEEEC;
-    padding: 10px 30px;
-    display: block;
-    border-radius: 20px;
-    border: solid 3px #179D8D;
-}.nav-menu li a:hover{
-    color: #179D8D;
-    background-color: #DCEEEC;
 }
-
 /*elementos*/
 .sellbook{
     color: #179D8D;
@@ -57,9 +23,10 @@
     width: 50px;
     height: 50px;
 }.profile{
+    border-radius: 25px;
     width: 50px;
     height: 50px;
-}.inp-radio>label{
+}.filtrer>label{
     font-size: medium;
     font-weight: bolder;
     color: #179D8D;

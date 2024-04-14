@@ -1,27 +1,38 @@
-<div class="centrar mt-5 mb-5">
-    <h1>Iniciar sessión en SellBook</h1>
-    <p>Para iniciar sessión en SellBook <s></s>elecciona un rol y luego ingresa tus datos.</p>
+<div class="center">
+    <div class="txt-center mt-5 mb-5">
+        <h1 class="txt-cyan">Iniciar sessión en SellBook</h1>
+        <p class="txt-cyan">Para iniciar sessión en SellBook selecciona un rol y luego ingresa tus datos.</p>
+    </div>
 </div>
 
 
-<div class="fila">
-    <div class="columna-1 me-5">
-        <button class="btn btn-outline-primary mb-3">Usuario</button>
-        <button class="btn btn-outline-primary mb-2">Administrador</button>
-    </div>
-    <div class="columna-4 mb-5">
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingCorreo" placeholder="nombre@ejemplo.com">
-            <label for="floatingCorreo">Correo Electronico</label>
-        </div>
 
-        <div class="form-floating mb-1">
-            <input type="password" class="form-control centro" id="floatingContraseña" placeholder="contraseña">
-            <label for="floatingContraseña">Contraseña</label>
+    <div class="row center">
+        <div class="column-1 mt-5 me-5">
+            <button class="btn btn-outline-cyan btn-content mb-3">
+                <p>Usuario</p>
+            </button>
+            <button class="btn btn-outline-cyan btn-content">
+                <p>Administrador</p>
+                </button>
         </div>
-        <div class="columna centrar">
-            <a href="" class="recuperar-contra mb-3">Recuperar Contraseña</a>
-            <button class="btn btn-success">Iniciar Sessión</button>
+        <div class="column mb-3">
+                <p class="txt-cyan txt-bold">Correo Electronico</p>
+                <input type="email" class="inp inp-cyan" placeholder="example@mail.com">
+    
+                <p class="txt-cyan txt-bold">Contraseña</p>
+                <div class="row search-bar">
+                    <input type={{passVisible}} class="inp-cyan" formControlName="contraseña" placeholder="Al menos 8 caracteres">
+                    <button class="btn-cyan btn-content" type="button" (click)="showPass()">
+                        <img src="../../../assets/showpass.svg" *ngIf="showPassImg" alt="">
+                        <img src="../../../assets/hidepass.svg" *ngIf="hidePassImg" alt="">
+                    </button>
+                </div>
+
         </div>
     </div>
+
+<div class="column txt-center mb-5">
+    <a href="" class="txt-cyan txt-small mb-3">Recuperar Contraseña</a>
+    <button class="btn btn-cyan btn-content">Iniciar Sessión</button>
 </div>

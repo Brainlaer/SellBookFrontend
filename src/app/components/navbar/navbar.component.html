@@ -1,36 +1,42 @@
 <div class="nav-bar">
   <div class="nav-column">
-      <a class="nav-row sellbook" href="">
+      <a class="nav-row sellbook" href="/">
         <img class="brand me-1" src="../../../assets/logo.png" alt="">
          SellBook
       </a>
   </div>
   <div class="nav-column">
     <div class="nav-row">
-      <form action="">
+      <form (submit)="asignarValores()">
         <div class="nav-row me-1">
-          <div class="inp-radio me-1" (click)="clickTitulo()">
-            <input class="radio" type="radio" name="flexRadioDefault" id="titulo" [checked]="titulo">
+          <div class="filtrer aling-self me-1" (click)="clickTitulo()">
+            <img class="inp-radio" *ngIf="checkAutor" src="../../../assets/radio.svg" alt="">
+            <img class="inp-radio" *ngIf="checkTitulo" src="../../../assets/radio-cheacked.svg" alt="">
             <label for="titulo">Titulo</label>
           </div>
-          <div class="inp-radio me-1" (click)="clickAutor()">
-            <input class="radio" type="radio" name="flexRadioDefault" id="autor" [checked]="autor">
+          <div class="filtrer aling-self me-1" (click)="clickAutor()">
+            <img class="inp-radio" *ngIf="checkTitulo" src="../../../assets/radio.svg" alt="">
+            <img class="inp-radio" *ngIf="checkAutor" src="../../../assets/radio-cheacked.svg" alt="">
             <label for="autor">Autor</label>
           </div>
           <div class="search-bar">
-            <input class="inp-cyan" type="text">
-            <button class="btn-cyan">Buscar</button>
+            <input class="inp-cyan" type="text" placeholder="¿Qué quieres leer?">
+            <button type="submit" class="btn-cyan btn-content">
+              <img src="../../../assets/search.svg" alt="">
+            </button>
           </div>
         </div>
       </form>
-      <button class="btn btn-cyan btn-content me-1">
+      <button class="btn btn-cyan btn-content me-1" routerLink="registrarse">
         <img class="me-1" src="../../../assets/add-user.svg" alt="">
         Registrar
       </button>
       <button class="btn btn-cyan btn-content me-1">
         <img src="../../../assets/shop.svg" alt="">
       </button>
-      <img class="profile" src="../../../assets/profile.png" alt="">
+      <a href="/iniciar_session">
+        <img class="profile" src="../../../assets/profile.png" alt="">
+      </a>
     </div>
   </div>
 </div>

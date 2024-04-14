@@ -1,69 +1,60 @@
-<h1 class="centrar mt-5 mb-5">Registrate en SellBook</h1>
+<h1 class="center txt-cyan mt-5 mb-5">Registrate en SellBook</h1>
 
-<form action="">
-    <div class="fila">
-        <div class="columna centrar me-5">
-    
-            <div class="form-floating info mb-3">
-                <input type="text" class="form-control" id="floatingNombre" placeholder="Nombre">
-                <label for="floatingNombre">Nombre</label>
-            </div>
-    
-            <div class="form-floating info mb-3">
-                <select class="form-select" id="floatingTypeDocumento" aria-label="Floating label select example">
-                    <option value="">Cedula de Ciudadania</option>
-                    <option value="">Tarjeta de Identificación</option>
-                </select>
-                <label for="floatingTypeDocumento">Tipo de Documento</label>
-            </div>
-    
-            <div class="form-floating info mb-3">
-                <input type="text" class="form-control" id="floatingIdentificacion" placeholder="Numero de Identificación">
-                <label for="floatingIdentificacion">Numero de Identificación</label>
-            </div>
-    
+<form [formGroup]="formNewUser" (ngSubmit)="newUser(formNewUser)">
+    <div class="data-row1 row">
+        <div class="column center">
+            <p class="txt-bold txt-cyan txt-center">* Nombre(s)</p>
+            <input class="inp inp-cyan" type="text" formControlName="nombre" placeholder="Nombre(s)">
+            <p class="txt-bold txt-cyan txt-center">* Genero</p>
+            <select class="slt slt-cyan" formControlName="genero">
+                <option value="">¿Cúal es tu genero?</option>
+                <hr>
+                <option value="Desconocido">Prefiero no decirlo</option>
+                <option value="Mujer">Mujer</option>
+                <option value="Hombre">Hombre</option>
+            </select>
+            <p class="txt-bold txt-cyan txt-center">* Número de Identificación</p>
+            <input type="text" class="inp inp-cyan" formControlName="id" placeholder="ej:1234567890">
         </div>
-        <div class="columna centrar">
-    
-            <div class="form-floating info mb-3">
-                <input type="text" class="form-control" id="floatingApellido" placeholder="Apellido">
-                <label for="floatingApellido">Apellido</label>
-            </div>
-    
-            <div class="form-floating info mb-3">
-                <input type="date" class="form-control" id="floatingNacimiento" placeholder="">
-                <label for="floatingNacimiento">Fecha Nacimiento</label>
-            </div>
-    
-            <div class="form-floating info mb-3">
-                <input type="" class="form-control" id="floatingCelular" placeholder="321 1234567">
-                <label for="floatingCelular">Numero de Celular</label>
-            </div>
-    
+        <div class="column center">
+            <p class="txt-bold txt-cyan txt-center">* Apellidos</p>
+            <input type="text" class="inp inp-cyan" formControlName="apellido" placeholder="Apellidos">
+            <p class="txt-bold txt-cyan txt-center">* Fecha de Nacimiento</p>
+            <input type="date" class="inp inp-cyan" formControlName="nacimiento">
+            <p class="txt-bold txt-cyan txt-center">Número de Celular</p>
+            <input type="text" class="inp inp-cyan" formControlName="telefono" placeholder="ej:3123456789">
         </div>
     </div>
-    
-    <div class="fila">
-        <div class="columna center mb-3">
-    
-            <div class="form-floating info-inicio mb-3">
-                <input type="email" class="form-control" id="floatingCorreo" placeholder="nombre@ejemplo.com">
-                <label for="floatingCorreo">Correo Electronico</label>
-            </div>
-    
-            <div class="form-floating info-inicio mb-3">
-                <input type="password" class="form-control" id="floatingContraseña" placeholder="contraseña">
-                <label for="floatingContraseña">Contraseña</label>
-            </div>
-
-            <div class="form-floating info-inicio mb-3">
-                <input type="password" class="form-control" id="floatingContraseña" placeholder="contraseña">
-                <label for="floatingContraseña">Confirmar Contraseña</label>
+    <div class="row center">
+        <div class="column mb-3">
+            <p class="txt-bold txt-cyan txt-center">* Correo Electronico</p>
+            <input type="email" class="inp inp-cyan" formControlName="email" placeholder="ej: example@mail.com">
+            <p class="txt-bold txt-cyan txt-center">* Contraseña</p>
+            <div class="row search-bar">
+                <input type={{passVisible}} class="inp-cyan" formControlName="contraseña" placeholder="Al menos 8 caracteres">
+                <button class="btn-cyan btn-content" type="button" (click)="showPass()">
+                    <img src="../../../assets/showpass.svg" *ngIf="showPassImg" alt="">
+                    <img src="../../../assets/hidepass.svg" *ngIf="hidePassImg" alt="">
+                </button>
             </div>
         </div>
     </div>
-    
-    <div class="centrar mb-5">
-        <button class="btn btn-primary">Registrar</button>
+    <div class="row center">
+        <div class="alert alert-red" [hidden]="hiddenAlerta">
+            <p>Hubo un error. Revisa tus datos e intentalo de nuevo</p>
+            <button class="btn btn-red btn-content" type="button" (click)="cerrarAlerta()">
+                <img src="../../../assets/closeAlert.svg" alt="">
+            </button>
+        </div>
+    </div>
+    <div class="row aling-self center mb-5">
+        <img src="../../../assets/load.svg" class="load me-1" alt="" [hidden]="hiddenLoad">
+        <button type="submit" class="btn btn-cyan btn-content" [disabled]="disabled">
+                Registrar
+        </button>
     </div>
 </form>
+
+
+<p>{{this.data}}</p>
+<p>{{this.error}}</p>

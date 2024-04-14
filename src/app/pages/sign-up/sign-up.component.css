@@ -1,3 +1,19 @@
+.data-row1{
+    display: flex;
+    justify-content: space-around;
+}
+.data-row1>div{
+    min-width: 300px;
+}.search-bar>input{
+    min-width: 350px;
+}
+
+.btn-content>img{
+    width: 20px;
+    height: 20px;
+}
+
+
 .info{
     width: 70%;
 }
@@ -8,6 +24,8 @@
 
     align-items: center;
     flex: 1
+}.txt-bold{
+    font-weight: bolder;
 }
 
 

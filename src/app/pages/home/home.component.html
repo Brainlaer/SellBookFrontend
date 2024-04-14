@@ -1,6 +1,6 @@
 <div class="container">
     <div class="center mt-5 mb-5">
-        <div class="text-center">
+        <div class="txt-center">
             <img class="brand" src="../../../assets/logo.png" alt="">
             <h1 class="motto txt-cyan">Desde libros de ocio hasta libros educativos, encuentra tu libro aquí en SellBook
             </h1>
@@ -10,66 +10,18 @@
 
     <div class="row aling-self">
         <img class="icon me-1" src="../../../assets/recent.svg" alt="">
-        <h2 class="txt-purple">Libros Recientes</h2>
+        <h2 class="txt-cyan">Libros Recientes</h2>
     </div>
 
     <div class="row card-center mb-5">
-        <div class="card">
+        <div class="card" *ngFor="let libroDto of librosDto">
             <img class="card-img"
-                src="https://libreriadelau.vtexassets.com/arquivos/ids/34368949-800-auto?v=638446706468130000&width=800&height=auto&aspect=true"
+                src={{libroDto.image}}
                 alt="...">
             <div class="card-body">
-                <h5 class="card-title">Alas de hierro - Empíreo 2</h5>
-                <p class="card-text">$99.000 COP</p>
-                <P class="card-text">Rebecca Yarros</P>
-                <div class="card-center mb-1">
-                    <button class="btn btn-cyan btn-content">
-                        <img src="../../../assets/shop.svg" alt="">
-                        Añadir al carrito
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img"
-                src="https://libreriadelau.vtexassets.com/arquivos/ids/34368949-800-auto?v=638446706468130000&width=800&height=auto&aspect=true"
-                alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Alas de hierro - Empíreo 2</h5>
-                <p class="card-text">$99.000 COP</p>
-                <P class="card-text">Rebecca Yarros</P>
-                <div class="card-center mb-1">
-                    <button class="btn btn-cyan btn-content">
-                        <img src="../../../assets/shop.svg" alt="">
-                        Añadir al carrito
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img"
-                src="https://libreriadelau.vtexassets.com/arquivos/ids/34368949-800-auto?v=638446706468130000&width=800&height=auto&aspect=true"
-                alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Alas de hierro - Empíreo 2</h5>
-                <p class="card-text">$99.000 COP</p>
-                <P class="card-text">Rebecca Yarros</P>
-                <div class="card-center mb-1">
-                    <button class="btn btn-cyan btn-content">
-                        <img src="../../../assets/shop.svg" alt="">
-                        Añadir al carrito
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img"
-                src="https://libreriadelau.vtexassets.com/arquivos/ids/34368949-800-auto?v=638446706468130000&width=800&height=auto&aspect=true"
-                alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Alas de hierro - Empíreo 2</h5>
-                <p class="card-text">$99.000 COP</p>
-                <P class="card-text">Rebecca Yarros</P>
+                <h5 class="card-title">{{libroDto.titulo}}</h5>
+                <p class="card-text">${{libroDto.costo}} COP</p>
+                <P class="card-text">{{libroDto.autor}}</P>
                 <div class="card-center mb-1">
                     <button class="btn btn-cyan btn-content">
                         <img src="../../../assets/shop.svg" alt="">
@@ -82,25 +34,25 @@
 
     <div class="row aling-self">
         <img class="icon me-1" src="../../../assets/category.svg" alt="">
-        <h2 class="txt-purple">Categorias</h2>
+        <h2 class="txt-cyan">Categorias</h2>
     </div>
 
     <div class="column aling-self mb-5">
-        <div class="row">
+        <div class="row category center">
             <button class="btn btn-cyan btn-content me-2 mb-5">Literatura Contemporánea</button>
             <button class="btn btn-cyan btn-content me-2 mb-5">Thriller</button>
             <button class="btn btn-cyan btn-content me-2 mb-5">Aventura</button>
             <button class="btn btn-cyan btn-content me-2 mb-5">Fantasía</button>
             <button class="btn btn-cyan btn-content me-2 mb-5">Novela Histórica</button>
         </div>
-        <div class="row">
+        <div class="row category center">
             <button class="btn btn-cyan btn-content me-2 mb-5">Horror</button>
             <button class="btn btn-cyan btn-content me-2 mb-5">Humor</button>
             <button class="btn btn-cyan btn-content me-2 mb-5">LGBTQ+</button>
             <button class="btn btn-cyan btn-content me-2 mb-5">Misterio</button>
             <button class="btn btn-cyan btn-content me-2 mb-5">No Ficción</button>
         </div>
-        <div class="row">
+        <div class="row category center">
             <button class="btn btn-cyan btn-content me-2 mb-5">Paranormal</button>
             <button class="btn btn-cyan btn-content me-2 mb-5">Poesía</button>
             <button class="btn btn-cyan btn-content me-2 mb-5">Romance</button>

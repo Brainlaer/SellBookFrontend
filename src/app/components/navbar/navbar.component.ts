@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit{
   constructor(private route:ActivatedRoute, private router:Router){}
 
   ngOnInit(): void {
-
+    this.clickTitulo();
 
 
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -50,15 +50,23 @@ export class NavbarComponent implements OnInit{
 
 
   clickAutor(){
+    this.checkTitulo=false;
+    this.checkAutor=true;
     this.autor='true';
     this.titulo='false';
     console.log(this.titulo, this.autor, this.cadena);
   }
   clickTitulo(){
+    this.checkTitulo=true;
+    this.checkAutor=false;
     this.autor='false';
     this.titulo='true';
     console.log(this.titulo, this.autor, this.cadena);
   }
+
+  checkAutor!: boolean;
+  checkTitulo!: boolean;
+
   
 
 }

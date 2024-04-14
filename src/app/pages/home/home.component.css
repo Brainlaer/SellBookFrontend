@@ -10,7 +10,9 @@
     margin-bottom: 10px;
     border-radius: 20px;
 }.card-img{
+    display: flex;
     width: 15rem;
+    height: 23rem;
     border-radius: 17px;
     margin: 10px;
 }.card-body{
@@ -20,26 +22,10 @@
     text-transform: uppercase;
 }.card-text{
     color: #179D8D;
+}.category{
+    flex-wrap: wrap;
 }
 
-.brand{
-    width: 160px;
-}
-
-.categorias{
-    text-align: center;
-}
-.altura-post{
-    height: 420px;
-}
-.columna{
-
-    align-items: center;
-    flex: 1
-}
-.filtro{
-    flex: 2;
-}
 
 /*elementos*/
 .motto{
@@ -47,4 +33,6 @@
 }.icon{
     width: 30px;
     height: 30px;
+}.brand{
+    width: 160px;
 }
