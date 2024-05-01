@@ -24,6 +24,11 @@
     color: #179D8D;
 }.category{
     flex-wrap: wrap;
+}.wrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
 }
 
 

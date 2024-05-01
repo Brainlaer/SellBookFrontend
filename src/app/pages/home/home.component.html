@@ -24,7 +24,7 @@
                 <P class="card-text">{{libroDto.autor}}</P>
                 <div class="card-center mb-1">
                     <button class="btn btn-cyan btn-content">
-                        <img src="../../../assets/shop.svg" alt="">
+                        <img class="me-1" src="../../../assets/shop.svg" alt="">
                         Añadir al carrito
                     </button>
                 </div>
@@ -37,27 +37,7 @@
         <h2 class="txt-cyan">Categorias</h2>
     </div>
 
-    <div class="column aling-self mb-5">
-        <div class="row category center">
-            <button class="btn btn-cyan btn-content me-2 mb-5">Literatura Contemporánea</button>
-            <button class="btn btn-cyan btn-content me-2 mb-5">Thriller</button>
-            <button class="btn btn-cyan btn-content me-2 mb-5">Aventura</button>
-            <button class="btn btn-cyan btn-content me-2 mb-5">Fantasía</button>
-            <button class="btn btn-cyan btn-content me-2 mb-5">Novela Histórica</button>
-        </div>
-        <div class="row category center">
-            <button class="btn btn-cyan btn-content me-2 mb-5">Horror</button>
-            <button class="btn btn-cyan btn-content me-2 mb-5">Humor</button>
-            <button class="btn btn-cyan btn-content me-2 mb-5">LGBTQ+</button>
-            <button class="btn btn-cyan btn-content me-2 mb-5">Misterio</button>
-            <button class="btn btn-cyan btn-content me-2 mb-5">No Ficción</button>
-        </div>
-        <div class="row category center">
-            <button class="btn btn-cyan btn-content me-2 mb-5">Paranormal</button>
-            <button class="btn btn-cyan btn-content me-2 mb-5">Poesía</button>
-            <button class="btn btn-cyan btn-content me-2 mb-5">Romance</button>
-            <button class="btn btn-cyan btn-content me-2 mb-5">Ciencia Ficción</button>
-            <button class="btn btn-cyan btn-content me-2 mb-5">Ficción Juvenil</button>
-        </div>
+    <div class="wrap aling-self mb-5">
+        <button class="btn btn-cyan btn-content mb-5 me-3" *ngFor="let category of categories">{{category.nombre}}</button>
     </div>
 </div>
