@@ -8,10 +8,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { CatalogoComponent } from './pages/catalogo/catalogo.component';
+import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { LibroComponent } from './pages/libro/libro.component';
+import { ViewBookComponent } from './pages/view-book/view-book.component';
 
 
 @NgModule({
@@ -20,10 +20,10 @@ import { LibroComponent } from './pages/libro/libro.component';
     LoginComponent,
     SignUpComponent,
     NavbarComponent,
-    CatalogoComponent,
+    SearchResultsComponent,
     HomeComponent,
     FooterComponent,
-    LibroComponent
+    ViewBookComponent
   ],
   imports: [
     BrowserModule,

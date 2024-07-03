@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LibroService } from 'src/app/services/libro.service';
-import { libroDto } from 'src/app/models/libro-dto';
+import { BookService } from 'src/app/services/book.service';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
+import { BookPreview } from 'src/app/models/book-preview';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -12,34 +13,46 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class HomeComponent implements OnInit{
 
+  string:String='null';
+
   ngOnInit(): void {
-    this.librosRecientes();
-    this.allCategies();
+    this.findLastest();
+    this.findAll();
   }
 
 
-  constructor(private libroService:LibroService, private categoryService:CategoryService){
+  constructor(private bookService:BookService, 
+    private categoryService:CategoryService, 
+    private router:Router
+  ){
 
   }
 
   categories:Category[]=[];
 
 
-  librosDto:libroDto[]=[];
+  bookPreviewList:BookPreview[]=[];
 
+  goSearchingById(isxn:number){
+    window.location.href="/view_book/"+isxn;
+  }
 
-  librosRecientes(){
-    this.libroService.librosRecientes().subscribe(
+  goSearchingByCategory(category:number){
+    this.router.navigate(['/search_results'],{queryParams:{category:category, string:'null'}})
+  }
+
+  findLastest(){
+    this.bookService.findLastest().subscribe(
       (data:any)=>{
-        this.librosDto=data;
+        this.bookPreviewList=data;
       },(error)=>{
         console.log(error);
       }
     )
   }
 
-  allCategies(){
-    this.categoryService.getAllCategories().subscribe(
+  findAll(){
+    this.categoryService.findAll().subscribe(
       (data:any)=>{
         this.categories=data;
       },(error)=>{

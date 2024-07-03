@@ -1,43 +1,37 @@
-<div class="container">
-    <div class="center mt-5 mb-5">
-        <div class="txt-center">
-            <img class="brand" src="../../../assets/logo.png" alt="">
-            <h1 class="motto txt-cyan">Desde libros de ocio hasta libros educativos, encuentra tu libro aquí en SellBook
-            </h1>
-            <p class="txt-cyan">Compra tus libros favoritos en sellbook.com y recibe en la puerta de tu casa</p>
-        </div>
-    </div>
+<div class="introduction">
+    <img class="brand " src="../../../assets/logo.png" alt="">
+    <h1 class="motto txt-center txt-cyan">Desde libros de ocio hasta libros educativos, encuentra tu libro aquí en
+        SellBook</h1>
+    <p class="txt-cyan">Compra tus libros favoritos en sellbook.com y recibe en la puerta de tu casa</p>
+</div>
 
-    <div class="row aling-self">
-        <img class="icon me-1" src="../../../assets/recent.svg" alt="">
-        <h2 class="txt-cyan">Libros Recientes</h2>
-    </div>
+<div class="aling-vertical">
+    <img class="icon me-1" src="../../../assets/recent.svg" alt="">
+    <h2 class="txt-cyan">Agregados Recientemente</h2>
+</div>
 
-    <div class="row card-center mb-5">
-        <div class="card" *ngFor="let libroDto of librosDto">
-            <img class="card-img"
-                src={{libroDto.image}}
-                alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{libroDto.titulo}}</h5>
-                <p class="card-text">${{libroDto.costo}} COP</p>
-                <P class="card-text">{{libroDto.autor}}</P>
-                <div class="card-center mb-1">
-                    <button class="btn btn-cyan btn-content">
-                        <img class="me-1" src="../../../assets/shop.svg" alt="">
-                        Añadir al carrito
-                    </button>
-                </div>
+<div class="card-center mb-5">
+    <div class="card" *ngFor="let bookPreview of bookPreviewList">
+        <img class="card-img" (click)="goSearchingById(bookPreview.isxn)" src={{bookPreview.image}} alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{bookPreview.title}}</h5>
+            <p class="card-text txt-bold">${{bookPreview.cost}} COP</p>
+            <P class="card-text">{{bookPreview.author}}</P>
+            <div class="card-center mb-1">
+                <button class="btn btn-cyan btn-content">
+                    <img class="me-1" src="../../../assets/shop.svg" alt="">
+                    Añadir al carrito
+                </button>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="row aling-self">
-        <img class="icon me-1" src="../../../assets/category.svg" alt="">
-        <h2 class="txt-cyan">Categorias</h2>
-    </div>
+<div class="aling-vertical">
+    <img class="icon me-1" src="../../../assets/category.svg" alt="">
+    <h2 class="txt-cyan">Categorias</h2>
+</div>
 
-    <div class="wrap aling-self mb-5">
-        <button class="btn btn-cyan btn-content mb-5 me-3" *ngFor="let category of categories">{{category.nombre}}</button>
-    </div>
+<div class="wrap  mb-5">
+    <button class="btn btn-cyan btn-content mb-5 me-3" *ngFor="let category of categories" (click)="goSearchingByCategory(category.id)">{{category.name}}</button>
 </div>

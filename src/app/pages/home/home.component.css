@@ -4,17 +4,16 @@
     flex-wrap: wrap;
     justify-content: space-evenly;   
 }.card{
-    background-color: #DCEEEC;
     border:solid #179D8D 3px;
-    max-width: 17rem;
-    margin-bottom: 10px;
+    width: auto;
     border-radius: 20px;
+    background-color: #dceeec;
 }.card-img{
-    display: flex;
-    width: 15rem;
-    height: 23rem;
+    width: 200px;
+    height: 308px;
     border-radius: 17px;
-    margin: 10px;
+    margin: 15px 12px 12px 12px;
+    transition: transform 0.3s ease;
 }.card-body{
     text-align: center;
 }.card-title{
@@ -22,17 +21,34 @@
     text-transform: uppercase;
 }.card-text{
     color: #179D8D;
+    max-width: 220px;
+    font-size: small;
 }.category{
     flex-wrap: wrap;
-}.wrap{
+}.card-img:hover{
+
+    transform: scale(1.09);
+    z-index: 1;
+}
+
+.wrap{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     
 }
 
+.aling-vertical{
+    display: flex;
+    align-items: center;
+}
 
 /*elementos*/
+.introduction{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .motto{
     max-width: 800px;
 }.icon{
@@ -40,4 +56,5 @@
     height: 30px;
 }.brand{
     width: 160px;
+    
 }

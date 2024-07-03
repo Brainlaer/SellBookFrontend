@@ -7,32 +7,22 @@
   </div>
   <div class="nav-column">
     <div class="nav-row">
-      <form (submit)="asignarValores()">
+      <form [formGroup]="searchForm" (submit)="sendValues()">
         <div class="nav-row me-1">
-          <div class="filtrer aling-self me-1" (click)="clickTitulo()">
-            <img class="inp-radio" *ngIf="checkAutor" src="../../../assets/radio.svg" alt="">
-            <img class="inp-radio" *ngIf="checkTitulo" src="../../../assets/radio-cheacked.svg" alt="">
-            <label for="titulo">Titulo</label>
-          </div>
-          <div class="filtrer aling-self me-1" (click)="clickAutor()">
-            <img class="inp-radio" *ngIf="checkTitulo" src="../../../assets/radio.svg" alt="">
-            <img class="inp-radio" *ngIf="checkAutor" src="../../../assets/radio-cheacked.svg" alt="">
-            <label for="autor">Autor</label>
-          </div>
           <div class="search-bar">
-            <input class="inp-cyan" type="text" placeholder="¿Qué quieres leer?">
+            <input class="inp-cyan" type="text" formControlName="string" placeholder="¿Qué quieres leer?">
             <button type="submit" class="btn-cyan btn-content">
               <img src="../../../assets/search.svg" alt="">
             </button>
           </div>
         </div>
       </form>
+      <button class="btn btn-cyan btn-content me-1">
+        <img src="../../../assets/shop.svg" alt="">
+      </button>
       <button class="btn btn-cyan btn-content me-1" routerLink="registrarse">
         <img class="me-1" src="../../../assets/add-user.svg" alt="">
         Registrar
-      </button>
-      <button class="btn btn-cyan btn-content me-1">
-        <img src="../../../assets/shop.svg" alt="">
       </button>
       <a href="/iniciar_session">
         <img class="profile" src="../../../assets/profile.png" alt="">

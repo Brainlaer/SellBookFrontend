@@ -1,0 +1,97 @@
+<h1 class="txt-cyan">{{bookView.title}}</h1>
+<div class="wrap-content">
+  <div class="column-flex">
+    <div class="center-div">
+      <img class="img-book" src={{bookView.image}} alt="">
+    </div>
+  </div>
+  <div class="column-flex">
+    <div class="some-info-data row-flex">
+      <div class="column-flex">
+        <h2>Autor:</h2>
+        <p class="mb-2">{{bookView.author}}</p>
+        <h2>Editorial:</h2>
+        <p>{{bookView.editorial}}</p>
+      </div>
+      <div class="column">
+        <img class="free-delivery" src="../../../assets/envio-gratis.png" alt="book_image.png">
+      </div>
+    </div>
+      <h1 class="txt-cyan">Costo: ${{bookView.cost}} COP</h1>
+    <div class="row">
+      <button class="btn btn-cyan btn-content" (click)="lessUNits()" [disabled]="lessUnitsdisabled">
+        <img src="../../../assets/less.svg" alt="">
+      </button>
+      <h2 class="txt-cyan">{{unitsToBuy}}</h2>
+      <button class="btn btn-cyan btn-content" (click)="moreUnits()">
+        <img src="../../../assets/more.svg" alt="">
+      </button>
+      <button class="btn btn-cyan btn-content ms-3">
+        <img src="../../../assets/shop.svg" alt="">
+        Añadir al carrito
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<hr>
+<h1>Información completa</h1>
+<div>
+  <div class="fila">
+    <p class="p-info me-2">ISXN:</p>
+    <p>{{bookView.isxn}}</p>
+  </div>
+  <div class="fila">
+    <p class="p-info me-2">Titulo:</p>
+    <p>{{bookView.title}}</p>
+  </div>
+  <div class="fila">
+    <p class="p-info me-2">Autor</p>
+    <p>{{bookView.author}}</p>
+  </div>
+  <div class="fila">
+    <p class="p-info me-2">Editorial:</p>
+    <p>{{bookView.editorial}}</p>
+  </div>
+  <div class="fila">
+    <p class="p-info me-2">Año publicado:</p>
+    <p>{{bookView.publicationDate}}</p>
+  </div>
+  <div class="fila">
+    <p class="p-info me-2">Categoria:</p>
+    <p>{{bookView.category.name}}</p>
+  </div>
+
+
+</div>
+
+<hr>
+
+<div>
+  <h1>Más de {{bookView.author}}...</h1>
+  <div class="row">
+    <div class="centro mb-5" style="margin-top: 30px;">
+      <div class="card" style="width: 18rem; margin-bottom: 20px;">
+        <img
+          src="https://libreriadelau.vtexassets.com/arquivos/ids/34337477-800-auto?v=638419022738330000&width=800&height=auto&aspect=true"
+          class="card-img-top img-mas-del-autor" alt="...">
+        <div class="card-body">
+          <h5 class="card-title p-info-libros">Yo no vengo a decir un discurso</h5>
+          <p class="card-text p-info-libros">$42.000 COP</p>
+          <p class="card-text p-info-libros">Gabriel García Márquez</p>
+          <div class="centrar">
+            <button class="btn btn-primary centrar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-basket me-2" viewBox="0 0 16 16">
+                <path
+                  d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9zM1 7v1h14V7zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5" />
+              </svg>
+              Añadir al carrito
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

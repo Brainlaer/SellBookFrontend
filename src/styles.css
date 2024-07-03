@@ -6,12 +6,9 @@
     flex-direction: row;
 }.txt-center{
     text-align: center;
-}.center{
+}.center-div{
     display: flex;
     justify-content: center;
-}.aling-self{
-    display: flex;
-    align-items: center;
 }.flex{
     display: flex;
 }.txt-small{
@@ -41,6 +38,8 @@
 /*text*/
 .txt-bold{
     font-weight: bold;
+}.txt-italic{
+    font-style: italic;
 }
 /*load*/
 .load{
