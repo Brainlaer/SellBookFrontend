@@ -12,9 +12,13 @@
 
 <div class="card-center mb-5">
     <div class="card" *ngFor="let bookPreview of bookPreviewList">
-        <img class="card-img" (click)="goSearchingById(bookPreview.isxn)" src={{bookPreview.image}} alt="...">
         <div class="card-body">
-            <h5 class="card-title">{{bookPreview.title}}</h5>
+            <div>
+                <img class="card-img" (click)="goSearchingById(bookPreview.isxn)" src={{bookPreview.image}} alt="...">
+                <h5 class="card-title">{{bookPreview.title}}</h5>
+            </div>
+        </div>
+        <div class="card-body">
             <p class="card-text txt-bold">${{bookPreview.cost}} COP</p>
             <P class="card-text">{{bookPreview.author}}</P>
             <div class="card-center mb-1">
@@ -33,5 +37,6 @@
 </div>
 
 <div class="wrap  mb-5">
-    <button class="btn btn-cyan btn-content mb-5 me-3" *ngFor="let category of categories" (click)="goSearchingByCategory(category.id)">{{category.name}}</button>
+    <button class="btn btn-cyan btn-content mb-5 me-3" *ngFor="let category of categories"
+        (click)="goSearchingByCategory(category.id)">{{category.name}}</button>
 </div>

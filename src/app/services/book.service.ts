@@ -15,7 +15,7 @@ export class BookService {
   }
 
   findLastest(){
-    return this.httpClient.get(`${this.baseurl}/LastestBooks`);
+    return this.httpClient.get(`${this.baseurl}/recentlyAdded`);
   }
 
   findByAuthorYTitlePreview(stringSearch:String|null){
