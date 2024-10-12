@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { ViewBookComponent } from './pages/view-book/view-book.component';
@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path:'iniciar_session',
-    component:LoginComponent,
+    component:SignInComponent,
     pathMatch:'full'
   },
   {

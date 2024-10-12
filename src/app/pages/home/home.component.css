@@ -1,42 +1,6 @@
 /*estructura*/
-.card-center{
-    display: flex;
+.category{
     flex-wrap: wrap;
-    justify-content: space-evenly;   
-}.card{
-    border:solid #179D8D 3px;
-    width: auto;
-    border-radius: 20px;
-    background-color: #dceeec;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}.card-img{
-    width: 200px;
-    height: 308px;
-    border-radius: 17px;
-    margin: 15px 12px 12px 12px;
-    transition: transform 0.3s ease;
-}.card-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-}.card-title{
-    color: #179D8D;
-    text-transform: uppercase;
-    max-width: 220px;
-
-}.card-text{
-    color: #179D8D;
-    max-width: 220px;
-    font-size: small;
-}.category{
-    flex-wrap: wrap;
-}.card-img:hover{
-
-    transform: scale(1.09);
-    z-index: 1;
 }
 
 .wrap{
@@ -66,3 +30,17 @@
     width: 160px;
     
 }
+.scroll-cards{
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    gap: 20px;
+
+}.categories{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:15px;
+    justify-content: center;
+}
+

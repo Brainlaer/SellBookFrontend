@@ -12,9 +12,15 @@ import { SearchResultsComponent } from 'src/app/pages/search-results/search-resu
 export class NavbarComponent{
 
   categorySearch!:number;
+  username:string='';
+  token:string='';
 
   constructor(private route:ActivatedRoute, 
-    private router:Router){}
+    private router:Router){
+      this.token=String(sessionStorage.getItem('token'));
+      const user=sessionStorage.getItem('username')?.split('@');
+      this.username=String(user?.at(0)||'Iniciar Sessión');
+    }
 
   searchForm=new FormGroup({
     string:new FormControl('',Validators.required)

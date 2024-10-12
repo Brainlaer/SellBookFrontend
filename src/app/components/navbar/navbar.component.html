@@ -8,25 +8,24 @@
   <div class="nav-column">
     <div class="nav-row">
       <form [formGroup]="searchForm" (submit)="sendValues()">
-        <div class="nav-row me-1">
           <div class="search-bar">
-            <input class="inp-cyan" type="text" formControlName="string" placeholder="¿Qué quieres leer?">
-            <button type="submit" class="btn-cyan btn-content">
+            <input type="text" brInputSearchBar formControlName="string" placeholder="¿Qué quieres leer?">
+            <button type="submit" brButtonSearchBar>
               <img src="../../../assets/search.svg" alt="">
             </button>
           </div>
-        </div>
       </form>
-      <button class="btn btn-cyan btn-content me-1">
+      <button brButton>
         <img src="../../../assets/shop.svg" alt="">
       </button>
-      <button class="btn btn-cyan btn-content me-1" routerLink="registrarse">
-        <img class="me-1" src="../../../assets/add-user.svg" alt="">
+      <button brButton *ngIf="!token" routerLink="registrarse">
+        <img src="../../../assets/add-user.svg" alt="">
         Registrar
       </button>
-      <a href="/iniciar_session">
-        <img class="profile" src="../../../assets/profile.png" alt="">
-      </a>
+      <button brButton routerLink="iniciar_session">
+        <img src="https://www.shawnmendesofficial.com/files/2018/04/release_201804_ShawnMendes_SM_Cover_layeredSimple.jpg" alt="">
+        {{username}}
+      </button>
     </div>
   </div>
 </div>

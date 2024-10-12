@@ -2,6 +2,7 @@
 .nav-bar{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
 }.nav-column{
     display: flex;
@@ -9,6 +10,7 @@
 }.nav-row{
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 /*elementos*/
 .sellbook{

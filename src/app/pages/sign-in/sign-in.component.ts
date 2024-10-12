@@ -4,50 +4,44 @@ import { ConsoleService } from 'src/app/components/console/service/console.servi
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.css']
 })
-export class SignUpComponent implements OnInit {
-    
-  formNewUser:FormGroup;
+export class SignInComponent implements OnInit{
+
+  signupForm:FormGroup;
   passVisible:string="password";
   showPassImg:boolean=true;
   isLoadding:boolean=false;
 
   constructor(
-    public userService:UserService,
+    private userService:UserService,
     private consoleService:ConsoleService
   ){
-    this.formNewUser = new FormGroup({
-      id: new FormControl('',[Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
-      name: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
-      surname: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
-      gender: new FormControl('0',[Validators.required]),
-      birthdate: new FormControl('',[Validators.required]),
-      phone: new FormControl('',[Validators.minLength(10), Validators.maxLength(15)]),
+    this.signupForm=new FormGroup({
       mail: new FormControl('',[Validators.required, Validators.email, Validators.maxLength(32)]),
       password: new FormControl('',[Validators.required, Validators.minLength(8)]),
     })
   }
-  
-  ngOnInit(): void {
-  }
 
-  newUser(user:any){
+  ngOnInit(): void {
+  } 
+
+  signIn(){
     this.isLoadding=true;
-    if(this.formNewUser.valid){
-      const formData = this.formNewUser.value;
-      this.userService.signUp(formData).subscribe(
+    if(this.signupForm.valid){
+      const formData = this.signupForm.value;
+      this.userService.signIn(formData).subscribe(
         (data:any)=>{
           if(data.token!=null){
             this.consoleService.showMessage(
               'success',
-              'Persona creada exitosamente.'
+              'Sessión iniciada.'
             );
             sessionStorage.setItem('token',data.token);
             this.userService.setEmailFromToken();
-            this.formNewUser.reset();
+            this.signupForm.reset();
           }else{
             this.consoleService.showMessage(
               'danger',
@@ -63,7 +57,7 @@ export class SignUpComponent implements OnInit {
         }
       )
     }else{
-      this.formNewUser.markAllAsTouched();
+      this.signupForm.markAllAsTouched();
       this.consoleService.showMessage(
         'danger',
         'Formulario invalido.'
@@ -71,7 +65,7 @@ export class SignUpComponent implements OnInit {
     }
     this.isLoadding=false;
   }
-  
+
   showPass(){
     if(this.passVisible=="password"){
       this.showPassImg=false;
@@ -81,5 +75,7 @@ export class SignUpComponent implements OnInit {
       return this.passVisible="password";
     }
   }
+
+
 
 }

@@ -1,0 +1,39 @@
+<div class="center">
+    <div class="txt-center mt-5 mb-5">
+        <h1 class="txt-cyan">Iniciar sessión en SellBook</h1>
+        <p class="txt-cyan">Para iniciar sessión en SellBook selecciona un rol y luego ingresa tus datos.</p>
+    </div>
+</div>
+
+<form [formGroup]="signupForm" (submit)="signIn()">
+    <div class="row center">
+        <div class="column-form mb-3">
+            <p class="txt-bold txt-cyan txt-center">Correo Electronico *</p>
+            <input type="email" brInput formControlName="mail" placeholder="ej: example@mail.com">
+            <div
+                *ngIf="signupForm.get('mail')?.invalid&&signupForm.get('mail')?.touched||signupForm.get('mail')?.dirty">
+                <small class='text-danger'*ngIf="signupForm.get('mail')?.getError('required')">Este campo es requerido</small>
+                <small class='text-danger'*ngIf="signupForm.get('mail')?.getError('email')">El correo es invalido</small>
+                <small class='text-danger'*ngIf="signupForm.get('mail')?.getError('maxlength')">Debe ser menos de 32 caracteres</small>
+            </div>
+            <p class="txt-bold txt-cyan txt-center">Contraseña *</p>
+            <div class="row-password">
+                <input type={{passVisible}} brInput formControlName="password" placeholder="Al menos 8 caracteres">
+                <button brButton type="button" (click)="showPass()">
+                    <img src="../../../assets/showpass.svg" *ngIf="showPassImg" alt="">
+                    <img src="../../../assets/hidepass.svg" *ngIf="!showPassImg" alt="">
+                </button>
+            </div>
+            <div
+                *ngIf="signupForm.get('password')?.invalid&&signupForm.get('password')?.touched||signupForm.get('password')?.dirty">
+                <small class='text-danger'*ngIf="signupForm.get('password')?.getError('required')">Este campo es requerido</small>
+                <small class='text-danger'*ngIf="signupForm.get('password')?.getError('minlength')">Debe ser mas de 8 caracteres</small>
+            </div>
+            <a href="" class="text-primary mb-3">Recuperar Contraseña</a>
+            <div class="row center mb-5">
+                <img src="../../../assets/load.svg" class="load me-1" alt="" [hidden]="!isLoadding">
+                <button brButton type="submit" style="width: fit-content;">Iniciar Sessión</button>
+            </div>
+        </div>
+    </div>
+</form>

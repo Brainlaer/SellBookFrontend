@@ -9,34 +9,15 @@
     <img class="icon me-1" src="../../../assets/recent.svg" alt="">
     <h2 class="txt-cyan">Agregados Recientemente</h2>
 </div>
-
-<div class="card-center mb-5">
-    <div class="card" *ngFor="let bookPreview of bookPreviewList">
-        <div class="card-body">
-            <div>
-                <img class="card-img" (click)="goSearchingById(bookPreview.isxn)" src={{bookPreview.image}} alt="...">
-                <h5 class="card-title">{{bookPreview.title}}</h5>
-            </div>
-        </div>
-        <div class="card-body">
-            <p class="card-text txt-bold">${{bookPreview.cost}} COP</p>
-            <P class="card-text">{{bookPreview.author}}</P>
-            <div class="card-center mb-1">
-                <button class="btn btn-cyan btn-content">
-                    <img class="me-1" src="../../../assets/shop.svg" alt="">
-                    Añadir al carrito
-                </button>
-            </div>
-        </div>
-    </div>
+<div class="mb-5">
+    <br-thumbnail [items]="bookPreviewList" scrollable="true"></br-thumbnail>
 </div>
-
 <div class="aling-vertical">
     <img class="icon me-1" src="../../../assets/category.svg" alt="">
     <h2 class="txt-cyan">Categorias</h2>
 </div>
 
-<div class="wrap  mb-5">
-    <button class="btn btn-cyan btn-content mb-5 me-3" *ngFor="let category of categories"
+<div class="categories  mb-5">
+    <button type="button" brButton *ngFor="let category of categories"
         (click)="goSearchingByCategory(category.id)">{{category.name}}</button>
 </div>

@@ -1,32 +1,24 @@
-.data-row1{
+.row-form{
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 5px;
 }
-.data-row1>div{
-    min-width: 300px;
-}.search-bar>input{
-    min-width: 350px;
+.column-form{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 600px;
+}.row-password{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}.row-password>input{
+    flex: auto;
 }
-
-.btn-content>img{
-    width: 20px;
-    height: 20px;
+small{
+    font-weight: 600;
+    font-family: serif;
+    color:#BD5153;
 }
-
-
-.info{
-    width: 70%;
-}
-.info-inicio{
-    width: 50%;
-}
-.columna{
-
-    align-items: center;
-    flex: 1
-}.txt-bold{
-    font-weight: bolder;
-}
-
-
-

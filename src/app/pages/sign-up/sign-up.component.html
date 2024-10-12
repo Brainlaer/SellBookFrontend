@@ -1,60 +1,96 @@
 <h1 class="center txt-cyan mt-5 mb-5">Registrate en SellBook</h1>
 
 <form [formGroup]="formNewUser" (ngSubmit)="newUser(formNewUser)">
-    <div class="data-row1 row">
-        <div class="column center">
-            <p class="txt-bold txt-cyan txt-center">* Nombre(s)</p>
-            <input class="inp inp-cyan" type="text" formControlName="nombre" placeholder="Nombre(s)">
-            <p class="txt-bold txt-cyan txt-center">* Genero</p>
-            <select class="slt slt-cyan" formControlName="genero">
-                <option value="">¿Cúal es tu genero?</option>
-                <hr>
-                <option value="Desconocido">Prefiero no decirlo</option>
-                <option value="Mujer">Mujer</option>
-                <option value="Hombre">Hombre</option>
-            </select>
-            <p class="txt-bold txt-cyan txt-center">* Número de Identificación</p>
-            <input type="text" class="inp inp-cyan" formControlName="id" placeholder="ej:1234567890">
+    <div class="column">
+        <div class="row-form">
+            <div class="column-form">
+                <p class="txt-bold txt-cyan txt-center">Nombre(s) *</p>
+                <input brInput type="text" formControlName="name" placeholder="Nombre(s)">
+                <div *ngIf="formNewUser.get('name')?.invalid&&formNewUser.get('name')?.touched||formNewUser.get('name')?.dirty">
+                    <small *ngIf="formNewUser.get('name')?.getError('required')">Este campo es requerido</small>
+                    <small *ngIf="formNewUser.get('name')?.getError('minlength')">Debe ser mas de 3 caracteres</small>
+                    <small *ngIf="formNewUser.get('name')?.getError('maxlength')">Debe ser menos de 20 caracteres</small>
+                </div>
+            </div>
+            <div class="column-form">
+                <p class="txt-bold txt-cyan txt-center">Apellidos *</p>
+                <input type="text" brInput formControlName="surname" placeholder="Apellidos">
+                <div *ngIf="formNewUser.get('surname')?.invalid&&formNewUser.get('surname')?.touched||formNewUser.get('surname')?.dirty">
+                    <small *ngIf="formNewUser.get('surname')?.getError('required')">Este campo es requerido</small>
+                    <small *ngIf="formNewUser.get('surname')?.getError('minlength')">Debe ser mas de 3 caracteres</small>
+                    <small *ngIf="formNewUser.get('surname')?.getError('maxlength')">Debe ser menos de 20 caracteres</small>
+                </div>
+            </div>
         </div>
-        <div class="column center">
-            <p class="txt-bold txt-cyan txt-center">* Apellidos</p>
-            <input type="text" class="inp inp-cyan" formControlName="apellido" placeholder="Apellidos">
-            <p class="txt-bold txt-cyan txt-center">* Fecha de Nacimiento</p>
-            <input type="date" class="inp inp-cyan" formControlName="nacimiento">
-            <p class="txt-bold txt-cyan txt-center">Número de Celular</p>
-            <input type="text" class="inp inp-cyan" formControlName="telefono" placeholder="ej:3123456789">
+        <div class="row-form">
+            <div class="column-form">
+                <p class="txt-bold txt-cyan txt-center">Genero *</p>
+                <select brDropdown formControlName="gender">
+                    <option value="0">¿Cúal es tu genero?</option>
+                    <hr>
+                    <option value="Desconocido">Prefiero no decirlo</option>
+                    <option value="Mujer">Mujer</option>
+                    <option value="Hombre">Hombre</option>
+                </select>
+                <div *ngIf="formNewUser.get('gender')?.touched||formNewUser.get('gender')?.dirty">
+                    <small *ngIf="formNewUser.get('gender')?.getError('required')||formNewUser.get('gender')?.value=='0'">Este campo es requerido</small>
+                </div>
+            </div>
+            <div class="column-form">
+                <p class="txt-bold txt-cyan txt-center">Fecha de Nacimiento *</p>
+                <input type="date" brInput formControlName="birthdate">
+                <div *ngIf="formNewUser.get('birthdate')?.invalid&&formNewUser.get('birthdate')?.touched||formNewUser.get('birthdate')?.dirty">
+                    <small *ngIf="formNewUser.get('birthdate')?.getError('required')">Este campo es requerido</small>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row center">
-        <div class="column mb-3">
-            <p class="txt-bold txt-cyan txt-center">* Correo Electronico</p>
-            <input type="email" class="inp inp-cyan" formControlName="email" placeholder="ej: example@mail.com">
-            <p class="txt-bold txt-cyan txt-center">* Contraseña</p>
-            <div class="row search-bar">
-                <input type={{passVisible}} class="inp-cyan" formControlName="contraseña" placeholder="Al menos 8 caracteres">
-                <button class="btn-cyan btn-content" type="button" (click)="showPass()">
-                    <img src="../../../assets/showpass.svg" *ngIf="showPassImg" alt="">
-                    <img src="../../../assets/hidepass.svg" *ngIf="hidePassImg" alt="">
-                </button>
+        <div class="row-form">
+            <div class="column-form">
+                <p class="txt-bold txt-cyan txt-center">Número de Identificación *</p>
+                <input type="text" brInput formControlName="id" placeholder="ej:1234567890">
+                <div *ngIf="formNewUser.get('id')?.invalid&&formNewUser.get('id')?.touched||formNewUser.get('id')?.dirty">
+                    <small *ngIf="formNewUser.get('id')?.getError('required')">Este campo es requerido</small>
+                    <small *ngIf="formNewUser.get('id')?.getError('minlength')">Debe ser mas de 5 caracteres</small>
+                    <small *ngIf="formNewUser.get('id')?.getError('maxlength')">Debe ser menos de 12 caracteres</small>
+                </div>
+            </div>
+            <div class="column-form">
+                <p class="txt-bold txt-cyan txt-center">Número de Celular</p>
+                <input type="text" brInput formControlName="phone" placeholder="ej:3123456789">
+                <div *ngIf="formNewUser.get('phone')?.invalid&&formNewUser.get('phone')?.touched||formNewUser.get('phone')?.dirty">
+                    <small *ngIf="formNewUser.get('phone')?.getError('minlength')">Debe ser mas de 10 caracteres</small>
+                    <small *ngIf="formNewUser.get('phone')?.getError('maxlength')">Debe ser menos de 15 caracteres</small>
+                </div>
             </div>
         </div>
     </div>
-    <div class="row center">
-        <div class="alert alert-red" [hidden]="hiddenAlerta">
-            <p>Hubo un error. Revisa tus datos e intentalo de nuevo</p>
-            <button class="btn btn-red btn-content" type="button" (click)="cerrarAlerta()">
-                <img src="../../../assets/closeAlert.svg" alt="">
-            </button>
+    <div class="row-form mb-3">
+        <div class="column-form">
+            <p class="txt-bold txt-cyan txt-center">Correo Electronico *</p>
+            <input type="email" brInput formControlName="mail" placeholder="ej: example@mail.com">
+            <div *ngIf="formNewUser.get('mail')?.invalid&&formNewUser.get('mail')?.touched||formNewUser.get('mail')?.dirty">
+                <small *ngIf="formNewUser.get('mail')?.getError('required')">Este campo es requerido</small>
+                <small *ngIf="formNewUser.get('mail')?.getError('email')">El correo es invalido</small>
+                <small *ngIf="formNewUser.get('mail')?.getError('maxlength')">Debe ser menos de 32 caracteres</small>
+            </div>
+            <p class="txt-bold txt-cyan txt-center">Contraseña *</p>
+            <div class="row-password">
+                <input type={{passVisible}} brInput formControlName="password" placeholder="Al menos 8 caracteres">
+                <button brButton type="button" (click)="showPass()">
+                    <img src="../../../assets/showpass.svg" *ngIf="showPassImg" alt="">
+                    <img src="../../../assets/hidepass.svg" *ngIf="!showPassImg" alt="">
+                </button>
+            </div>
+            <div *ngIf="formNewUser.get('password')?.invalid&&formNewUser.get('password')?.touched||formNewUser.get('password')?.dirty">
+                <small *ngIf="formNewUser.get('password')?.getError('required')">Este campo es requerido</small>
+                <small *ngIf="formNewUser.get('password')?.getError('minlength')">Debe ser mas de 8 caracteres</small>
+            </div>
         </div>
     </div>
-    <div class="row aling-self center mb-5">
-        <img src="../../../assets/load.svg" class="load me-1" alt="" [hidden]="hiddenLoad">
-        <button type="submit" class="btn btn-cyan btn-content" [disabled]="disabled">
+    <div class="row aling-self center mb-3">
+        <img src="../../../assets/load.svg" class="load me-1" alt="" [hidden]="!isLoadding">
+        <button type="submit" brButton [disabled]="isLoadding">
                 Registrar
         </button>
     </div>
 </form>
-
-
-<p>{{this.data}}</p>
-<p>{{this.error}}</p>
