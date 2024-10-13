@@ -10,7 +10,11 @@
     <h2 class="txt-cyan">Agregados Recientemente</h2>
 </div>
 <div class="mb-5">
-    <br-thumbnail [items]="bookPreviewList" scrollable="true"></br-thumbnail>
+    <br-thumbnail 
+    [items]="bookPreviewList" 
+    scrollable="true"
+    redirect="/view_book"
+    ></br-thumbnail>
 </div>
 <div class="aling-vertical">
     <img class="icon me-1" src="../../../assets/category.svg" alt="">

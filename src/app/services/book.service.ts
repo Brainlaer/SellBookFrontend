@@ -10,8 +10,8 @@ export class BookService {
 
   baseurl='http://localhost:8080/sellbook/book';
 
-  findByIsxn(isxn:number){
-    return this.httpClient.get(`${this.baseurl}/${isxn}`);
+  findByIsxn(isxn:string){
+    return this.httpClient.get(`${this.baseurl}/id/${isxn}`);
   }
 
   findLastest(){
@@ -19,7 +19,7 @@ export class BookService {
   }
 
   findByAuthorYTitlePreview(stringSearch:String|null){
-    return this.httpClient.get(`${this.baseurl}/searchTitleAuthorPreview/${stringSearch}`);
+    return this.httpClient.get(`${this.baseurl}/findByTitleAndAuthor/${stringSearch}`);
   }
 
   findByCategoryId(categorySearch:number|null){

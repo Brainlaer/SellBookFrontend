@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ConsoleService } from 'src/app/components/console/service/console.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,16 +11,17 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignUpComponent implements OnInit {
     
-  formNewUser:FormGroup;
+  signUpForm:FormGroup;
   passVisible:string="password";
   showPassImg:boolean=true;
   isLoadding:boolean=false;
 
   constructor(
-    public userService:UserService,
-    private consoleService:ConsoleService
+    private userService:UserService,
+    private consoleService:ConsoleService,
+    private router:Router
   ){
-    this.formNewUser = new FormGroup({
+    this.signUpForm = new FormGroup({
       id: new FormControl('',[Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
       name: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
       surname: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
@@ -36,8 +38,8 @@ export class SignUpComponent implements OnInit {
 
   newUser(user:any){
     this.isLoadding=true;
-    if(this.formNewUser.valid){
-      const formData = this.formNewUser.value;
+    if(this.signUpForm.valid){
+      const formData = this.signUpForm.value;
       this.userService.signUp(formData).subscribe(
         (data:any)=>{
           if(data.token!=null){
@@ -47,7 +49,7 @@ export class SignUpComponent implements OnInit {
             );
             sessionStorage.setItem('token',data.token);
             this.userService.setEmailFromToken();
-            this.formNewUser.reset();
+            this.router.navigate(['/'])
           }else{
             this.consoleService.showMessage(
               'danger',
@@ -63,7 +65,7 @@ export class SignUpComponent implements OnInit {
         }
       )
     }else{
-      this.formNewUser.markAllAsTouched();
+      this.signUpForm.markAllAsTouched();
       this.consoleService.showMessage(
         'danger',
         'Formulario invalido.'

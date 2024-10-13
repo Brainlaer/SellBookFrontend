@@ -5,16 +5,16 @@
     </div>
 </div>
 
-<form [formGroup]="signupForm" (submit)="signIn()">
+<form [formGroup]="signInForm" (submit)="signIn()">
     <div class="row center">
         <div class="column-form mb-3">
             <p class="txt-bold txt-cyan txt-center">Correo Electronico *</p>
             <input type="email" brInput formControlName="mail" placeholder="ej: example@mail.com">
             <div
-                *ngIf="signupForm.get('mail')?.invalid&&signupForm.get('mail')?.touched||signupForm.get('mail')?.dirty">
-                <small class='text-danger'*ngIf="signupForm.get('mail')?.getError('required')">Este campo es requerido</small>
-                <small class='text-danger'*ngIf="signupForm.get('mail')?.getError('email')">El correo es invalido</small>
-                <small class='text-danger'*ngIf="signupForm.get('mail')?.getError('maxlength')">Debe ser menos de 32 caracteres</small>
+                *ngIf="signInForm.get('mail')?.invalid&&signInForm.get('mail')?.touched||signInForm.get('mail')?.dirty">
+                <small class='text-danger'*ngIf="signInForm.get('mail')?.getError('required')">Este campo es requerido</small>
+                <small class='text-danger'*ngIf="signInForm.get('mail')?.getError('email')">El correo es invalido</small>
+                <small class='text-danger'*ngIf="signInForm.get('mail')?.getError('maxlength')">Debe ser menos de 32 caracteres</small>
             </div>
             <p class="txt-bold txt-cyan txt-center">Contraseña *</p>
             <div class="row-password">
@@ -25,14 +25,14 @@
                 </button>
             </div>
             <div
-                *ngIf="signupForm.get('password')?.invalid&&signupForm.get('password')?.touched||signupForm.get('password')?.dirty">
-                <small class='text-danger'*ngIf="signupForm.get('password')?.getError('required')">Este campo es requerido</small>
-                <small class='text-danger'*ngIf="signupForm.get('password')?.getError('minlength')">Debe ser mas de 8 caracteres</small>
+                *ngIf="signInForm.get('password')?.invalid&&signInForm.get('password')?.touched||signInForm.get('password')?.dirty">
+                <small class='text-danger'*ngIf="signInForm.get('password')?.getError('required')">Este campo es requerido</small>
+                <small class='text-danger'*ngIf="signInForm.get('password')?.getError('minlength')">Debe ser mas de 8 caracteres</small>
             </div>
             <a href="" class="text-primary mb-3">Recuperar Contraseña</a>
             <div class="row center mb-5">
                 <img src="../../../assets/load.svg" class="load me-1" alt="" [hidden]="!isLoadding">
-                <button brButton type="submit" style="width: fit-content;">Iniciar Sessión</button>
+                <button brButton type="submit" style="width: fit-content;" [hidden]="isLoadding">Iniciar Sessión</button>
             </div>
         </div>
     </div>

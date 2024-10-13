@@ -2,7 +2,7 @@
     <div class="card" *ngFor="let item of items">
         <div class="card-body">
             <div>
-                <img class="card-img" (click)="goSearchingById(item.isxn||item.id)" src={{item.image}} alt="...">
+                <img class="card-img" (error)="item.image=noImage" (click)="goSearchingById(item.isxn||item.id)" src={{item.image}} alt="...">
                 <h5 class="card-title">{{item.title||item.name}}</h5>
             </div>
         </div>

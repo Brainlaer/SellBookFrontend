@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ConsoleService } from 'src/app/components/console/service/console.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,16 +11,17 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignInComponent implements OnInit{
 
-  signupForm:FormGroup;
+  signInForm:FormGroup;
   passVisible:string="password";
   showPassImg:boolean=true;
   isLoadding:boolean=false;
 
   constructor(
     private userService:UserService,
-    private consoleService:ConsoleService
+    private consoleService:ConsoleService,
+    private router:Router
   ){
-    this.signupForm=new FormGroup({
+    this.signInForm=new FormGroup({
       mail: new FormControl('',[Validators.required, Validators.email, Validators.maxLength(32)]),
       password: new FormControl('',[Validators.required, Validators.minLength(8)]),
     })
@@ -30,8 +32,8 @@ export class SignInComponent implements OnInit{
 
   signIn(){
     this.isLoadding=true;
-    if(this.signupForm.valid){
-      const formData = this.signupForm.value;
+    if(this.signInForm.valid){
+      const formData = this.signInForm.value;
       this.userService.signIn(formData).subscribe(
         (data:any)=>{
           if(data.token!=null){
@@ -41,7 +43,7 @@ export class SignInComponent implements OnInit{
             );
             sessionStorage.setItem('token',data.token);
             this.userService.setEmailFromToken();
-            this.signupForm.reset();
+            this.router.navigate(['/'])
           }else{
             this.consoleService.showMessage(
               'danger',
@@ -57,7 +59,7 @@ export class SignInComponent implements OnInit{
         }
       )
     }else{
-      this.signupForm.markAllAsTouched();
+      this.signInForm.markAllAsTouched();
       this.consoleService.showMessage(
         'danger',
         'Formulario invalido.'

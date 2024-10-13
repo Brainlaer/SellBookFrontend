@@ -8,14 +8,22 @@
 }.txt-center{
     text-align: center;
 }.center{
-    display: flex;
-    justify-content: center;
+    justify-content: space-around;
+}.end{
+    justify-content: end;
+}.start{
+    justify-content: start;
 }.aling-self{
     display: flex;
     align-items: center;
 }.flex{
     display: flex;
-}.txt-small{
+}.wrap{
+    flex-wrap: wrap;
+}.wrap-reverse{
+    flex-wrap: wrap-reverse;
+}
+.txt-small{
     font-size: small;
 }
 /* .alert{

@@ -10,9 +10,10 @@ import { BookService } from 'src/app/services/book.service';
 })
 export class ViewBookComponent implements OnInit{
 
-  isxnGotten!:any;
+  id!:any;
   unitsToBuy:number=1;
   lessUnitsdisabled:boolean=false;
+  moreBooks:any[]=[]
 
   constructor(
     private activatedRoute:ActivatedRoute,
@@ -21,11 +22,22 @@ export class ViewBookComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    this.getIsxnBook();
-    this.findByIsxn(this.isxnGotten);
+    this.activatedRoute.queryParamMap.subscribe(
+      (params:ParamMap)=>{
+        this.id=params.get('id');
+      }
+    )
+    this.findByIsxn();
     this.disablelessUnitsbutton();
   }
 
+  mostRelevants(){
+    this.bookService.findByAuthorYTitlePreview(String(this.bookView?.author)).subscribe(
+      (books:any)=>{
+        this.moreBooks=books;
+      }
+    )
+  }
   bookView!:BookView;
 
   setCost(getCost:any){
@@ -52,21 +64,12 @@ export class ViewBookComponent implements OnInit{
       this.lessUnitsdisabled=false;
     }
   }
-
-  getIsxnBook(){
-    this.activatedRoute.paramMap.subscribe(
-      (params:ParamMap)=>{
-        this.isxnGotten=params.get('isxn');
-        console.log('isxn gotten'+this.isxnGotten)
-      }
-    )
-  }
-  findByIsxn(isxn:number){
-    this.bookService.findByIsxn(isxn).subscribe(
+  findByIsxn(){
+    this.bookService.findByIsxn(this.id).subscribe(
       (book:any)=>{
         this.bookView=book;
-        this.setCost(this.bookView.cost)
-        console.log(this.bookView.cost)
+        this.setCost(this.bookView?.cost);
+        this.mostRelevants();
       }
     )
   }

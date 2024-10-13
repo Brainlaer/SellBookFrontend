@@ -82,3 +82,12 @@ h2{
 }.some-info-data{
     max-width: 500px;
 }
+
+.imagen{
+    justify-content: end;
+}
+@media screen and (max-width:780px) {
+    .imagen{
+        justify-content: space-around;
+    }
+}

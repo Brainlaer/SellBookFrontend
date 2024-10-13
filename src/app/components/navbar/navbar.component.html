@@ -1,6 +1,6 @@
 <div class="nav-bar">
   <div class="nav-column">
-      <a class="nav-row sellbook" href="/">
+      <a class="nav-row sellbook" routerLink="/">
         <img class="brand me-1" src="../../../assets/logo.png" alt="">
          SellBook
       </a>
@@ -18,7 +18,7 @@
       <button brButton>
         <img src="../../../assets/shop.svg" alt="">
       </button>
-      <button brButton *ngIf="!token" routerLink="registrarse">
+      <button brButton *ngIf="token=='null'" routerLink="registrarse">
         <img src="../../../assets/add-user.svg" alt="">
         Registrar
       </button>

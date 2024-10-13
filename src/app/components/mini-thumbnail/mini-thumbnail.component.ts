@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'br-thumbnail',
-  templateUrl: './thumbnail.component.html',
-  styleUrls: ['./thumbnail.component.css']
+  selector: 'br-mini-thumbnail',
+  templateUrl: './mini-thumbnail.component.html',
+  styleUrls: ['./mini-thumbnail.component.css']
 })
-export class ThumbnailComponent implements OnInit{
+export class MiniThumbnailComponent implements OnInit{
 
   constructor(
     private router:Router
@@ -24,6 +24,7 @@ export class ThumbnailComponent implements OnInit{
 
   goSearchingById(id:string){
     this.router.navigate([this.redirect],{queryParams:{id:id}})
+    console.log('hola')
   }
 
   setScrollProperty(){

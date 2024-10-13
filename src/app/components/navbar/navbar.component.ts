@@ -13,11 +13,11 @@ export class NavbarComponent{
 
   categorySearch!:number;
   username:string='';
-  token:string='';
+  token:string;
 
   constructor(private route:ActivatedRoute, 
     private router:Router){
-      this.token=String(sessionStorage.getItem('token'));
+      this.token=String(sessionStorage.getItem('token')||null);
       const user=sessionStorage.getItem('username')?.split('@');
       this.username=String(user?.at(0)||'Iniciar Sessión');
     }

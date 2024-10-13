@@ -33,7 +33,7 @@ const routes: Routes = [
     pathMatch:'full'
   },
   {
-    path:'view_book/:isxn',
+    path:'view_book',
     component:ViewBookComponent
   }
 ];
