@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ConsoleService {
+export class toastMessageServiceService {
 
   consoles:BehaviorSubject<any[]>=new BehaviorSubject<any[]>([]);
 

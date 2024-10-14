@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ConsoleService } from 'src/app/components/console/service/console.service';
+import { toastMessageServiceService } from 'src/app/components/message/service/toast-message.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private userService:UserService,
-    private consoleService:ConsoleService,
+    private toastMessageService:toastMessageServiceService,
     private router:Router
   ){
     this.signUpForm = new FormGroup({
@@ -43,7 +43,7 @@ export class SignUpComponent implements OnInit {
       this.userService.signUp(formData).subscribe(
         (data:any)=>{
           if(data.token!=null){
-            this.consoleService.showMessage(
+            this.toastMessageService.showMessage(
               'success',
               'Persona creada exitosamente.'
             );
@@ -51,14 +51,14 @@ export class SignUpComponent implements OnInit {
             this.userService.setEmailFromToken();
             this.router.navigate(['/'])
           }else{
-            this.consoleService.showMessage(
+            this.toastMessageService.showMessage(
               'danger',
               'No se pudo crear la persona.'
             );
           }
         },
         (error)=>{
-          this.consoleService.showMessage(
+          this.toastMessageService.showMessage(
             'danger',
             'No se pudo crear la persona.'
           );
@@ -66,7 +66,7 @@ export class SignUpComponent implements OnInit {
       )
     }else{
       this.signUpForm.markAllAsTouched();
-      this.consoleService.showMessage(
+      this.toastMessageService.showMessage(
         'danger',
         'Formulario invalido.'
       );

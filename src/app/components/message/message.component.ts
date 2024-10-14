@@ -1,18 +1,18 @@
 import { Component, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { ConsoleService } from './service/console.service';
+import { toastMessageServiceService } from './service/toast-message.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'br-console',
-  templateUrl: './console.component.html',
-  styleUrls: ['./console.component.css']
+  selector: 'br-message',
+  templateUrl: './message.component.html',
+  styleUrls: ['./message.component.css']
 })
-export class ConsoleComponent{
+export class MessageComponent{
 
   constructor(
-    private consoleService:ConsoleService
+    private toastMessageService:toastMessageServiceService
   ){
-    consoleService.consoles.subscribe(
+    toastMessageService.consoles.subscribe(
       (consoles:any[])=>{
         this.consoles=consoles;
       }

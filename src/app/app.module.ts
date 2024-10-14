@@ -13,7 +13,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ViewBookComponent } from './pages/view-book/view-book.component';
 import { ButtonDirective } from './components/button/button.directive';
-import { ConsoleComponent } from './components/console/console.component';
+import { MessageComponent } from './components/message/message.component';
 import { DropdownDirective } from './components/dropdown/dropdown.directive';
 import { InputDirective } from './components/input/input.directive';
 import { InputSearchBarDirective } from './components/search-bar/input-search-bar.directive';
@@ -34,7 +34,7 @@ import { MiniThumbnailComponent } from './components/mini-thumbnail/mini-thumbna
     FooterComponent,
     ViewBookComponent,
     ButtonDirective,
-    ConsoleComponent,
+    MessageComponent,
     DropdownDirective,
     InputDirective,
     InputSearchBarDirective,

@@ -4,6 +4,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    background-color: white;
+    padding: 5px 0px 0px 0px;
 }.nav-column{
     display: flex;
     flex-direction: column;
