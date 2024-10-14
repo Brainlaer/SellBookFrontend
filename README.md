@@ -4,4 +4,4 @@
 <p>SellBook: https://github.com/Branstivenson/SellBookBackend</p>
 <h2>screenshots</h2>
 <p>Home Page</p>
-<img src="https://github.com/Branstivenson/SellBookFrontend/assets/129704034/3f17ff47-b4fd-4258-8145-7f9008d5bb1d">
+<img src="https://github.com/user-attachments/assets/03a617e9-3e8a-4afb-80b5-989eadab2293">
