@@ -6,6 +6,8 @@ import { FiltrosDataService } from 'src/app/services/filtros-data.service';
 import { BookService } from 'src/app/services/book.service';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
+import { handleErrors } from '../helpers/handleerrors';
+import { ToastMessageService } from 'src/app/components/message/service/toast-message.service';
 
 @Component({
   selector: 'app-search-results',
@@ -18,8 +20,11 @@ export class SearchResultsComponent implements OnInit{
   categories:Category[]=[];
   stringSearch:string|null='';
   categorySearch:number|null=0;
-  noBooks=false;
   bookPreviewList:BookPreview[]=[];
+  booksFound:any[]=[];
+  hiddenLoad:boolean=true;
+  hiddenTable:boolean=false;
+  hiddenEmpty:boolean=true;
 
 
 
@@ -27,6 +32,7 @@ export class SearchResultsComponent implements OnInit{
     private categoryService:CategoryService, 
     private route:ActivatedRoute, 
     private router:Router,
+    private toastMessageService:ToastMessageService
   ){
   }
  goToViewBook(isxn:number){
@@ -40,6 +46,27 @@ export class SearchResultsComponent implements OnInit{
       this.onSearch();
     });    
     this.findAllCategories();
+  }
+
+  finishLoad(){
+    if(this.booksFound.length>0){
+      this.hiddenEmpty=true;
+      this.hiddenTable=false;
+      this.hiddenLoad=true;
+
+    }else{
+      this.hiddenEmpty=false;
+      this.hiddenTable=true;
+      this.hiddenLoad=true;
+
+    }
+  }
+  startLoad(){
+      this.hiddenEmpty=true;
+      this.hiddenTable=true;
+      this.hiddenLoad=false;
+
+    
   }
 
   goSearchingByCategory(category:number){
@@ -60,35 +87,38 @@ export class SearchResultsComponent implements OnInit{
   }
 
   onSearch(){
+    this.startLoad();
     if(this.stringSearch&&this.categorySearch==0){
       this.findByAuthorYTitlePreview();
     }else if(!this.stringSearch&&this.categorySearch!=0){
       this.findByCategory();
     }
-    this.cantidadLibros();
-  }
-
-  cantidadLibros(){
-    if(this.bookPreviewList==null){
-      return this.noBooks=true;
-    }
-    else{
-      return this.noBooks=false;
-    }
   }
 
   findByAuthorYTitlePreview(){
+    this.booksFound=[];
       this.bookService.findByAuthorYTitlePreview(this.stringSearch).subscribe(
         (data:any)=>{
           this.bookPreviewList=data;
+          this.booksFound=this.bookPreviewList;
+          this.finishLoad();
+        },(error)=>{
+          handleErrors(error, this.toastMessageService);
+          this.finishLoad();
         }
       )
   }
 
   findByCategory(){
+    this.booksFound=[];
     this.bookService.findByCategory(this.categorySearch).subscribe(
       (data:any)=>{
         this.bookPreviewList=data.response;
+        this.booksFound=this.bookPreviewList;
+        this.finishLoad();
+      },(error)=>{
+        handleErrors(error, this.toastMessageService);
+        this.finishLoad();
       }
     )
   }

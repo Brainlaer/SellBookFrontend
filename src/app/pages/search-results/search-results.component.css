@@ -62,4 +62,10 @@
     gap: 3px;
 }.row-categories>button{
     flex: none;
+}.load{
+    width: 100px;
+    height: 100px;
+}.empty-icon{
+    width: 100px;
+    height: 100px;
 }

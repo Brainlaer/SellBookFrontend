@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { toastMessageServiceService } from 'src/app/components/message/service/toast-message.service';
+import { ToastMessageService } from 'src/app/components/message/service/toast-message.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private userService:UserService,
-    private toastMessageService:toastMessageServiceService,
+    private toastMessageService:ToastMessageService,
     private router:Router
   ){
     this.signUpForm = new FormGroup({

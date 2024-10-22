@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class toastMessageServiceService {
+export class ToastMessageService {
 
   consoles:BehaviorSubject<any[]>=new BehaviorSubject<any[]>([]);
 
@@ -12,10 +12,12 @@ export class toastMessageServiceService {
 
   constructor() { }
 
-  showMessage(severity:string, message:string){
+  showMessage(severity:string, message:string, closeable:boolean=true){
     this.consoles.subscribe(
       (consoles:any[])=>{
-        consoles.push({severity,message,hidden:false});
+        consoles.push({id:consoles.length+1,message:{severity,message,hidden:false, closeable}});
+        console.log(this.consoles);
+
       }
     );
 
