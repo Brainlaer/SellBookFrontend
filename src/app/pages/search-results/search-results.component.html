@@ -7,40 +7,19 @@
     <p class="txt-cyan txt-italic">{{stringSearch}}</p>
 </div>
 
-<div class="row">
-  <div class="column">
-    <button class="btn btn-cyan btn-content mb-5 me-3" (click)="allCategories()">Todos los generos</button>
-    <button class="btn btn-cyan btn-content mb-5 me-3" *ngFor="let category of categories" (click)="goSearchingByCategory(category.id)">{{category.name}}</button>
+<div class="row-categories mb-3">
+  <button brButton (click)="allCategories()">Todos los generos</button>
+    <button brButton *ngFor="let category of categories" (click)="goSearchingByCategory(category.id)">{{category.name}}</button>
 </div>
-<div class="column">
+
   <div class="card-center mb-5">
-    <div class="card column space mb-3" *ngFor="let bookPreview of bookPreviewList">
-      <div>
-        <div class="row space">
-          <div class="column"></div>
-            <img class="card-img mt-2" (click)="goToViewBook(bookPreview.isxn)" src={{bookPreview.image}} alt="...">
-          <div class="column"></div>
-        </div>
-        <div class="row space">
-          <div class="column"></div>
-          <div class="card-body">
-            <h5 class="card-title">{{bookPreview.title}}</h5>
-            <p class="card-text">{{bookPreview.cost}}</p>
-            <p class="card-text">{{bookPreview.author}}</p>
-          </div>
-          <div class="column"></div>
-        </div>
-      </div>
-      <div class="card-center">
-        <button class="btn btn-cyan btn-content mb-1">
-          <img class="me-1" src="../../../assets/shop.svg" alt="">
-          Añadir al carrito
-      </button>
-      </div>
-    </div>
+      <br-thumbnail 
+      [items]="bookPreviewList" 
+      scrollable="true"
+      redirect="/view_book"
+      ></br-thumbnail>
   </div>
-</div>
-</div>
+
 
 <div class="alert alert-warning mb-5" role="alert" [hidden]="noBooks">
   No se han encontrado libros relacionados con los filtros

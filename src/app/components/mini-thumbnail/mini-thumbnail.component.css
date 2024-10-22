@@ -4,7 +4,7 @@
     justify-content: space-evenly;   
 }.card{
     border:solid #179D8D 3px;
-    width: fit-content;
+    max-width: 310px;
     border-radius: 20px;
     background-color: #dceeec;
     display: flex;

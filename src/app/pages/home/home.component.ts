@@ -38,15 +38,15 @@ export class HomeComponent implements OnInit{
   }
 
   goSearchingByCategory(category:number){
-    this.router.navigate(['/search_results'],{queryParams:{category:category, string:'null'}})
+    this.router.navigate(['/search_results'],{queryParams:{category:category}})
   }
 
   findLastest(){
     this.bookService.findLastest().subscribe(
       (data:any)=>{
-        this.bookPreviewList=data;
+        this.bookPreviewList=data.response;
       },(error)=>{
-        console.log(error);
+        
       }
     )
   }
@@ -56,7 +56,6 @@ export class HomeComponent implements OnInit{
       (data:any)=>{
         this.categories=data;
       },(error)=>{
-        console.log(error);
       }
     )
   }

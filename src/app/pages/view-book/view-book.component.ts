@@ -27,14 +27,14 @@ export class ViewBookComponent implements OnInit{
         this.id=params.get('id');
       }
     )
-    this.findByIsxn();
+    this.findById();
     this.disablelessUnitsbutton();
   }
 
   mostRelevants(){
     this.bookService.findByAuthorYTitlePreview(String(this.bookView?.author)).subscribe(
-      (books:any)=>{
-        this.moreBooks=books;
+      (data:any)=>{
+        this.moreBooks=data.response;
       }
     )
   }
@@ -64,10 +64,10 @@ export class ViewBookComponent implements OnInit{
       this.lessUnitsdisabled=false;
     }
   }
-  findByIsxn(){
-    this.bookService.findByIsxn(this.id).subscribe(
-      (book:any)=>{
-        this.bookView=book;
+  findById(){
+    this.bookService.findById(this.id).subscribe(
+      (data:any)=>{
+        this.bookView=data.response;
         this.setCost(this.bookView?.cost);
         this.mostRelevants();
       }

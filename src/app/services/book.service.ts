@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,20 +11,20 @@ export class BookService {
 
   baseurl='http://localhost:8080/sellbook/book';
 
-  findByIsxn(isxn:string){
-    return this.httpClient.get(`${this.baseurl}/id/${isxn}`);
+  findById(isxn:string){
+    return this.httpClient.get(`${environment.url}/book/${isxn}`);
   }
 
   findLastest(){
-    return this.httpClient.get(`${this.baseurl}/recentlyAdded`);
+    return this.httpClient.get(`${environment.url}/book/recentlyadded`);
   }
 
   findByAuthorYTitlePreview(stringSearch:String|null){
-    return this.httpClient.get(`${this.baseurl}/findByTitleAndAuthor/${stringSearch}`);
+    return this.httpClient.get(`${environment.url}/book/title&&author/${stringSearch}`);
   }
 
-  findByCategoryId(categorySearch:number|null){
-    return this.httpClient.get(`${this.baseurl}/searchCategory/${categorySearch}`);
+  findByCategory(categorySearch:number|null){
+    return this.httpClient.get(`${environment.url}/book/category/${categorySearch}`);
   }
 
   findByCategoryAndTitleOrAuthor(categorySearch:number|null, stringSearch:String|null){

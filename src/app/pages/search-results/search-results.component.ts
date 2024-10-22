@@ -34,7 +34,11 @@ export class SearchResultsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.getValues();
+    this.route.queryParams.subscribe(params=>{
+      this.categorySearch=params['category'];
+      this.stringSearch=params['string'];
+      this.onSearch();
+    });    
     this.findAllCategories();
   }
 
@@ -45,23 +49,7 @@ export class SearchResultsComponent implements OnInit{
   allCategories(){
     this.router.navigate(['/search_results'],{queryParams:{category:0, string:this.stringSearch}})
   }
- 
-  getValues(){
-    this.route.queryParams.subscribe(params=>{
-      this.categorySearch=params['category'];
-      this.stringSearch=params['string'];
-      this.toSearch();
-    });
-    this.findCategoryById();
-  }
 
-  findCategoryById(){
-    this.categoryService.findById(this.categorySearch).subscribe(
-      (data:any)=>{
-      this.category=data;
-      console.log(this.category);
-    });
-  }
 
   findAllCategories(){
     this.categoryService.findAll().subscribe(
@@ -71,15 +59,11 @@ export class SearchResultsComponent implements OnInit{
     )
   }
 
-  toSearch(){
-    if(this.stringSearch!='null'&&this.categorySearch==0){
+  onSearch(){
+    if(this.stringSearch&&this.categorySearch==0){
       this.findByAuthorYTitlePreview();
-    }else if(this.stringSearch=='null'&&this.categorySearch==0){
-      
-    }else if(this.stringSearch=='null'&&this.categorySearch!=0){
-      this.findByCategoryId();
-    }else if(this.stringSearch!='null'&&this.categorySearch!=0){
-      this.findByCategoryAndTitleOrAuthor();
+    }else if(!this.stringSearch&&this.categorySearch!=0){
+      this.findByCategory();
     }
     this.cantidadLibros();
   }
@@ -101,18 +85,10 @@ export class SearchResultsComponent implements OnInit{
       )
   }
 
-  findByCategoryId(){
-    this.bookService.findByCategoryId(this.categorySearch).subscribe(
+  findByCategory(){
+    this.bookService.findByCategory(this.categorySearch).subscribe(
       (data:any)=>{
-        this.bookPreviewList=data;
-      }
-    )
-  }
-
-  findByCategoryAndTitleOrAuthor(){
-    this.bookService.findByCategoryAndTitleOrAuthor(this.categorySearch,this.stringSearch).subscribe(
-      (data:any)=>{
-        this.bookPreviewList=data;
+        this.bookPreviewList=data.response;
       }
     )
   }
