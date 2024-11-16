@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastMessageService } from 'src/app/components/message/service/toast-message.service';
-import { UserService } from 'src/app/services/user.service';
+import { ToastService } from 'src/app/components/message/service/toast.service';
+import { MainService } from 'src/app/services/main.service';
+import { handleErrors } from '../helpers/handleerrors';
 
 @Component({
   selector: 'app-sign-in',
@@ -17,8 +18,8 @@ export class SignInComponent implements OnInit{
   isLoadding:boolean=false;
 
   constructor(
-    private userService:UserService,
-    private toastMessageService:ToastMessageService,
+    private mainService:MainService,
+    private toastService:ToastService,
     private router:Router
   ){
     this.signInForm=new FormGroup({
@@ -34,35 +35,34 @@ export class SignInComponent implements OnInit{
     this.isLoadding=true;
     if(this.signInForm.valid){
       const formData = this.signInForm.value;
-      this.userService.signIn(formData).subscribe(
-        (data:any)=>{
-          if(data.token!=null){
-            this.toastMessageService.showMessage(
-              'success',
-              'Sessión iniciada.'
-            );
-            sessionStorage.setItem('token',data.token);
-            this.userService.setEmailFromToken();
-            this.router.navigate(['/'])
-          }else{
-            this.toastMessageService.showMessage(
-              'danger',
-              'No se pudo crear la persona.'
-            );
+      this.mainService.postData('auth/signin',formData).subscribe(
+        {
+          next: (data:any)=>{
+            if(data.token!=null){
+              this.toastService.showMessage(
+                'success',
+                'Sessión iniciada.'
+              );
+              sessionStorage.setItem('token',data.token);
+              this.mainService.setEmailFromToken();
+              this.router.navigate(['/'])
+            }else{
+              this.toastService.showMessage(
+                'danger',
+                'No se pudo iniciar sessión.'
+              );
+            }
+          },error:(error)=>{
+            handleErrors(error,this.toastService);
           }
-        },
-        (error)=>{
-          this.toastMessageService.showMessage(
-            'danger',
-            'No se pudo crear la persona.'
-          );
         }
+
       )
     }else{
       this.signInForm.markAllAsTouched();
-      this.toastMessageService.showMessage(
-        'danger',
-        'Formulario invalido.'
+      this.toastService.showMessage(
+        'warning',
+        'Asegurate de ingresar el correo y la contraseña correctamente.'
       );
     }
     this.isLoadding=false;

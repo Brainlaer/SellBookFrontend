@@ -34,7 +34,7 @@ export class InputSearchBarDirective {
 
   private defaultInputSearchStyle() {
     this.renderer.setStyle(this.element.nativeElement, 'border-radius', '20px 0px 0px 20px');
-    this.renderer.setStyle(this.element.nativeElement, 'min-width', '40px');
+    this.renderer.setStyle(this.element.nativeElement, 'width', '100%');
     this.renderer.setStyle(this.element.nativeElement, 'min-height', '40px');
     this.renderer.setStyle(this.element.nativeElement, 'font-size', '15px');
     this.renderer.setStyle(this.element.nativeElement, 'padding', '0px 20px');

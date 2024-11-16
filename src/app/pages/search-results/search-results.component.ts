@@ -1,13 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, ParamMap, Router, RouterLink } from '@angular/router';
-import { catchError, filter } from 'rxjs';
 import { BookPreview } from 'src/app/models/book-preview';
-import { FiltrosDataService } from 'src/app/services/filtros-data.service';
-import { BookService } from 'src/app/services/book.service';
 import { Category } from 'src/app/models/category';
-import { CategoryService } from 'src/app/services/category.service';
 import { handleErrors } from '../helpers/handleerrors';
-import { ToastMessageService } from 'src/app/components/message/service/toast-message.service';
+import { ToastService } from 'src/app/components/message/service/toast.service';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-search-results',
@@ -28,11 +25,11 @@ export class SearchResultsComponent implements OnInit{
 
 
 
-  constructor(private bookService:BookService,
-    private categoryService:CategoryService, 
+  constructor(
+    private mainService:MainService, 
     private route:ActivatedRoute, 
     private router:Router,
-    private toastMessageService:ToastMessageService
+    private toastService:ToastService
   ){
   }
  goToViewBook(isxn:number){
@@ -79,9 +76,13 @@ export class SearchResultsComponent implements OnInit{
 
 
   findAllCategories(){
-    this.categoryService.findAll().subscribe(
-      (categoryList:any)=>{
-        this.categories=categoryList;
+    this.mainService.getData('book').subscribe(
+      {
+        next: (categoryList:any)=>{
+          this.categories=categoryList;
+        },error:(error)=>{
+
+        }
       }
     )
   }
@@ -97,28 +98,33 @@ export class SearchResultsComponent implements OnInit{
 
   findByAuthorYTitlePreview(){
     this.booksFound=[];
-      this.bookService.findByAuthorYTitlePreview(this.stringSearch).subscribe(
-        (data:any)=>{
-          this.bookPreviewList=data;
-          this.booksFound=this.bookPreviewList;
-          this.finishLoad();
-        },(error)=>{
-          handleErrors(error, this.toastMessageService);
-          this.finishLoad();
+      this.mainService.getData('book/title&&author', this.stringSearch).subscribe(
+        {
+          next: (data:any)=>{
+            this.bookPreviewList=data;
+            this.booksFound=this.bookPreviewList;
+            this.finishLoad();
+          },error: (error)=>{
+            handleErrors(error, this.toastService);
+            this.finishLoad();
+          }
         }
+
       )
   }
 
   findByCategory(){
     this.booksFound=[];
-    this.bookService.findByCategory(this.categorySearch).subscribe(
-      (data:any)=>{
-        this.bookPreviewList=data.response;
-        this.booksFound=this.bookPreviewList;
-        this.finishLoad();
-      },(error)=>{
-        handleErrors(error, this.toastMessageService);
-        this.finishLoad();
+    this.mainService.getData('book/category',this.categorySearch).subscribe(
+      {
+        next: (data:any)=>{
+          this.bookPreviewList=data.response;
+          this.booksFound=this.bookPreviewList;
+          this.finishLoad();
+        },error: (error)=>{
+          handleErrors(error, this.toastService);
+          this.finishLoad();
+        }
       }
     )
   }

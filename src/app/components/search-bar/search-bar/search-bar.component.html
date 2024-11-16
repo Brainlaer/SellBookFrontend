@@ -1,0 +1,8 @@
+<form [formGroup]="searchForm" (submit)="onSubmit()">
+    <div class="search-bar">
+        <input brInputSearchBar type="text" formControlName="string" placeholder="{{placeholder}}" (input)="onSubmit()">
+        <button type="submit" brButtonSearchBar>
+            <img src="../../../assets/search.svg" alt="">
+        </button>
+    </div>
+</form>

@@ -86,7 +86,7 @@ h2{
 .imagen{
     justify-content: end;
 }
-@media screen and (max-width:780px) {
+@media screen and (max-width:900px) {
     .imagen{
         justify-content: space-around;
     }

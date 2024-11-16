@@ -36,7 +36,6 @@ export class ButtonSearchBarDirective {
     this.renderer.setStyle(this.element.nativeElement, 'gap', '5px');
     this.renderer.setStyle(this.element.nativeElement, 'align-items', 'center');
     this.renderer.setStyle(this.element.nativeElement, 'border-radius', '0px 20px 20px 0px');
-    this.renderer.setStyle(this.element.nativeElement, 'min-width', '40px');
     this.renderer.setStyle(this.element.nativeElement, 'min-height', '40px');
     this.renderer.setStyle(this.element.nativeElement, 'padding', '10px 15px');
     this.renderer.setStyle(this.element.nativeElement, 'font-weight', '500');

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,7 +24,6 @@ export class MiniThumbnailComponent implements OnInit{
 
   goSearchingById(id:string){
     this.router.navigate([this.redirect],{queryParams:{id:id}})
-    console.log('hola')
   }
 
   setScrollProperty(){

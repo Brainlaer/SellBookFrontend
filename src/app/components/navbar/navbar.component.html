@@ -5,27 +5,31 @@
          SellBook
       </a>
   </div>
-  <div class="nav-column">
+  <div class="nav-column max">
     <div class="nav-row">
-      <form [formGroup]="searchForm" (submit)="sendValues()">
-          <div class="search-bar">
-            <input type="text" brInputSearchBar formControlName="string" placeholder="¿Qué quieres leer?">
-            <button type="submit" brButtonSearchBar>
-              <img src="../../../assets/search.svg" alt="">
+      <br-search-bar placeholder="¿Buscas algo para leer?"></br-search-bar>
+      <div class="row">
+        <div #spandible class="spandible column">
+          <div class="row">
+            <button brButton>
+              <img src="../../../assets/shop.svg" alt="">
+            </button>
+            <button brButton *ngIf="token=='null'" routerLink="registrarse">
+              <img src="../../../assets/add-user.svg" alt="">
+              Registrar
+            </button>
+            <button brButton routerLink="iniciar_session">
+              <img src="https://www.shawnmendesofficial.com/files/2018/04/release_201804_ShawnMendes_SM_Cover_layeredSimple.jpg" alt="">
+              {{username}}
             </button>
           </div>
-      </form>
-      <button brButton>
-        <img src="../../../assets/shop.svg" alt="">
-      </button>
-      <button brButton *ngIf="token=='null'" routerLink="registrarse">
-        <img src="../../../assets/add-user.svg" alt="">
-        Registrar
-      </button>
-      <button brButton routerLink="iniciar_session">
-        <img src="https://www.shawnmendesofficial.com/files/2018/04/release_201804_ShawnMendes_SM_Cover_layeredSimple.jpg" alt="">
-        {{username}}
-      </button>
+        </div>
+        <div class="column show-spandible">
+          <button brButton (click)="showHide()">
+            <img #showSpandible class="imgspandible" src="../../../assets/more-unfold.svg" alt="">
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,18 +1,30 @@
 .footer{
     background-color: #0A473F;
     border-radius: 20px;
+    padding: 20px;
+    
+}.about{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+    max-width: 960px;
+    flex:auto
+
+
 }.about>.column{
     align-items: center;
-    flex: 1
-}.pay>.column{
+    min-width: 250px;
+
+
+}
+.pay>.column{
     align-items: center;
-    flex: 1
+    flex: 1;
 }.channels>.column{
     align-items: end;
-    flex: 1
-}.compact{
-    margin-left: 150px;
-    margin-right: 150px;
+    flex: 1;
 }
 
 /*elementos*/
@@ -25,7 +37,25 @@
     width: 40px;
     height: 40px;
 }
+.title{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: large;
+}
+.info{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: normal;
+    font-size: medium;
+    margin: 5px;
+}
 
-
-
-
+.container{
+    display: flex;
+    justify-content: space-around;
+}
+p{
+    color: white;
+}
+h1{
+    color: white;
+}

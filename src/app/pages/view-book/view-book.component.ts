@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, RouterLinkActive } from '@angular/router';
-import { BookView } from 'src/app/models/book-view';
-import { BookService } from 'src/app/services/book.service';
+import { Book } from 'src/app/models/book-view';
+import { MainService } from 'src/app/services/main.service';
+import { handleErrors } from '../helpers/handleerrors';
+import { ToastService } from 'src/app/components/message/service/toast.service';
 
 @Component({
   selector: 'app-view-book',
@@ -14,62 +16,56 @@ export class ViewBookComponent implements OnInit{
   unitsToBuy:number=1;
   lessUnitsdisabled:boolean=false;
   moreBooks:any[]=[]
+  @ViewChild('title') bookTitle?: ElementRef;
+  book!:Book;
+
 
   constructor(
     private activatedRoute:ActivatedRoute,
     private router:Router,
-    private bookService:BookService,
+    private mainService:MainService,
+    private toastService:ToastService
   ){}
 
   ngOnInit(): void {
     this.activatedRoute.queryParamMap.subscribe(
       (params:ParamMap)=>{
         this.id=params.get('id');
+        this.findById();
+        this.unitsToBuy=1;
       }
     )
-    this.findById();
-    this.disablelessUnitsbutton();
+
   }
 
-  mostRelevants(){
-    this.bookService.findByAuthorYTitlePreview(String(this.bookView?.author)).subscribe(
-      (data:any)=>{
-        this.moreBooks=data.response;
+  getmostRelevants(){
+    this.mainService.getData('book/title&&author/'+this.book?.author).subscribe(
+      {
+        next: (data:any)=>{
+          this.moreBooks=data.response;
+        },error:(error)=>{
+          handleErrors(error, this.toastService);
+        }
       }
     )
   }
-  bookView!:BookView;
 
-  setCost(getCost:any){
-    let co:string=getCost.toString();
-    for(let i=0;i<co.length;i++){
-        co.at(i)?.concat('3');
-    }
-    return console.log(co+"cost");
-}
   moreUnits(){
     this.unitsToBuy++;
-    this.disablelessUnitsbutton();
   }
   lessUNits(){
-    if(this.unitsToBuy>1){
-      this.unitsToBuy--;
-    }
-    this.disablelessUnitsbutton();
-  }
-  disablelessUnitsbutton(){
-    if(this.unitsToBuy<=1){
-      this.lessUnitsdisabled=true;
-    }else{
-      this.lessUnitsdisabled=false;
-    }
+    this.unitsToBuy--;
   }
   findById(){
-    this.bookService.findById(this.id).subscribe(
-      (data:any)=>{
-        this.bookView=data.response;
-        this.setCost(this.bookView?.cost);
-        this.mostRelevants();
+    this.mainService.getData('book/'+this.id).subscribe(
+      {
+        next: (data:any)=>{
+          this.book=data.response;
+          this.getmostRelevants();
+          window.scrollTo(0, 0);
+        },error: (error)=>{
+          handleErrors(error, this.toastService)
+        }
       }
     )
   }

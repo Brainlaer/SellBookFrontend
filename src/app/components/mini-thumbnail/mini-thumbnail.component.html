@@ -8,7 +8,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{item.title||item.name}}</h5>
 
-                <p class="card-text txt-bold">${{item.cost}} COP</p>
+                <p class="card-text txt-bold">${{item.cost|number:'4.2-2'}} COP</p>
                 <P class="card-text">{{item.author||item.brand}}</P>
             </div>
         </div>

@@ -21,6 +21,7 @@ import { ButtonSearchBarDirective } from './components/search-bar/button-search-
 import { TableComponent } from './components/table/table.component';
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { MiniThumbnailComponent } from './components/mini-thumbnail/mini-thumbnail.component';
+import { SearchBarComponent } from './components/search-bar/search-bar/search-bar.component';
 
 
 @NgModule({
@@ -41,7 +42,9 @@ import { MiniThumbnailComponent } from './components/mini-thumbnail/mini-thumbna
     ButtonSearchBarDirective,
     TableComponent,
     ThumbnailComponent,
-    MiniThumbnailComponent
+    MiniThumbnailComponent,
+    SearchBarComponent
+    
   ],
   imports: [
     BrowserModule,

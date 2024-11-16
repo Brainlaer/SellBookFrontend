@@ -1,14 +1,17 @@
-import { ToastMessageService } from "src/app/components/message/service/toast-message.service";
-
-export function handleErrors(error:any, toastMessageService:any){
+export function handleErrors(error:any, toastService:any){
     
-    if(error.error.response){
-        toastMessageService.showMessage(
+    if(error?.error?.response){
+        toastService.showMessage(
             'danger',
-            error.error.response
+            error?.error?.response
+          )
+    }else if(error?.message){
+        toastService.showMessage(
+            'danger',
+            'Error en el servidor, vuelva a intentar.'
           )
     }else{
-        toastMessageService.showMessage(
+        toastService.showMessage(
             'danger',
             'Error de conexión, por favor intente mas tarde.',
             false

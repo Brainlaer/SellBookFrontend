@@ -6,31 +6,33 @@ import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@
 export class ButtonDirective implements OnInit {
 
   @Input() severity: string = 'primary';
-  @Input() disabled: boolean = false;
 
 
   constructor(
     private element: ElementRef, private renderer: Renderer2
-  ) { }
+  ) { 
+
+  }
 
   ngOnInit(): void {
     this.defaultButtonStyle();
-    this.setStyles();
+    this.observeChanges();
   }
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.setStylesHover(); // Cambia el color de fondo a amarillo
+    if(!this.element.nativeElement.disabled){
+      this.setStylesHover(); // Cambia el color de fondo a amarillo
+    }
   }
 
   // Detecta cuando el mouse sale del elemento
   @HostListener('mouseleave') onMouseLeave() {
-    this.setStyles(); // Restaura el color original
+    if(!this.element.nativeElement.disabled){
+      this.setStyles(); // Restaura el color original
+    }
   }
 
   setStyles() {
-    if (this.disabled) {
-      this.disabledButton();
-    } else {
       switch(this.severity){
         case 'secondary':
           this.secondaryColor();
@@ -40,13 +42,9 @@ export class ButtonDirective implements OnInit {
           break;
         default:
           this.primaryColor();
-      }
     }
   }
   setStylesHover() {
-    if (this.disabled) {
-      this.disabledButton();
-    } else {
       switch(this.severity){
         case 'secondary':
           this.secondaryColorHover();
@@ -56,7 +54,6 @@ export class ButtonDirective implements OnInit {
           break;
         default:
           this.primaryColorHover();
-      }
     }
   }
 
@@ -73,12 +70,30 @@ export class ButtonDirective implements OnInit {
     this.renderer.setAttribute(this.element.nativeElement,'class', 'br-button-icon');
   }
 
-  private disabledButton() {
-    this.renderer.setProperty(this.element.nativeElement,'disabled', 'isDisabled')
-    this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#5a5a5a');
-    this.renderer.setStyle(this.element.nativeElement, 'border', '#5a5a5a');
+  private observeChanges(): void {
+    const applyStyles = () => {
+      const isDisabled = this.element.nativeElement.disabled;
+      if (isDisabled) {
+        this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
+        this.renderer.setStyle(this.element.nativeElement, 'background-color', '#5a5a5a');
+        this.renderer.setStyle(this.element.nativeElement, 'border', '#5a5a5a');
+      } else {
+        this.setStyles(); // Aplica los estilos según la severidad
+      }
+    };
+  
+    // Aplica los estilos iniciales
+    applyStyles();
+  
+    // Observa cambios en el atributo `disabled`
+    const observer = new MutationObserver(applyStyles);
+    observer.observe(this.element.nativeElement, {
+      attributes: true, // Observa cambios en los atributos
+      attributeFilter: ['disabled'], // Solo monitorea el atributo `disabled`
+    });
   }
+  
+
 
   private primaryColor() {
     this.renderer.setStyle(this.element.nativeElement, 'color', 'white');

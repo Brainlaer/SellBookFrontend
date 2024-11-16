@@ -1,14 +1,14 @@
 <div class="center">
     <div class="txt-center mt-5 mb-5">
-        <h1 class="txt-cyan">Iniciar sessión en SellBook</h1>
-        <p class="txt-cyan">Para iniciar sessión en SellBook selecciona un rol y luego ingresa tus datos.</p>
+        <h1 class=>Iniciar sessión en SellBook</h1>
+        <p class=>Para iniciar sessión en SellBook selecciona un rol y luego ingresa tus datos.</p>
     </div>
 </div>
 
 <form [formGroup]="signInForm" (submit)="signIn()">
     <div class="row center">
         <div class="column-form mb-3">
-            <p class="txt-bold txt-cyan txt-center">Correo Electronico *</p>
+            <p class="txt-bold  txt-center">Correo Electronico *</p>
             <input type="email" brInput formControlName="mail" placeholder="ej: example@mail.com">
             <div
                 *ngIf="signInForm.get('mail')?.invalid&&signInForm.get('mail')?.touched||signInForm.get('mail')?.dirty">
@@ -16,7 +16,7 @@
                 <small class='text-danger'*ngIf="signInForm.get('mail')?.getError('email')">El correo es invalido</small>
                 <small class='text-danger'*ngIf="signInForm.get('mail')?.getError('maxlength')">Debe ser menos de 32 caracteres</small>
             </div>
-            <p class="txt-bold txt-cyan txt-center">Contraseña *</p>
+            <p class="txt-bold  txt-center">Contraseña *</p>
             <div class="row-password">
                 <input type={{passVisible}} brInput formControlName="password" placeholder="Al menos 8 caracteres">
                 <button brButton type="button" (click)="showPass()">

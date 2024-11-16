@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from 'src/app/services/book.service';
 import { Category } from 'src/app/models/category';
-import { CategoryService } from 'src/app/services/category.service';
 import { BookPreview } from 'src/app/models/book-preview';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MainService } from 'src/app/services/main.service';
+import { ToastService } from 'src/app/components/message/service/toast.service';
+import { handleErrors } from '../helpers/handleerrors';
 
 
 @Component({
@@ -15,15 +16,16 @@ export class HomeComponent implements OnInit{
 
   string:String='null';
 
-  ngOnInit(): void {
-    this.findLastest();
-    this.findAll();
+  async ngOnInit(): Promise<void> {
+    await this.findLastestBooks();
+    await this.findCategories();
   }
 
 
-  constructor(private bookService:BookService, 
-    private categoryService:CategoryService, 
-    private router:Router
+  constructor( 
+    private mainService:MainService, 
+    private router:Router,
+    private toastService:ToastService
   ){
 
   }
@@ -41,21 +43,27 @@ export class HomeComponent implements OnInit{
     this.router.navigate(['/search_results'],{queryParams:{category:category}})
   }
 
-  findLastest(){
-    this.bookService.findLastest().subscribe(
-      (data:any)=>{
-        this.bookPreviewList=data.response;
-      },(error)=>{
-        
+  async findLastestBooks(){
+    await this.mainService.getData('book').subscribe(
+      {
+        next:(data:any)=>{
+          this.bookPreviewList=data.response;
+        },error:(error)=>{
+          handleErrors(error, this.toastService);
+        }
       }
+
     )
   }
 
-  findAll(){
-    this.categoryService.findAll().subscribe(
-      (data:any)=>{
-        this.categories=data;
-      },(error)=>{
+  async findCategories(){
+    await this.mainService.getData('category').subscribe(
+      {
+        next:(data:any)=>{
+          this.categories=data;
+        },error:(error)=>{
+          handleErrors(error, this.toastService);
+        }
       }
     )
   }
