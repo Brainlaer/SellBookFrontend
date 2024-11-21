@@ -28,7 +28,7 @@
             </td>
             <td>
                 <span class="br-column-title">Acciones</span>
-                <button brButton type="button" (click)="getItem(item.Id||item.Isxn)">
+                <button brButton type="button" [severity]="action.severity" (click)="onEmitRowId(item.Id||item.Isxn)">
                     <img src="{{action.icon}}" alt="">
                 </button>
             </td>

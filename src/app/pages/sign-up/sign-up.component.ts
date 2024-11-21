@@ -46,6 +46,7 @@ export class SignUpComponent implements OnInit {
             if(data.token!=null){
               this.toastService.showMessage(
                 'success',
+                'Sign Up',
                 'Persona creada exitosamente.'
               );
               sessionStorage.setItem('token',data.token);
@@ -54,12 +55,14 @@ export class SignUpComponent implements OnInit {
             }else{
               this.toastService.showMessage(
                 'danger',
+                'Sign Up',
                 'No se pudo crear la persona.'
               );
             }
           },error: (error)=>{
             this.toastService.showMessage(
               'danger',
+              'Sign Up',
               'No se pudo crear la persona.'
             );
           }
@@ -70,6 +73,7 @@ export class SignUpComponent implements OnInit {
       this.signUpForm.markAllAsTouched();
       this.toastService.showMessage(
         'danger',
+        'Sign Up',
         'Formulario invalido.'
       );
     }

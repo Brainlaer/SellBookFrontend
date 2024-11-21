@@ -13,8 +13,7 @@
     flex: auto;
     flex-direction: column;
 }.console-column>p{
-    font-weight: 500;
-    font-family: serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .console-info{
@@ -98,6 +97,14 @@
 }.close-success:hover{
     background-color: #559c44;
     border: #559c44 solid 3px;
+}p{
+    margin: 2px;
+}.component-name{
+    font-size: 17px;
+    font-weight: 900;
+}.error-description{
+    font-size: 17px;
+    font-weight: normal;
 }
 
 .console{

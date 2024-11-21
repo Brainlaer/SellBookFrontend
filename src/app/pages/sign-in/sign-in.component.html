@@ -6,19 +6,23 @@
 </div>
 
 <form [formGroup]="signInForm" (submit)="signIn()">
+
     <div class="row center">
         <div class="column-form mb-3">
             <p class="txt-bold  txt-center">Correo Electronico *</p>
-            <input type="email" brInput formControlName="mail" placeholder="ej: example@mail.com">
+            <input type="email" brInput formControlName="mail">
             <div
                 *ngIf="signInForm.get('mail')?.invalid&&signInForm.get('mail')?.touched||signInForm.get('mail')?.dirty">
-                <small class='text-danger'*ngIf="signInForm.get('mail')?.getError('required')">Este campo es requerido</small>
-                <small class='text-danger'*ngIf="signInForm.get('mail')?.getError('email')">El correo es invalido</small>
-                <small class='text-danger'*ngIf="signInForm.get('mail')?.getError('maxlength')">Debe ser menos de 32 caracteres</small>
+                <small class='text-danger' *ngIf="signInForm.get('mail')?.getError('required')">Este campo es
+                    requerido</small>
+                <small class='text-danger' *ngIf="signInForm.get('mail')?.getError('email')">El correo es
+                    invalido</small>
+                <small class='text-danger' *ngIf="signInForm.get('mail')?.getError('maxlength')">Debe ser menos de 32
+                    caracteres</small>
             </div>
             <p class="txt-bold  txt-center">Contraseña *</p>
             <div class="row-password">
-                <input type={{passVisible}} brInput formControlName="password" placeholder="Al menos 8 caracteres">
+                <input type={{passVisible}} brInput formControlName="password">
                 <button brButton type="button" (click)="showPass()">
                     <img src="../../../assets/showpass.svg" *ngIf="showPassImg" alt="">
                     <img src="../../../assets/hidepass.svg" *ngIf="!showPassImg" alt="">
@@ -26,14 +30,25 @@
             </div>
             <div
                 *ngIf="signInForm.get('password')?.invalid&&signInForm.get('password')?.touched||signInForm.get('password')?.dirty">
-                <small class='text-danger'*ngIf="signInForm.get('password')?.getError('required')">Este campo es requerido</small>
-                <small class='text-danger'*ngIf="signInForm.get('password')?.getError('minlength')">Debe ser mas de 8 caracteres</small>
+                <small class='text-danger' *ngIf="signInForm.get('password')?.getError('required')">Este campo es
+                    requerido</small>
             </div>
-            <a href="" class="text-primary mb-3">Recuperar Contraseña</a>
+            <div type="button">
+                <a class="text-primary password mb-3" (click)="visibleDialogpassword=true">Recuperar Contraseña</a>
+
+            </div>
             <div class="row center mb-5">
                 <img src="../../../assets/load.svg" class="load me-1" alt="" [hidden]="!isLoadding">
-                <button brButton type="submit" style="width: fit-content;" [hidden]="isLoadding">Iniciar Sessión</button>
+                <button brButton type="submit" style="width: fit-content;" [hidden]="isLoadding">Iniciar
+                    Sessión</button>
             </div>
         </div>
     </div>
 </form>
+
+    <br-dialog (hide)="visibleDialogpassword=false" [visible]="visibleDialogpassword">
+        <h1 class="dialog-title">Recupera tu contraseña</h1>
+        <p>Al correo diligenciado, enviremos un codigo</p>
+        <input brInput class="mb-1" type="text" placeholder="Correo Electronico">
+        <button brButton>Enviar correo</button>
+    </br-dialog>

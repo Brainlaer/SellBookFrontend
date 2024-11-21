@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IAction } from './model/action';
 import { Router } from '@angular/router';
+import { Action } from 'rxjs/internal/scheduler/Action';
 
 @Component({
   selector: 'br-table',
@@ -11,14 +12,19 @@ export class TableComponent {
 
   @Input() items!:any[];
   @Input() headers!:any[];
-  @Input() action!:IAction;
+  @Input() action:IAction={
+    icon: '',
+    severity: ''
+  };
+  @Output() emitRowId:EventEmitter<any>=new EventEmitter<any>();
+
 
   constructor(
     private router:Router
   ){}
 
-  getItem(id:number){
-    this.router.navigate([this.action.redirect],{queryParams:{id:id}})
+  onEmitRowId(id:number){
+    this.emitRowId.emit(id);
   }
 
 

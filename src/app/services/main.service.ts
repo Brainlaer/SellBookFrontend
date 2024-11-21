@@ -43,6 +43,13 @@ export class MainService {
       })
     )
   }
+  checkToken():Observable<any>{
+    return this.httpClient.post(`${environment.url}/checktoken`,{}).pipe(
+      catchError((error:any)=>{
+        return throwError(()=> new Error(error.message));
+      })
+    )
+  }
 
 
   getDecodedToken(token: string): any {

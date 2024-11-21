@@ -11,14 +11,14 @@
       <div class="row">
         <div #spandible class="spandible column">
           <div class="row">
-            <button brButton>
+            <button brButton (click)="onShowHideCart()">
               <img src="../../../assets/shop.svg" alt="">
             </button>
             <button brButton *ngIf="token=='null'" routerLink="registrarse">
               <img src="../../../assets/add-user.svg" alt="">
               Registrar
             </button>
-            <button brButton routerLink="iniciar_session">
+            <button brButton (click)="onClickUser()">
               <img src="https://www.shawnmendesofficial.com/files/2018/04/release_201804_ShawnMendes_SM_Cover_layeredSimple.jpg" alt="">
               {{username}}
             </button>
@@ -33,3 +33,4 @@
     </div>
   </div>
 </div>
+<app-cart></app-cart>

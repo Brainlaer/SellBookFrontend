@@ -17,7 +17,20 @@ export class ViewBookComponent implements OnInit{
   lessUnitsdisabled:boolean=false;
   moreBooks:any[]=[]
   @ViewChild('title') bookTitle?: ElementRef;
-  book!:Book;
+  book:Book={
+    isxn: 0,
+    title: '',
+    publicationDate: 0,
+    units: 0,
+    editorial: '',
+    cost: '',
+    author: '',
+    image: '',
+    category:{
+      id: 0,
+      name: ''
+    }
+  };
 
 
   constructor(

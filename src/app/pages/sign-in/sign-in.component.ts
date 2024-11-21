@@ -16,6 +16,7 @@ export class SignInComponent implements OnInit{
   passVisible:string="password";
   showPassImg:boolean=true;
   isLoadding:boolean=false;
+  visibleDialogpassword!:boolean;
 
   constructor(
     private mainService:MainService,
@@ -24,7 +25,7 @@ export class SignInComponent implements OnInit{
   ){
     this.signInForm=new FormGroup({
       mail: new FormControl('',[Validators.required, Validators.email, Validators.maxLength(32)]),
-      password: new FormControl('',[Validators.required, Validators.minLength(8)]),
+      password: new FormControl('',[Validators.required]),
     })
   }
 
@@ -41,14 +42,16 @@ export class SignInComponent implements OnInit{
             if(data.token!=null){
               this.toastService.showMessage(
                 'success',
+                'Sign In',
                 'Sessión iniciada.'
               );
               sessionStorage.setItem('token',data.token);
               this.mainService.setEmailFromToken();
-              this.router.navigate(['/'])
+              window.location.href='/'
             }else{
               this.toastService.showMessage(
                 'danger',
+                'Sign In',
                 'No se pudo iniciar sessión.'
               );
             }
@@ -62,6 +65,7 @@ export class SignInComponent implements OnInit{
       this.signInForm.markAllAsTouched();
       this.toastService.showMessage(
         'warning',
+        'Sign In',
         'Asegurate de ingresar el correo y la contraseña correctamente.'
       );
     }

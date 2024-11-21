@@ -22,6 +22,12 @@ import { TableComponent } from './components/table/table.component';
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { MiniThumbnailComponent } from './components/mini-thumbnail/mini-thumbnail.component';
 import { SearchBarComponent } from './components/search-bar/search-bar/search-bar.component';
+import { DialogDirective } from './components/dialog/dialog.directive';
+import { DialogComponent } from './components/dialog/dialog/dialog.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { LabelInputComponent } from './components/input/label-input/label-input.component';
 
 
 @NgModule({
@@ -43,7 +49,13 @@ import { SearchBarComponent } from './components/search-bar/search-bar/search-ba
     TableComponent,
     ThumbnailComponent,
     MiniThumbnailComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    DialogDirective,
+    DialogComponent,
+    SideBarComponent,
+    CartComponent,
+    ProfileComponent,
+    LabelInputComponent
     
   ],
   imports: [

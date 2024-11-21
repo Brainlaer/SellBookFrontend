@@ -13,10 +13,10 @@ export class ToastService {
 
   constructor() { }
 
-  showMessage(severity:severity, message:string, closeable:boolean=true){
+  showMessage(severity:severity, component:string, message:string, closeable:boolean=true){
     this.consoles.subscribe(
       (consoles:any[])=>{
-        consoles.push({id:consoles.length+1,message:{severity,message,hidden:false, closeable}});
+        consoles.push({id:consoles.length+1,message:{severity,component,message,hidden:false, closeable}});
       }
     );
 

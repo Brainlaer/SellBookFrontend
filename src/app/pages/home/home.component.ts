@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit{
         next:(data:any)=>{
           this.bookPreviewList=data.response;
         },error:(error)=>{
-          handleErrors(error, this.toastService);
+          handleErrors(error, this.toastService, 'Book');
         }
       }
 
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit{
         next:(data:any)=>{
           this.categories=data;
         },error:(error)=>{
-          handleErrors(error, this.toastService);
+          handleErrors(error, this.toastService, 'Category');
         }
       }
     )

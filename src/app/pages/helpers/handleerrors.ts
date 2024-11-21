@@ -1,20 +1,16 @@
-export function handleErrors(error:any, toastService:any){
+export function handleErrors(error:any, toastService:any, component?:string){
     
     if(error?.error?.response){
         toastService.showMessage(
             'danger',
+            component,
             error?.error?.response
-          )
-    }else if(error?.message){
-        toastService.showMessage(
-            'danger',
-            'Error en el servidor, vuelva a intentar.'
           )
     }else{
         toastService.showMessage(
             'danger',
-            'Error de conexión, por favor intente mas tarde.',
-            false
+            component,
+            'Error en el servidor, vuelva a intentar.'
           )
     }
 }

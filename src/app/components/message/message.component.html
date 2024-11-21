@@ -5,7 +5,8 @@
                 <img class="info-{{console.message.severity}}" src="../../../assets/info.svg" alt="">
             </div>
             <div class="console-column">
-                <p class="message-{{console.message.severity}}">{{console.message.message}}</p>
+                <p class="component-name message-{{console.message.severity}}">{{console.message.component||console.message.severity|titlecase}}</p>
+                <p class="error-description message-{{console.message.severity}}">{{console.message.message}}</p>
             </div>
             <div class="console-items">
                 <img class="close-{{console.message.severity}}" (click)="hideConsole(console)" [hidden]="!console.message.closeable"
