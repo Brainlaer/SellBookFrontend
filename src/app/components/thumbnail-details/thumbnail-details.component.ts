@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/pages/cart/service/cart.service';
 
 @Component({
-  selector: 'br-thumbnail',
-  templateUrl: './thumbnail.component.html',
-  styleUrls: ['./thumbnail.component.css']
+  selector: 'br-thumbnail-details',
+  templateUrl: './thumbnail-details.component.html',
+  styleUrls: ['./thumbnail-details.component.css']
 })
-export class ThumbnailComponent implements OnInit{
+export class ThumbnailDetailsComponent {
 
   constructor(
     private router:Router,

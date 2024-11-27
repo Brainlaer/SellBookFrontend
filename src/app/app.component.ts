@@ -7,7 +7,7 @@ import { ToastService } from './components/message/service/toast.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
   title = 'sellbookFrontend';
 
   constructor(
@@ -15,26 +15,6 @@ export class AppComponent implements OnInit{
     private toastService:ToastService
   ){}
 
-  ngOnInit(): void {
-    this.checkToken();
-  }
 
-  checkToken(){
-    if(String(sessionStorage.getItem('token'))!=null){
-      this.mainService.checkToken().subscribe({
-        error:error=>{
-          if(error.status==403){
-            sessionStorage.removeItem('token');
-            sessionStorage.removeItem('username');
-            return this.toastService.showMessage(
-              'warning',
-              'User',
-              'La sessión ha expirado'
-            )
-          }
-        }
-      })
-    }
-  }
 
 }

@@ -24,7 +24,9 @@ export class MessageComponent{
   
 
   hideConsole(console:any){
-    this.consoles.forEach((consol)=>{if(consol.id==console.id){this.consoles.pop()}});
-    
+    const index = this.consoles.indexOf(console);
+    if (index > -1) {
+      this.consoles.splice(index, 1);
+    }    
   }
 }

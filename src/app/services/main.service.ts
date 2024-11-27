@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { catchError, Observable, throwError } from 'rxjs';
@@ -23,6 +23,11 @@ export class MainService {
     )
   }
   postData(uri:string,body:any):Observable<any>{
+    let headers!:any;
+
+    if(!uri.match('auth')){
+      headers=new HttpHeaders().set('Authorization', `Bearer ${sessionStorage.getItem('token')}`);
+    }
     return this.httpClient.post(`${environment.url}${uri}`, body).pipe(
       catchError((error:any)=>{
         return throwError(()=> new Error(error.message));
@@ -43,14 +48,6 @@ export class MainService {
       })
     )
   }
-  checkToken():Observable<any>{
-    return this.httpClient.post(`${environment.url}/checktoken`,{}).pipe(
-      catchError((error:any)=>{
-        return throwError(()=> new Error(error.message));
-      })
-    )
-  }
-
 
   getDecodedToken(token: string): any {
     try {

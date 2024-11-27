@@ -40,6 +40,9 @@ export class ButtonDirective implements OnInit {
         case 'danger':
           this.dangerColor();
           break;
+        case 'success':
+          this.successColor();
+          break;
         default:
           this.primaryColor();
     }
@@ -51,6 +54,9 @@ export class ButtonDirective implements OnInit {
           break;
         case 'danger':
           this.dangerColorHover();
+          break;
+        case 'success':
+          this.successColorHover();
           break;
         default:
           this.primaryColorHover();
@@ -97,12 +103,12 @@ export class ButtonDirective implements OnInit {
 
   private primaryColor() {
     this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#179D8D');
-    this.renderer.setStyle(this.element.nativeElement, 'border', '#179D8D');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#1aaf9d');
+    this.renderer.setStyle(this.element.nativeElement, 'border', '#1aaf9d');
   }private primaryColorHover() {
     this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
     this.renderer.setStyle(this.element.nativeElement, 'background-color', '#14887a');
-    this.renderer.setStyle(this.element.nativeElement, 'border', '#179D8D');
+    this.renderer.setStyle(this.element.nativeElement, 'border', '#1aaf9d');
   }
 
   private secondaryColor() {
@@ -123,6 +129,16 @@ export class ButtonDirective implements OnInit {
     this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
     this.renderer.setStyle(this.element.nativeElement, 'background-color', '#9c4446');
     this.renderer.setStyle(this.element.nativeElement, 'border', '#BD5153');
+  }
+
+  private successColor() {
+    this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#67bd51');
+    this.renderer.setStyle(this.element.nativeElement, 'border', '#67bd51');
+  }private successColorHover() {
+    this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#559c44');
+    this.renderer.setStyle(this.element.nativeElement, 'border', '#67bd51');
   }
 
 

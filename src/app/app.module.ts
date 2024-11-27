@@ -28,6 +28,9 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LabelInputComponent } from './components/input/label-input/label-input.component';
+import { BillingComponent } from './pages/billing/billing.component';
+import { ThumbnailDetailsComponent } from './components/thumbnail-details/thumbnail-details.component';
+import { CardComponent } from './components/card/card.component';
 
 
 @NgModule({
@@ -55,7 +58,10 @@ import { LabelInputComponent } from './components/input/label-input/label-input.
     SideBarComponent,
     CartComponent,
     ProfileComponent,
-    LabelInputComponent
+    LabelInputComponent,
+    BillingComponent,
+    ThumbnailDetailsComponent,
+    CardComponent
     
   ],
   imports: [

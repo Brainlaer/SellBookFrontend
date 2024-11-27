@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from 'src/app/services/main.service';
 import { ToastService } from 'src/app/components/message/service/toast.service';
 import { handleErrors } from '../helpers/handleerrors';
+import { CartComponent } from '../cart/cart.component';
+import { CartService } from '../cart/service/cart.service';
 
 
 @Component({
@@ -25,7 +27,8 @@ export class HomeComponent implements OnInit{
   constructor( 
     private mainService:MainService, 
     private router:Router,
-    private toastService:ToastService
+    private toastService:ToastService,
+    private cartService:CartService
   ){
 
   }
@@ -44,7 +47,7 @@ export class HomeComponent implements OnInit{
   }
 
   async findLastestBooks(){
-    await this.mainService.getData('book').subscribe(
+    await this.mainService.getData('book/recentlyadded').subscribe(
       {
         next:(data:any)=>{
           this.bookPreviewList=data.response;

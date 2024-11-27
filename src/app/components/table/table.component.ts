@@ -23,8 +23,8 @@ export class TableComponent {
     private router:Router
   ){}
 
-  onEmitRowId(id:number){
-    this.emitRowId.emit(id);
+  onEmitRow(item:any){
+    this.emitRowId.emit(item);
   }
 
 

@@ -26,10 +26,10 @@
     flex-wrap: wrap;
     justify-content: space-evenly;   
 }.card{
-    border:solid #179D8D 3px;
+    border:solid #1aaf9d 3px;
     width: 206px;
     border-radius: 20px;
-    background-color: #dceeec;
+    background-color: #1b3735;
 }.card-img{
     width: 100px;
     height: 153px;
@@ -38,11 +38,11 @@
 }.card-body{
     text-align: center;
 }.card-title{
-    color: #179D8D;
+    color: #1aaf9d;
     text-transform: uppercase;
     max-width: 190px;
 }.card-text{
-    color: #179D8D;
+    color: #1aaf9d;
     max-width: 190px;
 
 }.category{

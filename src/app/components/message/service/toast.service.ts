@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, delay } from 'rxjs';
 import { severity } from '../Model/severity';
 
 @Injectable({
@@ -15,11 +15,10 @@ export class ToastService {
 
   showMessage(severity:severity, component:string, message:string, closeable:boolean=true){
     this.consoles.subscribe(
-      (consoles:any[])=>{
-        consoles.push({id:consoles.length+1,message:{severity,component,message,hidden:false, closeable}});
+      async (consoles:any[])=>{
+        const newMessage={id:consoles.length+1,message:{severity,component,message,hidden:false, closeable}}
+        consoles.push(newMessage);
       }
     );
-
-
   }
 }

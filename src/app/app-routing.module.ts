@@ -7,6 +7,7 @@ import { SearchResultsComponent } from './pages/search-results/search-results.co
 import { ViewBookComponent } from './pages/view-book/view-book.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { BillingComponent } from './pages/billing/billing.component';
  
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path:'profile',
     component:ProfileComponent
+  },
+  {
+    path:'billing',
+    component:BillingComponent
   }
 ];
 

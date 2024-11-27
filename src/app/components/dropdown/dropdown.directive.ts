@@ -54,18 +54,18 @@ export class DropdownDirective {
 
   private disabledDropdown() {
     this.renderer.setProperty(this.element.nativeElement,'disabled', 'isDisabled');
-    this.renderer.setStyle(this.element.nativeElement, 'color', '#179D8D');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#e1ebea');
-    this.renderer.setStyle(this.element.nativeElement, 'border', 'solid #179D8D 3px');
+    this.renderer.setStyle(this.element.nativeElement, 'color', '#1aaf9d');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#20312f');
+    this.renderer.setStyle(this.element.nativeElement, 'border', 'solid #1aaf9d 3px');
   }
 
   private primaryColor() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', '#179D8D');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'white');
-    this.renderer.setStyle(this.element.nativeElement, 'border', 'solid #179D8D 3px');
+    this.renderer.setStyle(this.element.nativeElement, 'color', '#1aaf9d');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#181a1b');
+    this.renderer.setStyle(this.element.nativeElement, 'border', 'solid #1aaf9d 3px');
   }private primaryColorHover() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', '#179D8D');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'white');
-    this.renderer.setStyle(this.element.nativeElement, 'border', 'solid #179D8D 3px');
+    this.renderer.setStyle(this.element.nativeElement, 'color', '#1aaf9d');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#181a1b');
+    this.renderer.setStyle(this.element.nativeElement, 'border', 'solid #1aaf9d 3px');
   }
 }
