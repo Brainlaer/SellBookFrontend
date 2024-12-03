@@ -1,87 +1,98 @@
-.console-body{
+.message{
+    position: relative;
+    border-radius: 10px;
+    opacity: 90%;
+}.body{
     display: flex;
     flex-direction: row;
     margin: 15px;
-}.console-items{
+}.summary{
+    font-size: 17px;
+    font-weight: 900;
+}.detail{
+    font-size: 17px;
+    font-weight: normal;
+}.console{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    max-width: 400px;
+    width: 100%;
+    z-index: 9999;
+}.message-insignias{
     display: flex;
     align-items: center;
-}.console-items img{
+
+}.message-insignias img{
     width: 30px;
     height: 30px;
-}.console-column{
+    border-radius: 30px;
+}.message-close{
+    display: flex;
+    align-items: center;
+    position:absolute;
+    top: 0px;
+    left:0px;
+}.message-close img{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    transform: translate(-25%, -25%);
+}.message-column{
     display: flex;
     flex: auto;
     flex-direction: column;
-}.console-column>p{
+}.message-column>p{
     font-family: 'Times New Roman', Times, serif;
 }
 
-.console-info{
-    border: var(--main-info-color) solid 3px;
-    border-radius: 30px;
-    background-color: var(--main-info-bg-color);
-}.close-info{
-    border: var(--main-info-color) solid 3px;
-    background-color: var(--main-info-unhover-color);
-    border-radius: 10px;
-}.close-info:hover{
-    background-color: var(--main-info-color);
-    border: var(--main-info-color) solid 3px;
-}.info-info{
-    border: var(--main-info-color) solid 3px;
-    background-color: var(--main-info-color);
-    border-radius: 30px;
-}.message-info{
+.message-txt-info{
     color: var(--main-info-txt-color);
-    margin-left: 10px;
-    margin-right: 10px;
+}.message-info{
+    background-color: var(--main-info-bg-color);
+    box-shadow: 0px 0px 3px 0px var(--main-info-color);
+}.message-insignias-info{
+    background-color: var(--main-info-color);
+}.message-close-info{
+    background-color: var(--main-info-color);
+}.message-close-info:hover{
+    background-color: var(--main-info-color-hover);
 }
 
-.console-danger{
-    border: var(--main-error-color) solid 3px;
-    border-radius: 30px;
-    background-color: var(--main-error-bg-color);
-}.info-danger{
-    border: var(--main-error-color) solid 3px;
-    background-color: var(--main-error-color);
-    border-radius: 30px;
-}.message-danger{
+.message-txt-danger{
     color: var(--main-error-txt-color);
-    margin-left: 10px;
-    margin-right: 10px;
-}.close-danger{
-    border: var(--main-error-color) solid 3px;
-    background-color: var(--main-error-unhover-color);
-    border-radius: 10px;
-}.close-danger:hover{
+}.message-danger{
+    background-color: var(--main-error-bg-color);
+    box-shadow: 0px 0px 3px 0px var(--main-error-color);
+}.message-insignias-danger{
     background-color: var(--main-error-color);
-    border: var(--main-error-color) solid 3px;
+}.message-close-danger{
+    background-color: var(--main-error-color);
+}.message-close-danger:hover{
+    background-color: var(--main-error-color-hover);
 }
 
-.console-warning{
-    border: var(--main-warning-color) solid 3px;
-    border-radius: 30px;
-    background-color: var(--main-warning-bg-color);
-}.info-warning{
-    border: var(--main-warning-color) solid 3px;
-    background-color: var(--main-warning-color);
-    border-radius: 30px;
-}.message-warning{
+.message-txt-warning{
     color: var(--main-warning-txt-color);
-    margin-left: 10px;
-    margin-right: 10px;
-}.close-warning{
-    border: var(--main-warning-color) solid 3px;
-    background-color: var(--main-warning-unhover-color);
-    border-radius: 10px;
-}.close-warning:hover{
+}.message-warning{
+    background-color: var(--main-warning-bg-color);
+    box-shadow: 0px 0px 3px 0px var(--main-warning-color);
+}.message-insignias-warning{
     background-color: var(--main-warning-color);
-    border: var(--main-warning-color) solid 3px;
+}.message-close-warning{
+    background-color: var(--main-warning-color);
+}.message-close-warning:hover{
+    background-color: var(--main-warning-color-hover);
 }
+
 .console-success{
     border: #67bd51 solid 3px;
     border-radius: 30px;
     background-color: #d7f3ca;
+    position: relative;
 }.info-success{
     border: #67bd51 solid 3px;
     background-color: #67bd51;
@@ -99,22 +110,5 @@
     border: #559c44 solid 3px;
 }p{
     margin: 2px;
-}.component-name{
-    font-size: 17px;
-    font-weight: 900;
-}.error-description{
-    font-size: 17px;
-    font-weight: normal;
 }
 
-.console{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: fixed;
-    top: 50px;
-    right: 20px;
-    max-width: 400px;
-    width: 100%;
-    z-index: 9999;
-}

@@ -7,6 +7,7 @@ import { iconSeverity } from './Icon';
 export class IconDirective implements OnInit {
 
   @Input() btnIcon:boolean=false;
+  @Input() inBgElement:boolean=false;
   @Input() isFill:boolean=false;
   @Input() severity:iconSeverity='-';
 
@@ -20,7 +21,23 @@ export class IconDirective implements OnInit {
       if(this.btnIcon){
         this.renderer.setStyle(this.element.nativeElement,'width','20px');
         this.renderer.setStyle(this.element.nativeElement,'height','20px');
-        path.setAttribute('stroke', `var(--main${this.severity}txt-color)`); // Cambiar color
+        switch (this.isFill){
+          case true:
+            path.setAttribute('fill', `var(--main${this.severity}bg-txt-color)`);
+            break;
+          case false:
+            path.setAttribute('stroke', `var(--main${this.severity}bg-txt-color)`); // Cambiar color
+            break;
+        }
+      }else if(this.inBgElement){
+          switch (this.isFill){
+            case true:
+              path.setAttribute('fill', `var(--main${this.severity}txt-color)`);
+              break;
+            case false:
+              path.setAttribute('stroke', `var(--main${this.severity}txt-color)`); // Cambiar color
+              break;
+        }
       }else{
         switch (this.isFill){
           case true:

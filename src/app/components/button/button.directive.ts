@@ -7,12 +7,9 @@ export class ButtonDirective implements OnInit {
 
   @Input() severity: string = 'primary';
 
-
   constructor(
     private element: ElementRef, private renderer: Renderer2
-  ) { 
-
-  }
+  ) { }
 
   ngOnInit(): void {
     this.defaultButtonStyle();
@@ -67,13 +64,16 @@ export class ButtonDirective implements OnInit {
     this.renderer.setStyle(this.element.nativeElement, 'display', 'flex');
     this.renderer.setStyle(this.element.nativeElement, 'gap', '5px');
     this.renderer.setStyle(this.element.nativeElement, 'align-items', 'center');
-    this.renderer.setStyle(this.element.nativeElement, 'border-radius', '20px');
+    this.renderer.setStyle(this.element.nativeElement, 'border-radius', '10px');
     this.renderer.setStyle(this.element.nativeElement, 'min-width', '40px');
     this.renderer.setStyle(this.element.nativeElement, 'min-height', '40px');
     this.renderer.setStyle(this.element.nativeElement, 'padding', '10px 15px');
     this.renderer.setStyle(this.element.nativeElement, 'font-weight', '500');
     this.renderer.setStyle(this.element.nativeElement, 'font-family', 'serif');
     this.renderer.setAttribute(this.element.nativeElement,'class', 'br-button-icon');
+    this.renderer.setAttribute(this.element.nativeElement,'class', 'br-button-icon');
+    this.renderer.setStyle(this.element.nativeElement, 'box-shadow',' 3px 3px 10px  var(--main-bg-color)')
+
   }
 
   private observeChanges(): void {
@@ -102,11 +102,11 @@ export class ButtonDirective implements OnInit {
 
 
   private primaryColor() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', 'var(--secondary-color)');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--secondary-bg-color)');
-    this.renderer.setStyle(this.element.nativeElement, 'border', 'var(--secondary-bg-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'color', 'var(--main-bg-txt-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--main-bg-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'border', 'var(--main-bg-color)');
   }private primaryColorHover() {
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--secondary-bg-color-hover');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--main-bg-color-hover');
   }
 
   private secondaryColor() {
@@ -120,11 +120,11 @@ export class ButtonDirective implements OnInit {
   }
 
   private dangerColor() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', 'var(--main-error-txt-color)');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--main-error-unhover-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'color', 'var(--main-error-bg-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--main-error-color)');
     this.renderer.setStyle(this.element.nativeElement, 'border', 'var(--main-error-color)');
   }private dangerColorHover() {
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--main-error-color');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--main-error-color-hover');
   }
 
   private successColor() {
