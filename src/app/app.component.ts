@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { MainService } from './services/main.service';
-import { ToastService } from './components/message/service/toast.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +7,5 @@ import { ToastService } from './components/message/service/toast.service';
 })
 export class AppComponent{
   title = 'sellbookFrontend';
-
-  constructor(
-    private mainService:MainService,
-    private toastService:ToastService
-  ){}
-
-
 
 }

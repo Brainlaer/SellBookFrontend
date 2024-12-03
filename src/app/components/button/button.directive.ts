@@ -102,13 +102,11 @@ export class ButtonDirective implements OnInit {
 
 
   private primaryColor() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#1aaf9d');
-    this.renderer.setStyle(this.element.nativeElement, 'border', '#1aaf9d');
+    this.renderer.setStyle(this.element.nativeElement, 'color', 'var(--secondary-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--secondary-bg-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'border', 'var(--secondary-bg-color)');
   }private primaryColorHover() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#14887a');
-    this.renderer.setStyle(this.element.nativeElement, 'border', '#1aaf9d');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--secondary-bg-color-hover');
   }
 
   private secondaryColor() {
@@ -122,13 +120,11 @@ export class ButtonDirective implements OnInit {
   }
 
   private dangerColor() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#BD5153');
-    this.renderer.setStyle(this.element.nativeElement, 'border', '#BD5153');
+    this.renderer.setStyle(this.element.nativeElement, 'color', 'var(--main-error-txt-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--main-error-unhover-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'border', 'var(--main-error-color)');
   }private dangerColorHover() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#9c4446');
-    this.renderer.setStyle(this.element.nativeElement, 'border', '#BD5153');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--main-error-color');
   }
 
   private successColor() {

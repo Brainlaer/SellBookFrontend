@@ -60,12 +60,10 @@ export class DropdownDirective {
   }
 
   private primaryColor() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', '#1aaf9d');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#181a1b');
-    this.renderer.setStyle(this.element.nativeElement, 'border', 'solid #1aaf9d 3px');
+    this.renderer.setStyle(this.element.nativeElement, 'color', 'var(--secondary-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--card-bg-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'border', 'solid var(--secondary-bg-color) 3px');
   }private primaryColorHover() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', '#1aaf9d');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#181a1b');
-    this.renderer.setStyle(this.element.nativeElement, 'border', 'solid #1aaf9d 3px');
+    this.renderer.setStyle(this.element.nativeElement, 'border', 'solid var(--secondary-bg-color-hover) 3px');
   }
 }

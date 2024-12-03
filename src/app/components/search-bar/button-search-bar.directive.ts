@@ -45,12 +45,10 @@ export class ButtonSearchBarDirective {
 
   private primaryColor() {
     this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#1aaf9d');
-    this.renderer.setStyle(this.element.nativeElement, 'border', '#1aaf9d');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--secondary-bg-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'border', 'var(--secondary-bg-color)');
   }private primaryColorHover() {
-    this.renderer.setStyle(this.element.nativeElement, 'color', 'white');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#14887a');
-    this.renderer.setStyle(this.element.nativeElement, 'border', '#1aaf9d');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--secondary-bg-color-hover)');
   }
 
 

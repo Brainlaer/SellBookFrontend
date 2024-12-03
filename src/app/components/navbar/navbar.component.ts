@@ -5,6 +5,7 @@ import { merge } from 'rxjs';
 import { SearchResultsComponent } from 'src/app/pages/search-results/search-results.component';
 import { IAction } from '../table/model/action';
 import { CartComponent } from 'src/app/pages/cart/cart.component';
+import { ToastService } from '../message/service/toast.service';
 
 @Component({
   selector: 'app-navbar',
@@ -21,7 +22,9 @@ export class NavbarComponent{
   constructor(
     private route:ActivatedRoute, 
     private router:Router,
-    private renderer:Renderer2){
+    private renderer:Renderer2,
+    private toastService:ToastService
+  ){
       this.token=String(sessionStorage.getItem('token')||null);
       this.username=sessionStorage.getItem('username')?.split('@').at(0)||'Iniciar Sessión';
     }
@@ -29,6 +32,18 @@ export class NavbarComponent{
   searchForm=new FormGroup({
     string:new FormControl('',Validators.required)
   });
+
+  closeSession(){
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('username')
+    this.token='';
+    this.username='';
+    this.toastService.showMessage(
+      'success',
+      'Logout',
+      'Sessión cerrada exitosamente'
+    )
+  }
 
   onClickUser(){
     if(sessionStorage.getItem('token')){

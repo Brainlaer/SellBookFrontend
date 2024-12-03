@@ -1,5 +1,5 @@
 .footer{
-    background-color: #0A473F;
+    background-color: var(--secondary-bg-color);
     border-radius: 20px;
     padding: 20px;
     
@@ -54,8 +54,12 @@
     justify-content: space-around;
 }
 p{
-    color: white;
+    color: var(--secondary-color);
 }
 h1{
-    color: white;
+    color: var(--secondary-color);
+}
+hr{
+    color: var(--secondary-color);
+
 }

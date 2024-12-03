@@ -19,7 +19,7 @@
 }
 /*elementos*/
 .sellbook{
-    color: #1aaf9d;
+    color: var(--main-color);
     font-size: medium;
     font-weight: bolder;
     text-decoration: none;
@@ -42,8 +42,8 @@
         position: absolute;
         top: 60px;
         right: 10px;
-        background-color: #181a1b;
-        box-shadow: #1aaf9d 3px 3px 10px;
+        background-color: var(--card-bg-color);
+        box-shadow: var(--secondary-bg-color) 0px 0px 0px 3px;
         padding: 15px;
         border-radius: 20px;
     }.show-spandible{

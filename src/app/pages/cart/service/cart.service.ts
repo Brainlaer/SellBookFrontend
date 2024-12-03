@@ -23,7 +23,7 @@ export class CartService {
     return this.costo.asObservable();
   }
 
-  addOne(itemSelected: any) {
+  addOne(itemSelected: any, units:number=1) {
     const item={
       id:itemSelected.isxn,
       image:itemSelected.image,
@@ -35,10 +35,11 @@ export class CartService {
     let itemSaved = this.items.find(data =>
       data.item.id == item.id
     );
+    console.log(itemSaved, item)
 
     if (itemSaved) {
       // Si ya existe una vestimenta con la misma ID, solo incrementa las unidades
-      itemSaved.item.units += 1;
+      itemSaved.item.units=itemSaved.item.units + units;
       this.toastService.showMessage(
         'info',
         'Cart',
@@ -48,7 +49,7 @@ export class CartService {
       // Si no existe, agrega una nueva entrada al carrito
       const itemToSave = {
         id: this.items.length + 1,
-        item: { ...item, units: 1 }
+        item: { ...item, units: units }
       };
       this.items.push(itemToSave);
       this.toastService.showMessage(
@@ -57,7 +58,7 @@ export class CartService {
         `Libro: ${itemToSave.item.title}, se añadio al carrito.`
       );
     }
-    this.costo.next(this.costo.value + Number(item.cost));
+    this.costo.next(this.costo.value + (Number(item.cost)*units));
 
   }
   removeAll(){

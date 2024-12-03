@@ -20,5 +20,5 @@
 small{
     font-weight: 600;
     font-family: serif;
-    color:#BD5153;
+    color:var(--main-error-txt-color);
 }

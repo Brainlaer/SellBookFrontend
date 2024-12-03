@@ -17,66 +17,66 @@
 }
 
 .console-info{
-    border: #51bdbd solid 3px;
+    border: var(--main-info-color) solid 3px;
     border-radius: 30px;
-    background-color: #caf3f0;
+    background-color: var(--main-info-bg-color);
 }.close-info{
-    border: #51bdbd solid 3px;
-    background-color: #51bdbd;
+    border: var(--main-info-color) solid 3px;
+    background-color: var(--main-info-unhover-color);
     border-radius: 10px;
 }.close-info:hover{
-    background-color: #47a7a7;
-    border: #47a7a7 solid 3px;
+    background-color: var(--main-info-color);
+    border: var(--main-info-color) solid 3px;
 }.info-info{
-    border: #51bdbd solid 3px;
-    background-color: #51bdbd;
+    border: var(--main-info-color) solid 3px;
+    background-color: var(--main-info-color);
     border-radius: 30px;
 }.message-info{
-    color: #51bdbd;
+    color: var(--main-info-txt-color);
     margin-left: 10px;
     margin-right: 10px;
 }
 
 .console-danger{
-    border: #bd5153 solid 3px;
+    border: var(--main-error-color) solid 3px;
     border-radius: 30px;
-    background-color: #f3cacb;
+    background-color: var(--main-error-bg-color);
 }.info-danger{
-    border: #BD5153 solid 3px;
-    background-color: #BD5153;
+    border: var(--main-error-color) solid 3px;
+    background-color: var(--main-error-color);
     border-radius: 30px;
 }.message-danger{
-    color: #BD5153;
+    color: var(--main-error-txt-color);
     margin-left: 10px;
     margin-right: 10px;
 }.close-danger{
-    border: #BD5153 solid 3px;
-    background-color: #BD5153;
+    border: var(--main-error-color) solid 3px;
+    background-color: var(--main-error-unhover-color);
     border-radius: 10px;
 }.close-danger:hover{
-    background-color: #964042;
-    border: #964042 solid 3px;
+    background-color: var(--main-error-color);
+    border: var(--main-error-color) solid 3px;
 }
 
 .console-warning{
-    border: #bdbd51 solid 3px;
+    border: var(--main-warning-color) solid 3px;
     border-radius: 30px;
-    background-color: #f0f3ca;
+    background-color: var(--main-warning-bg-color);
 }.info-warning{
-    border: #bdbd51 solid 3px;
-    background-color: #bdbd51;
+    border: var(--main-warning-color) solid 3px;
+    background-color: var(--main-warning-color);
     border-radius: 30px;
 }.message-warning{
-    color: #bdbd51;
+    color: var(--main-warning-txt-color);
     margin-left: 10px;
     margin-right: 10px;
 }.close-warning{
-    border: #bdbd51 solid 3px;
-    background-color: #bdbd51;
+    border: var(--main-warning-color) solid 3px;
+    background-color: var(--main-warning-unhover-color);
     border-radius: 10px;
 }.close-warning:hover{
-    background-color: #9b9c44;
-    border: #9b9c44 solid 3px;
+    background-color: var(--main-warning-color);
+    border: var(--main-warning-color) solid 3px;
 }
 .console-success{
     border: #67bd51 solid 3px;

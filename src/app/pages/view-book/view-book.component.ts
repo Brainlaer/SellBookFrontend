@@ -4,6 +4,7 @@ import { Book } from 'src/app/models/book-view';
 import { MainService } from 'src/app/services/main.service';
 import { handleErrors } from '../helpers/handleerrors';
 import { ToastService } from 'src/app/components/message/service/toast.service';
+import { CartService } from '../cart/service/cart.service';
 
 @Component({
   selector: 'app-view-book',
@@ -37,7 +38,8 @@ export class ViewBookComponent implements OnInit{
     private activatedRoute:ActivatedRoute,
     private router:Router,
     private mainService:MainService,
-    private toastService:ToastService
+    private toastService:ToastService,
+    private cartService:CartService
   ){}
 
   ngOnInit(): void {
@@ -50,12 +52,18 @@ export class ViewBookComponent implements OnInit{
     )
 
   }
+  addToCart(item:any){
+    this.cartService.addOne(item, this.unitsToBuy);
+  }
 
   getmostRelevants(){
     this.mainService.getData('book/title&&author/'+this.book?.author).subscribe(
       {
         next: (data:any)=>{
           this.moreBooks=data.response;
+          this.moreBooks=this.moreBooks.filter((data:any)=>{
+            return data.isxn!=this.id;
+          })
         },error:(error)=>{
           handleErrors(error, this.toastService);
         }

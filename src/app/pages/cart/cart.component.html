@@ -3,7 +3,7 @@
   <h1>Total:</h1>
   <h2>$ {{totalCost$|async|number:totalCostLength+'.2-2'}}</h2>
   <div class="row wrap center gap-1">
-    <button brButton severity="success" routerLink="/billing">Ir a pagar
+    <button brButton severity="success" (click)="goToPay()">Ir a pagar
       <img src="../../../assets/wallet.svg" alt="">
     </button>
     <button brButton severity="danger" (click)="cleanCart()">Limpiar el carrito

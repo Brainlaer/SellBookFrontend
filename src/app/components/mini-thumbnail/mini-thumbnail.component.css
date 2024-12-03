@@ -3,10 +3,10 @@
     flex-wrap: wrap;
     justify-content: space-evenly;   
 }.card{
-    border:solid #1aaf9d 3px;
+    border:solid var(--main-color) 3px;
     max-width: 310px;
     border-radius: 20px;
-    background-color: #1b3735;
+    background-color: var(--card-bg-color);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -26,12 +26,12 @@
     text-align: center;
     min-width: 150px;
 }.card-title{
-    color: #1aaf9d;
+    color: var(--main-color);
     text-transform: uppercase;
     max-width: 220px;
 
 }.card-text{
-    color: #1aaf9d;
+    color: var(--main-txt-color);
     max-width: 220px;
     font-size: small;
 }.card-img:hover{
@@ -42,6 +42,5 @@
     flex-direction: row;
     overflow: scroll;
     gap: 20px;
-
 }
 

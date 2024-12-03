@@ -36,10 +36,10 @@ export class DialogDirective implements OnInit{
     this.renderer.setStyle(this.element.nativeElement,'top','50%');
     this.renderer.setStyle(this.element.nativeElement,'padding','20px');
     this.renderer.setStyle(this.element.nativeElement,'border-radius','20px');
-    this.renderer.setStyle(this.element.nativeElement,'box-shadow','#1aaf9d 3px 3px 10px');
+    this.renderer.setStyle(this.element.nativeElement,'box-shadow','--card-bg-color 3px 3px 10px');
     this.renderer.setStyle(this.element.nativeElement,'transform','translate(-50%, -50%)');
     this.renderer.setStyle(this.element.nativeElement,'left','50%');
-    this.renderer.setStyle(this.element.nativeElement,'background-color','#181a1b');
+    this.renderer.setStyle(this.element.nativeElement,'background-color','var(--main-bg-color)');
 
 
   }

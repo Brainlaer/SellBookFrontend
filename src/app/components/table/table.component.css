@@ -7,13 +7,13 @@ td>img{
   text-align: center;
   
 }th{
-  color: #1aaf9d;
+  color: var(--main-color);
   font-weight: bolder;
   font-family: serif;
 }.br-column-title{
-  color: #1aaf9d;
+  color: var(--main-color);
 }td{
-  color: #0A473F;
+  color: var(--main-color);
 }
 @media screen and (max-width:960px) {
   tbody>tr{

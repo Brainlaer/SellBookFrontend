@@ -31,6 +31,7 @@ import { LabelInputComponent } from './components/input/label-input/label-input.
 import { BillingComponent } from './pages/billing/billing.component';
 import { ThumbnailDetailsComponent } from './components/thumbnail-details/thumbnail-details.component';
 import { CardComponent } from './components/card/card.component';
+import { IconDirective } from './components/icon/icon.directive';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { CardComponent } from './components/card/card.component';
     LabelInputComponent,
     BillingComponent,
     ThumbnailDetailsComponent,
-    CardComponent
+    CardComponent,
+    IconDirective
     
   ],
   imports: [

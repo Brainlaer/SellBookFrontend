@@ -34,6 +34,11 @@ export class SignUpComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.toastService.showMessage(
+      'info',
+      'Sign Up',
+      'El número telefonico no es requerido.'
+    )
   }
 
   newUser(user:any){
