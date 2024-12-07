@@ -1,12 +1,11 @@
 .card{
-    border:solid #1aaf9d 3px;
-    width: fit-content;
+    border:none;
     border-radius: 20px;
-    background-color: #1b3735;
+    background-color: var(--card-bg-color);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    width: 100%;
+    box-shadow: var(--main-bg-color) 0px 0px 6px 1px;
 }.card-body{
     display: flex;
     flex-direction: column;
@@ -16,17 +15,14 @@
 
 }
 .card h5{
-    color: #1aaf9d;
+    color: var(--main-txt-color);
     text-transform: uppercase;
-    max-width: 220px;
 
 }.card h3{
-    color: #1aaf9d;
+    color: var(--main-txt-color);
     text-transform: uppercase;
-    max-width: 220px;
 
 }.card p{
-    color: #1aaf9d;
-    max-width: 220px;
+    color: var(--main-txt-color);
     font-size: small;
 }

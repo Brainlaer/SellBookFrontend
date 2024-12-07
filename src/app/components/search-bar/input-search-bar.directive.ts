@@ -49,7 +49,7 @@ export class InputSearchBarDirective {
     this.renderer.setStyle(this.element.nativeElement, 'box-shadow',' 3px 3px 10px  var(--main-bg-color)')
     this.renderer.setStyle(this.element.nativeElement, 'border', 'none');
   }private primaryColorHover() {
-    this.renderer.setStyle(this.element.nativeElement, 'box-shadow', 'inset 0 0 0 3px var(--main-bg-color-hover)');
+    this.renderer.setStyle(this.element.nativeElement, 'box-shadow', '3px 3px 10px  var(--main-bg-color-hover)');
   }
 
 

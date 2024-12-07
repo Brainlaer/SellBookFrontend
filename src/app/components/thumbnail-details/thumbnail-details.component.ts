@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { CartService } from 'src/app/pages/cart/service/cart.service';
 
 @Component({
@@ -21,6 +22,9 @@ export class ThumbnailDetailsComponent {
   @Input() items:any[]=[];
   @Input() scrollable:string='false';
   @Input() redirect:string='';
+  totalCost$:Observable<number>=this.cartService.getTotal();
+  totalCostLength=String(this.cartService.costo.value);
+
   scrollClass!:string;
   noImage:string="../../../assets/noimage.png"
 

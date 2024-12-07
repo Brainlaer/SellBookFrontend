@@ -71,7 +71,6 @@ export class ButtonDirective implements OnInit {
     this.renderer.setStyle(this.element.nativeElement, 'font-weight', '500');
     this.renderer.setStyle(this.element.nativeElement, 'font-family', 'serif');
     this.renderer.setAttribute(this.element.nativeElement,'class', 'br-button-icon');
-    this.renderer.setAttribute(this.element.nativeElement,'class', 'br-button-icon');
     this.renderer.setStyle(this.element.nativeElement, 'box-shadow',' 3px 3px 10px  var(--main-bg-color)')
 
   }
