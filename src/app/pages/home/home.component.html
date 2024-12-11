@@ -34,3 +34,13 @@
     <button type="button" brButton *ngFor="let category of categories"
         (click)="goSearchingByCategory(category.id)">{{category.name}}</button>
 </div>
+<div class="mb-5" *ngFor="let booksCategory of booksCategories">
+    <div class="aling-vertical">
+        <h2>{{booksCategory.seccion}}</h2>
+    </div>
+    <br-thumbnail 
+    [items]="booksCategory.data" 
+    scrollable="true"
+    redirect="/view_book"
+    ></br-thumbnail>
+</div>

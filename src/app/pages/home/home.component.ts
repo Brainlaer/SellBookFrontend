@@ -59,11 +59,29 @@ export class HomeComponent implements OnInit{
     )
   }
 
+  booksCategories:any[]=[];
+
+  async findTopCategory(){
+    this.categories.forEach(async (category)=>{
+      await this.mainService.getData('book/topcategory/'+category.id).subscribe(
+        {
+          next:(data:any)=>{
+            const seccion={'seccion':category.name,'data':data.response}
+            this.booksCategories.push(seccion);
+          },error:(error)=>{
+          }
+        }
+  
+      )
+    })
+  }
+
   async findCategories(){
     await this.mainService.getData('category').subscribe(
       {
         next:(data:any)=>{
           this.categories=data;
+          this.findTopCategory();
         },error:(error)=>{
           handleErrors(error, this.toastService, 'Category');
         }
