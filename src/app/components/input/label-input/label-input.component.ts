@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'br-label-input',
@@ -7,8 +8,11 @@ import { Component, Input } from '@angular/core';
 })
 export class LabelInputComponent {
 
-  @Input() disabled:boolean=false;
-  @Input() placeholder:string='';
   @Input() label:string='';
+  @Input() noRequired:boolean=false;
+
+  constructor(
+    private fb:FormBuilder
+  ){ }
 
 }

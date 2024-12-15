@@ -40,6 +40,7 @@ body{
 }
 :root {
     --main-color:#D9D6CE;
+    --main-color-disabled:#c0beb9;
     --main-txt-color: #211F1F;
     --main-bg-color: #9A948D;
     --main-bg-color-hover:#8C877D;

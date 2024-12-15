@@ -32,6 +32,7 @@ import { BillingComponent } from './pages/billing/billing.component';
 import { ThumbnailDetailsComponent } from './components/thumbnail-details/thumbnail-details.component';
 import { CardComponent } from './components/card/card.component';
 import { IconDirective } from './components/icon/icon.directive';
+import { SaveInputComponent } from './components/save-input/save-input.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { IconDirective } from './components/icon/icon.directive';
     BillingComponent,
     ThumbnailDetailsComponent,
     CardComponent,
-    IconDirective
+    IconDirective,
+    SaveInputComponent
     
   ],
   imports: [

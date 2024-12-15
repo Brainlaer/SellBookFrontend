@@ -54,9 +54,9 @@ export class InputDirective {
 
   private disabledInput() {
     this.renderer.setProperty(this.element.nativeElement,'disabled', 'isDisabled');
-    this.renderer.setStyle(this.element.nativeElement, 'color', '#1aaf9d');
-    this.renderer.setStyle(this.element.nativeElement, 'background-color', '#20312f');
-    this.renderer.setStyle(this.element.nativeElement, 'box-shadow', 'inset 0 0 0 3px #1aaf9d');
+    this.renderer.setStyle(this.element.nativeElement, 'color', 'var(--main-txt-color)');
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'var(--main-color-disabled)');
+    this.renderer.setStyle(this.element.nativeElement, 'box-shadow',' 3px 3px 10px  var(--main-bg-color)')
     this.renderer.setStyle(this.element.nativeElement, 'border', 'none');
   }
 
@@ -66,7 +66,7 @@ export class InputDirective {
     this.renderer.setStyle(this.element.nativeElement, 'box-shadow',' 3px 3px 10px  var(--main-bg-color)')
     this.renderer.setStyle(this.element.nativeElement, 'border', 'none');
   }private primaryColorHover() {
-    this.renderer.setStyle(this.element.nativeElement, 'box-shadow', 'inset 0 0 0 3px var(--secondary-bg-color-hover)');
+    this.renderer.setStyle(this.element.nativeElement, 'box-shadow', '3px 3px 10px  var(--main-bg-color-hover)');
   }
 
 }
