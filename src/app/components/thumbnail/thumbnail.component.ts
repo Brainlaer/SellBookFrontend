@@ -18,6 +18,7 @@ export class ThumbnailComponent implements OnInit{
     this.setScrollProperty();
   }
 
+  @Input() isLoading=false;
   @Input() items:any[]=[];
   @Input() scrollable:string='false';
   @Input() redirect:string='';
@@ -32,7 +33,7 @@ export class ThumbnailComponent implements OnInit{
     if(this.scrollable=='true'){
       this.scrollClass='scroll-cards';
     }else{
-      this.scrollClass='';
+      this.scrollClass='wrap row gap-5';
     }
   }
   addToCart(item:any){

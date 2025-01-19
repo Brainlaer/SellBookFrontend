@@ -15,7 +15,7 @@ export class MainService {
 
   getData(uri:string, params?:any):Observable<any>{
     return this.httpClient.get(`${environment.url}${uri}`, {
-      params: new HttpParams({fromObject:params})
+      params
     }).pipe(
       catchError((error:any)=>{
         return throwError(()=> new Error(error.message))

@@ -12,21 +12,15 @@ export class MessageComponent{
   constructor(
     private toastService:ToastService
   ){
-    toastService.consoles.subscribe(
-      (consoles:any[])=>{
-        this.consoles=consoles;
-      }
-    );
+    
 
   }
 
-  consoles:any[]=[]
+  consoles$:Observable<any>=this.toastService.consoles;
   
 
-  hideConsole(console:any){
-    const index = this.consoles.indexOf(console);
-    if (index > -1) {
-      this.consoles.splice(index, 1);
-    }    
+  hideConsole(message:any){
+    this.toastService.closeMessage(message)
+
   }
 }

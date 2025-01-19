@@ -32,7 +32,7 @@
 
 <div class="categories  mb-5">
     <button type="button" brButton *ngFor="let category of categories"
-        (click)="goSearchingByCategory(category.id)">{{category.name}}</button>
+        (click)="goToFindByCategory(category.id)">{{category.name}}</button>
 </div>
 <div class="mb-5" *ngFor="let booksCategory of booksCategories">
     <div class="aling-vertical">

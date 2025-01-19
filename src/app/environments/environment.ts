@@ -1,4 +1,3 @@
 export const environment={
-    url:'http://localhost:8080/sellbook/',
-    mainColor:'cyan'
+    url:'http://localhost:8080/api/v1/',
 }

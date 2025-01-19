@@ -14,6 +14,15 @@ import { ToastService } from '../message/service/toast.service';
 })
 export class NavbarComponent{
 
+  categoryParam!:string;
+  titleParam!:string;
+  authorParam!:string;
+  editorialParam!:string;
+  isxnParam!:string;
+  limitParam:string='50';
+  offsetParam:string='0';
+
+
   categorySearch!:number;
   username:string;
   token:string;
@@ -28,10 +37,6 @@ export class NavbarComponent{
       this.token=String(sessionStorage.getItem('token')||null);
       this.username=sessionStorage.getItem('username')?.split('@').at(0)||'Iniciar Sessión';
     }
-
-  searchForm=new FormGroup({
-    string:new FormControl('',Validators.required)
-  });
 
   closeSession(){
     sessionStorage.removeItem('token');
@@ -59,15 +64,17 @@ export class NavbarComponent{
     this.cartComponent.showHideCart();
   }
   getCategory(){
-    this.route.queryParams.subscribe(
-      params=>{
-        this.categorySearch=params['category'];
-      }
-    );
+    this.route.queryParams.subscribe(params=>{
+      this.categoryParam=params['category'];
+      this.titleParam=params['title'];
+      this.authorParam=params['author'];
+      this.editorialParam=params['editorial'];
+      this.isxnParam=params['isxn'];
+    });   
   }
-  sendValues(){
+  sendValues(string:any){
     this.getCategory();
-    this.router.navigate(['/search_results'],{queryParams:{category:this.categorySearch, string:this.searchForm.value.string}});
+    this.router.navigate(['/search_results'],{queryParams:{title:string,category:this.categoryParam}});
   }
   
   showHide(){

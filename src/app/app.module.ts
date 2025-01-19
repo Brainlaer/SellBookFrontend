@@ -33,6 +33,7 @@ import { ThumbnailDetailsComponent } from './components/thumbnail-details/thumbn
 import { CardComponent } from './components/card/card.component';
 import { IconDirective } from './components/icon/icon.directive';
 import { SaveInputComponent } from './components/save-input/save-input.component';
+import { CheckboxComponent } from './components/form/checkbox/checkbox.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { SaveInputComponent } from './components/save-input/save-input.component
     ThumbnailDetailsComponent,
     CardComponent,
     IconDirective,
-    SaveInputComponent
+    SaveInputComponent,
+    CheckboxComponent
     
   ],
   imports: [

@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/components/message/service/toast.service';
 import { MainService } from 'src/app/services/main.service';
-import { handleErrors } from '../helpers/handleerrors';
+import { handleErrors } from '../../helpers/handleerrors';
 
 @Component({
   selector: 'app-sign-in',

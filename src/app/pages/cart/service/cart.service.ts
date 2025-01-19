@@ -39,17 +39,16 @@ export class CartService {
 
     if (itemSaved) {
       // Si ya existe una vestimenta con la misma ID, solo incrementa las unidades
-      itemSaved.item.units=itemSaved.item.units + units;
       this.toastService.showMessage(
-        'info',
+        'warning',
         'Cart',
-        `Libro: ${itemSaved.item.title}, se añadio al carrito.`
+        `Libro: ${itemSaved.item.title}, ya existe en al carrito.`
       );
     } else {
       // Si no existe, agrega una nueva entrada al carrito
       const itemToSave = {
         id: this.items.length + 1,
-        item: { ...item, units: units }
+        item: { ...item }
       };
       this.items.push(itemToSave);
       this.toastService.showMessage(
@@ -57,8 +56,8 @@ export class CartService {
         'Cart',
         `Libro: ${itemToSave.item.title}, se añadio al carrito.`
       );
+      this.costo.next(this.costo.value + Number(item.cost));
     }
-    this.costo.next(this.costo.value + (Number(item.cost)*units));
 
   }
   removeAll(){

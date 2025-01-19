@@ -9,8 +9,19 @@ export interface Book{
     cost:any;
 	author:String;
 	image:String;
-    category:Category;
-
-
-
+    categoryId:string;
+}
+export interface BookGet{
+    isxn:number;
+    title:String;
+    publicationDate:number;
+    units:number;
+    editorial:String;
+    cost:any;
+	author:String;
+	image:String;
+    category:{
+        id:string,
+        name:string
+    }
 }

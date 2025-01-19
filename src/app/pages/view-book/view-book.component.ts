@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, RouterLinkActive } from '@angular/router';
-import { Book } from 'src/app/models/book-view';
+import { Book, BookGet } from 'src/app/models/book-view';
 import { MainService } from 'src/app/services/main.service';
-import { handleErrors } from '../helpers/handleerrors';
+import { handleErrors } from '../../helpers/handleerrors';
 import { ToastService } from 'src/app/components/message/service/toast.service';
 import { CartService } from '../cart/service/cart.service';
 
@@ -16,9 +16,10 @@ export class ViewBookComponent implements OnInit{
   id!:any;
   unitsToBuy:number=1;
   lessUnitsdisabled:boolean=false;
-  moreBooks:any[]=[]
+  moreBooks:any[]=[];
+  noImage:string="../../../assets/noimage.png";
   @ViewChild('title') bookTitle?: ElementRef;
-  book:Book={
+  book:BookGet={
     isxn: 0,
     title: '',
     publicationDate: 0,
@@ -28,8 +29,8 @@ export class ViewBookComponent implements OnInit{
     author: '',
     image: '',
     category:{
-      id: 0,
-      name: ''
+      id:'',
+      name:''
     }
   };
 
@@ -57,12 +58,12 @@ export class ViewBookComponent implements OnInit{
   }
 
   getmostRelevants(){
-    this.mainService.getData('book/title&&author/'+this.book?.author).subscribe(
+    this.mainService.getData('book?filterBy=AUTHOR&limit=10&offset=0&filter='+this.book?.author).subscribe(
       {
         next: (data:any)=>{
-          this.moreBooks=data.response;
+          this.moreBooks=data.detail;
           this.moreBooks=this.moreBooks.filter((data:any)=>{
-            return data.isxn!=this.id;
+            return data.id!=this.id;
           })
         },error:(error)=>{
           handleErrors(error, this.toastService);
@@ -81,7 +82,8 @@ export class ViewBookComponent implements OnInit{
     this.mainService.getData('book/'+this.id).subscribe(
       {
         next: (data:any)=>{
-          this.book=data.response;
+          this.book=data.detail;
+          console.log(data)
           this.getmostRelevants();
           window.scrollTo(0, 0);
         },error: (error)=>{

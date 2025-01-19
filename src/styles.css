@@ -8,7 +8,7 @@
 }.txt-center{
     text-align: center;
 }.center{
-    justify-content: space-around;
+    justify-content: space-evenly;
 }.end{
     justify-content: end;
 }.start{

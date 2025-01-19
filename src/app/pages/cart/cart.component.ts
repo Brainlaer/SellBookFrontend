@@ -16,7 +16,6 @@ export class CartComponent {
     {label:'imagen',value:'image'},
     {label:'titulo',value:'title'},
     {label:'autor',value:'author'},
-    {label:'unidades',value:'units'},
     {label:'costo',value:'cost'}
   ];
   itemsBody:any[]=this.cartService.getAll();
