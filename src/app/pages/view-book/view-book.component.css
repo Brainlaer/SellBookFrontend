@@ -7,10 +7,6 @@
     margin: 5px;
     align-self: center;
     border-radius: 4px;
-}
-.img-mas-del-autor:hover{
-    box-shadow: 0px 5px 5px 5px  #c0c0c0;
-    
 }.wrap-content{
     display: flex;
     flex-wrap: wrap;
@@ -20,16 +16,11 @@
     text-align: center;
 }
 .free-delivery{
-    height: 140px;
-    width: 150px;
+    width: 200px;
+
 }
 .p-info{
     font-weight: bold;
-}
-.p-costo{
-    font-size: 28px;
-    font-weight: bolder;
-    color: rgb(168, 15, 15);
 }
 .p-unidades{
     display: flex;
@@ -86,7 +77,7 @@ h2{
 .imagen{
     justify-content: end;
 }
-@media screen and (max-width:780px) {
+@media screen and (max-width:900px) {
     .imagen{
         justify-content: space-around;
     }

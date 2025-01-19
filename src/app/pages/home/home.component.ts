@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from 'src/app/services/book.service';
 import { Category } from 'src/app/models/category';
-import { CategoryService } from 'src/app/services/category.service';
 import { BookPreview } from 'src/app/models/book-preview';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MainService } from 'src/app/services/main.service';
+import { ToastService } from 'src/app/components/message/service/toast.service';
+import { handleErrors } from '../../helpers/handleerrors';
+import { CartComponent } from '../cart/cart.component';
+import { CartService } from '../cart/service/cart.service';
+import { HttpParams } from '@angular/common/http';
 
 
 @Component({
@@ -13,51 +17,71 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit{
 
-  string:String='null';
-
-  ngOnInit(): void {
-    this.findLastest();
-    this.findAll();
-  }
-
-
-  constructor(private bookService:BookService, 
-    private categoryService:CategoryService, 
-    private router:Router
-  ){
-
-  }
-
   categories:Category[]=[];
-
-
+  booksCategories:any[]=[];
   bookPreviewList:BookPreview[]=[];
+
+  constructor( 
+    private mainService:MainService, 
+    private router:Router,
+    private toastService:ToastService
+  ){}
+
+  async ngOnInit(): Promise<void> {
+    await this.findLastestBooks();
+    await this.findCategories();
+  }
 
   goSearchingById(isxn:number){
     window.location.href="/view_book/"+isxn;
-  }
+  };
 
-  goSearchingByCategory(category:number){
-    this.router.navigate(['/search_results'],{queryParams:{category:category}})
-  }
+  goToFindByCategory(category:number){
+    this.router.navigate(['/search_results'],{queryParams:{category:category}});
+  };
 
-  findLastest(){
-    this.bookService.findLastest().subscribe(
-      (data:any)=>{
-        this.bookPreviewList=data.response;
-      },(error)=>{
-        
+  async findLastestBooks() {
+    let params = new HttpParams();
+    params = params.append('limit', 10);
+    params = params.append('offset', 0);
+    await this.mainService.getData('book',params).subscribe({
+      next: (response: any) => {
+        this.bookPreviewList = response.content;
+      }, error: (error) => {
+        handleErrors(error, this.toastService, 'Book');
       }
-    )
+    });
+  };
+
+  async findCategories() {
+    await this.mainService.getData('category').subscribe({
+      next: (data: any) => {
+        this.categories = data.detail;
+        this.findBooksTopOnCategory();
+      }, error: (error) => {
+        handleErrors(error, this.toastService, 'Category');
+      }
+    })
   }
 
-  findAll(){
-    this.categoryService.findAll().subscribe(
-      (data:any)=>{
-        this.categories=data;
-      },(error)=>{
-      }
-    )
-  }
+  async findBooksTopOnCategory(){
+    this.categories.forEach(async (category)=>{
+      let params = new HttpParams();
+      params = params.append('category', category.id);
+      params = params.append('limit', 10);
+      params = params.append('offset', 0);
+
+      await this.mainService.getData(`book`, params).subscribe({
+          next:(response:any)=>{
+            const seccion={'seccion':category.name,'data':response.content}
+            this.booksCategories.push(seccion);
+          },error:(error)=>{
+            handleErrors(error, this.toastService, 'Book');
+          }
+        })
+    })
+  };
+
+
   
 }

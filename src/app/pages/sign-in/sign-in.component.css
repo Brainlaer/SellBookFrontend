@@ -25,12 +25,16 @@
 }.text-primary{
     font-weight: 600;
     font-family: serif;
-    color: #179d8d;
+    color:var(--main-txt-color);
     font-size: small;
 }.text-danger{
     font-weight: 600;
     font-family: serif;
-    color:#BD5153;
+    color: var(--main-error-txt-color);
+}.dialog-title{
+    font-size: medium;
+}.password{
+    text-decoration: underline;
 }
 
 

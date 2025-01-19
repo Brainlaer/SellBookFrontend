@@ -6,6 +6,8 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { ViewBookComponent } from './pages/view-book/view-book.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { BillingComponent } from './pages/billing/billing.component';
  
 const routes: Routes = [
   {
@@ -35,6 +37,14 @@ const routes: Routes = [
   {
     path:'view_book',
     component:ViewBookComponent
+  },
+  {
+    path:'profile',
+    component:ProfileComponent
+  },
+  {
+    path:'billing',
+    component:BillingComponent
   }
 ];
 

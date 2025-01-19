@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/pages/cart/service/cart.service';
 
 @Component({
   selector: 'br-mini-thumbnail',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
 export class MiniThumbnailComponent implements OnInit{
 
   constructor(
-    private router:Router
+    private router:Router,
+    private cartService:CartService
   ){}
 
   ngOnInit(): void {
@@ -24,9 +26,11 @@ export class MiniThumbnailComponent implements OnInit{
 
   goSearchingById(id:string){
     this.router.navigate([this.redirect],{queryParams:{id:id}})
-    console.log('hola')
   }
 
+  addToCart(item:any){
+    this.cartService.addOne(item);
+  }
   setScrollProperty(){
     if(this.scrollable=='true'){
       this.scrollClass='scroll-cards';

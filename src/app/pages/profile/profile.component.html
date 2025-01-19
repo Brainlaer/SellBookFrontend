@@ -1,0 +1,52 @@
+<h1>Profile</h1>
+<h2>Información personal</h2>
+<form [formGroup]="user" action="">
+    <div class="row wrap gap-2">
+        <br-label-input label="Número de Identificación">
+            <input type="text" brInput [disabled]="true" formControlName="id">
+        </br-label-input>
+        <br-label-input label="Nombre">
+                <input type="text" brInput formControlName="name">
+        </br-label-input>
+        <br-label-input label="Apellido">
+            <input type="text" brInput formControlName="surname">
+        </br-label-input>
+    </div>
+    <h2>Información de Contacto</h2>
+    <div class="row wrap gap-2">
+        <br-label-input label="Telefono">
+            <input type="text" brInput formControlName="phone">
+        </br-label-input>
+        <br-label-input label="Correo Electronico">
+            <input type="text" brInput formControlName="mail">
+        </br-label-input>
+    </div>
+    <h2>Información Domiciliaría</h2>
+    <div class="row wrap gap-2">
+        <br-label-input label="Dirección Domiciliaría">
+            <input type="text" brInput formControlName="homeAddress">
+        </br-label-input>
+    </div>
+    <h2>Seguridad</h2>
+    <div class="column gap-2">
+        <div class="row">
+            <br-label-input label="Contraseña">
+                <input type="password" brInput formControlName="password">
+            </br-label-input>
+        </div>
+        <div class="row wrap gap-2">
+            <br-label-input label="Contraseña Nueva">
+                <input type="text" brInput>
+            </br-label-input>
+            <br-label-input label="Repetir Contraseña Nueva">
+                <input type="text" brInput>
+            </br-label-input>
+        </div>
+    </div>
+    <p>Minimo 8 caracteres</p>
+    <p>Al menos una letra mayuscula</p>
+    <p>Al menos una letra minuscula</p>
+    <p>Al menos un numero</p>
+</form>
+
+<button brButton (click)="logout()">Cerrar session</button>

@@ -1,0 +1,13 @@
+<br-side-bar [visible]="visibleSideBar" (hide)="visibleSideBar=false">
+  <br-table [headers]="itemsHeader" [items]="itemsBody" [action]="itemsActions" (emitRowId)="removefromCart($event)"></br-table>
+  <h1>Total:</h1>
+  <h2>$ {{totalCost$|async|number:totalCostLength+'.2-2'}}</h2>
+  <div class="row wrap center gap-1">
+    <button brButton severity="success" (click)="goToPay()">Ir a pagar
+      <img src="../../../assets/wallet.svg" alt="">
+    </button>
+    <button brButton severity="danger" (click)="cleanCart()">Limpiar el carrito
+      <img src="../../../assets/trash.svg" alt="">
+    </button>
+  </div>
+</br-side-bar>

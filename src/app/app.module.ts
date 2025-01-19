@@ -21,6 +21,19 @@ import { ButtonSearchBarDirective } from './components/search-bar/button-search-
 import { TableComponent } from './components/table/table.component';
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { MiniThumbnailComponent } from './components/mini-thumbnail/mini-thumbnail.component';
+import { SearchBarComponent } from './components/search-bar/search-bar/search-bar.component';
+import { DialogDirective } from './components/dialog/dialog.directive';
+import { DialogComponent } from './components/dialog/dialog/dialog.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { LabelInputComponent } from './components/input/label-input/label-input.component';
+import { BillingComponent } from './pages/billing/billing.component';
+import { ThumbnailDetailsComponent } from './components/thumbnail-details/thumbnail-details.component';
+import { CardComponent } from './components/card/card.component';
+import { IconDirective } from './components/icon/icon.directive';
+import { SaveInputComponent } from './components/save-input/save-input.component';
+import { CheckboxComponent } from './components/form/checkbox/checkbox.component';
 
 
 @NgModule({
@@ -41,7 +54,21 @@ import { MiniThumbnailComponent } from './components/mini-thumbnail/mini-thumbna
     ButtonSearchBarDirective,
     TableComponent,
     ThumbnailComponent,
-    MiniThumbnailComponent
+    MiniThumbnailComponent,
+    SearchBarComponent,
+    DialogDirective,
+    DialogComponent,
+    SideBarComponent,
+    CartComponent,
+    ProfileComponent,
+    LabelInputComponent,
+    BillingComponent,
+    ThumbnailDetailsComponent,
+    CardComponent,
+    IconDirective,
+    SaveInputComponent,
+    CheckboxComponent
+    
   ],
   imports: [
     BrowserModule,

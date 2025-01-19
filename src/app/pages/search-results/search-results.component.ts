@@ -1,13 +1,12 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, ParamMap, Router, RouterLink } from '@angular/router';
-import { catchError, filter } from 'rxjs';
 import { BookPreview } from 'src/app/models/book-preview';
-import { FiltrosDataService } from 'src/app/services/filtros-data.service';
-import { BookService } from 'src/app/services/book.service';
 import { Category } from 'src/app/models/category';
-import { CategoryService } from 'src/app/services/category.service';
-import { handleErrors } from '../helpers/handleerrors';
-import { ToastMessageService } from 'src/app/components/message/service/toast-message.service';
+import { handleErrors } from '../../helpers/handleerrors';
+import { ToastService } from 'src/app/components/message/service/toast.service';
+import { MainService } from 'src/app/services/main.service';
+import { HttpParams } from '@angular/common/http';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-search-results',
@@ -16,40 +15,63 @@ import { ToastMessageService } from 'src/app/components/message/service/toast-me
 })
 export class SearchResultsComponent implements OnInit{
 
-  category:Category={id:0,name:''};
+  limitParam:string='50';
+  offsetParam:string='0';
+
+  books:any[]=[];
+  filterForm!:FormGroup;
+  currentCategory!:any;
+
+
   categories:Category[]=[];
   stringSearch:string|null='';
-  categorySearch:number|null=0;
-  bookPreviewList:BookPreview[]=[];
-  booksFound:any[]=[];
   hiddenLoad:boolean=true;
   hiddenTable:boolean=false;
   hiddenEmpty:boolean=true;
 
 
 
-  constructor(private bookService:BookService,
-    private categoryService:CategoryService, 
+  constructor(
+    private mainService:MainService, 
     private route:ActivatedRoute, 
     private router:Router,
-    private toastMessageService:ToastMessageService
+    private toastService:ToastService,
+    private fb:FormBuilder
   ){
-  }
- goToViewBook(isxn:number){
-    window.location.href="/view_book/"+isxn;
+    this.filterForm=fb.group({
+      category: new FormControl(''),
+      title: new FormControl(''),
+      author: new FormControl(''),
+      editorial: new FormControl(''),
+      isxn: new FormControl('')
+    })
   }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params=>{
-      this.categorySearch=params['category'];
-      this.stringSearch=params['string'];
-      this.onSearch();
+      this.filterForm.patchValue({
+        'category':params['category'],
+        'title':params['title'],
+        'author':params['author'],
+        'editorial':params['editorial'],
+        'isxn':params['isxn'],
+      })
+      this.currentCategory=this.categories.find((category)=>category.id==Number(this.filterForm.get('category')?.value))||{name:'Todos los generos'};
+      this.findBooks();
     });    
     this.findAllCategories();
   }
 
+  goToViewBook(isxn:number){
+    window.location.href="/view_book/"+isxn;
+  }
+
+
+
+
+
   finishLoad(){
-    if(this.booksFound.length>0){
+    if(this.books.length>0){
       this.hiddenEmpty=true;
       this.hiddenTable=false;
       this.hiddenLoad=true;
@@ -69,58 +91,48 @@ export class SearchResultsComponent implements OnInit{
     
   }
 
-  goSearchingByCategory(category:number){
-    this.router.navigate(['/search_results'],{queryParams:{category:category, string:this.stringSearch}})
+  goToFindByCategory(category:number){
+    this.router.navigate(['/search_results'],{queryParams:{category:category, title:this.filterForm.get('title')?.value}})
   }
 
   allCategories(){
-    this.router.navigate(['/search_results'],{queryParams:{category:0, string:this.stringSearch}})
+    this.router.navigate(['/search_results'],{queryParams:{category:'', title:this.filterForm.get('title')?.value}})
   }
 
 
   findAllCategories(){
-    this.categoryService.findAll().subscribe(
-      (categoryList:any)=>{
-        this.categories=categoryList;
-      }
-    )
+    this.mainService.getData('category').subscribe({
+        next: (response:any)=>{
+          this.categories=response.detail;
+
+        },error:(error)=>{
+          handleErrors(error, this.toastService);
+        }
+      })
   }
 
   onSearch(){
     this.startLoad();
-    if(this.stringSearch&&this.categorySearch==0){
-      this.findByAuthorYTitlePreview();
-    }else if(!this.stringSearch&&this.categorySearch!=0){
-      this.findByCategory();
-    }
   }
 
-  findByAuthorYTitlePreview(){
-    this.booksFound=[];
-      this.bookService.findByAuthorYTitlePreview(this.stringSearch).subscribe(
-        (data:any)=>{
-          this.bookPreviewList=data;
-          this.booksFound=this.bookPreviewList;
-          this.finishLoad();
-        },(error)=>{
-          handleErrors(error, this.toastMessageService);
-          this.finishLoad();
-        }
-      )
-  }
+  findBooks() {
+    let params = new HttpParams();
+    if(this.filterForm.get('isxn')?.value)params = params.append('isxn', this.filterForm.get('isxn')?.value);
+    if(this.filterForm.get('author')?.value)params = params.append('author', this.filterForm.get('author')?.value);
+    if(this.filterForm.get('editorial')?.value)params = params.append('editorial', this.filterForm.get('editorial')?.value);
+    if(this.filterForm.get('title')?.value)params = params.append('title', this.filterForm.get('title')?.value);
+    if(this.filterForm.get('category')?.value)params = params.append('category', this.filterForm.get('category')?.value);
+    params = params.append('limit', this.limitParam);
+    params = params.append('offset', this.offsetParam);
 
-  findByCategory(){
-    this.booksFound=[];
-    this.bookService.findByCategory(this.categorySearch).subscribe(
-      (data:any)=>{
-        this.bookPreviewList=data.response;
-        this.booksFound=this.bookPreviewList;
-        this.finishLoad();
-      },(error)=>{
-        handleErrors(error, this.toastMessageService);
-        this.finishLoad();
+    this.mainService.getData('book', params).subscribe({
+      next: (response: any) => {
+        this.books = response.content;
+        console.log(this.books)
+      }, error: (error) => {
+        handleErrors(error, this.toastService);
       }
-    )
+    })
   }
 
 }

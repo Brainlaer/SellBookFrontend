@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastMessageService } from 'src/app/components/message/service/toast-message.service';
-import { UserService } from 'src/app/services/user.service';
+import { ToastService } from 'src/app/components/message/service/toast.service';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -17,8 +17,8 @@ export class SignUpComponent implements OnInit {
   isLoadding:boolean=false;
 
   constructor(
-    private userService:UserService,
-    private toastMessageService:ToastMessageService,
+    private mainService:MainService,
+    private toastService:ToastService,
     private router:Router
   ){
     this.signUpForm = new FormGroup({
@@ -34,40 +34,51 @@ export class SignUpComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.toastService.showMessage(
+      'info',
+      'Sign Up',
+      'El número telefonico no es requerido.'
+    )
   }
 
   newUser(user:any){
     this.isLoadding=true;
     if(this.signUpForm.valid){
       const formData = this.signUpForm.value;
-      this.userService.signUp(formData).subscribe(
-        (data:any)=>{
-          if(data.token!=null){
-            this.toastMessageService.showMessage(
-              'success',
-              'Persona creada exitosamente.'
-            );
-            sessionStorage.setItem('token',data.token);
-            this.userService.setEmailFromToken();
-            this.router.navigate(['/'])
-          }else{
-            this.toastMessageService.showMessage(
+      this.mainService.postData('auth/signup',formData).subscribe(
+        {
+          next: (data:any)=>{
+            if(data.token!=null){
+              this.toastService.showMessage(
+                'success',
+                'Sign Up',
+                'Persona creada exitosamente.'
+              );
+              sessionStorage.setItem('token',data.token);
+              this.mainService.setEmailFromToken();
+              this.router.navigate(['/'])
+            }else{
+              this.toastService.showMessage(
+                'danger',
+                'Sign Up',
+                'No se pudo crear la persona.'
+              );
+            }
+          },error: (error)=>{
+            this.toastService.showMessage(
               'danger',
+              'Sign Up',
               'No se pudo crear la persona.'
             );
           }
-        },
-        (error)=>{
-          this.toastMessageService.showMessage(
-            'danger',
-            'No se pudo crear la persona.'
-          );
         }
+
       )
     }else{
       this.signUpForm.markAllAsTouched();
-      this.toastMessageService.showMessage(
+      this.toastService.showMessage(
         'danger',
+        'Sign Up',
         'Formulario invalido.'
       );
     }

@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <th>#</th>
-            <th *ngFor="let header of headers">{{header}}</th>
+            <th *ngFor="let header of headers">{{header['label']|titlecase}}</th>
             <th *ngIf="action">Acciones</th>
         </tr>
     </thead>
@@ -13,22 +13,22 @@
                 {{i+1}}
             </th>
             <td *ngFor="let header of headers">
-                <span class="br-column-title">{{header}}</span>            
-                <ng-container *ngIf="header.toLowerCase() === 'imagen';else cost">
-                <img [src]="item[header]" alt="" /> <!-- Cambia el tamaño según sea necesario -->
+                <span class="br-column-title">{{header['label']}}</span>            
+                <ng-container *ngIf="header['value'].toLowerCase() === 'image';else cost">
+                <img [src]="item.item[header['value']]" alt="" /> <!-- Cambia el tamaño según sea necesario -->
             </ng-container>
             <ng-template #cost >
-                <ng-container  *ngIf="header.toLowerCase() === 'costo';else textHeader">
-                    {{item[header]|uppercase}}
+                <ng-container  *ngIf="header['value'].toLowerCase() === 'cost';else textHeader">
+                    {{item.item[header['value']]|number:'4.2-2'}}
                 </ng-container>
             </ng-template>
             <ng-template #textHeader >
-                {{item[header]|titlecase}}
+                {{item.item[header['value']].toString()|titlecase}}
             </ng-template>
             </td>
             <td>
                 <span class="br-column-title">Acciones</span>
-                <button brButton type="button" (click)="getItem(item.Id||item.Isxn)">
+                <button brButton type="button" [severity]="action.severity" (click)="onEmitRow(item)">
                     <img src="{{action.icon}}" alt="">
                 </button>
             </td>
