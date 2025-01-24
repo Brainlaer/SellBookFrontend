@@ -64,12 +64,12 @@ export class ButtonDirective implements OnInit {
     this.renderer.setStyle(this.element.nativeElement, 'display', 'flex');
     this.renderer.setStyle(this.element.nativeElement, 'gap', '5px');
     this.renderer.setStyle(this.element.nativeElement, 'align-items', 'center');
-    this.renderer.setStyle(this.element.nativeElement, 'border-radius', '10px');
-    this.renderer.setStyle(this.element.nativeElement, 'min-width', '40px');
-    this.renderer.setStyle(this.element.nativeElement, 'min-height', '40px');
-    this.renderer.setStyle(this.element.nativeElement, 'padding', '10px 15px');
-    this.renderer.setStyle(this.element.nativeElement, 'font-weight', '500');
-    this.renderer.setStyle(this.element.nativeElement, 'font-family', 'serif');
+    // this.renderer.setStyle(this.element.nativeElement, 'border-radius', '10px');
+    // this.renderer.setStyle(this.element.nativeElement, 'min-width', '40px');
+    // this.renderer.setStyle(this.element.nativeElement, 'min-height', '40px');
+    // this.renderer.setStyle(this.element.nativeElement, 'padding', '10px 15px');
+    // this.renderer.setStyle(this.element.nativeElement, 'font-weight', '500');
+    // this.renderer.setStyle(this.element.nativeElement, 'font-family', 'serif');
     this.renderer.setAttribute(this.element.nativeElement,'class', 'br-button-icon');
     this.renderer.setStyle(this.element.nativeElement, 'box-shadow',' 3px 3px 10px  var(--main-bg-color)')
 

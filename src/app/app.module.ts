@@ -34,6 +34,7 @@ import { CardComponent } from './components/card/card.component';
 import { IconDirective } from './components/icon/icon.directive';
 import { SaveInputComponent } from './components/save-input/save-input.component';
 import { CheckboxComponent } from './components/form/checkbox/checkbox.component';
+import { ButtonComponent } from './components/button/button/button.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { CheckboxComponent } from './components/form/checkbox/checkbox.component
     CardComponent,
     IconDirective,
     SaveInputComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    ButtonComponent
     
   ],
   imports: [
