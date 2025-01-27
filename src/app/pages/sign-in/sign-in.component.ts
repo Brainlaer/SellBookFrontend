@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastService } from 'src/app/components/message/service/toast.service';
 import { MainService } from 'src/app/services/main.service';
 import { handleErrors } from '../../helpers/handleerrors';
 
@@ -20,7 +19,6 @@ export class SignInComponent implements OnInit{
 
   constructor(
     private mainService:MainService,
-    private toastService:ToastService,
     private router:Router
   ){
     this.signInForm=new FormGroup({
@@ -40,34 +38,34 @@ export class SignInComponent implements OnInit{
         {
           next: (data:any)=>{
             if(data.token!=null){
-              this.toastService.showMessage(
-                'success',
-                'Sign In',
-                'Sessión iniciada.'
-              );
+              // this.toastService.showMessage(
+              //   'success',
+              //   'Sign In',
+              //   'Sessión iniciada.'
+              // );
               sessionStorage.setItem('token',data.token);
               this.mainService.setEmailFromToken();
               window.location.href='/'
             }else{
-              this.toastService.showMessage(
-                'danger',
-                'Sign In',
-                'No se pudo iniciar sessión.'
-              );
+              // this.toastService.showMessage(
+              //   'danger',
+              //   'Sign In',
+              //   'No se pudo iniciar sessión.'
+              // );
             }
           },error:(error)=>{
-            handleErrors(error,this.toastService);
+            // handleErrors(error,this.toastService);
           }
         }
 
       )
     }else{
       this.signInForm.markAllAsTouched();
-      this.toastService.showMessage(
-        'warning',
-        'Sign In',
-        'Asegurate de ingresar el correo y la contraseña correctamente.'
-      );
+      // this.toastService.showMessage(
+      //   'warning',
+      //   'Sign In',
+      //   'Asegurate de ingresar el correo y la contraseña correctamente.'
+      // );
     }
     this.isLoadding=false;
   }

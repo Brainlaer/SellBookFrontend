@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastService } from 'src/app/components/message/service/toast.service';
 import { MainService } from 'src/app/services/main.service';
 
 @Component({
@@ -18,7 +17,6 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private mainService:MainService,
-    private toastService:ToastService,
     private router:Router
   ){
     this.signUpForm = new FormGroup({
@@ -34,11 +32,11 @@ export class SignUpComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.toastService.showMessage(
-      'info',
-      'Sign Up',
-      'El número telefonico no es requerido.'
-    )
+    // this.toastService.showMessage(
+    //   'info',
+    //   'Sign Up',
+    //   'El número telefonico no es requerido.'
+    // )
   }
 
   newUser(user:any){
@@ -49,38 +47,38 @@ export class SignUpComponent implements OnInit {
         {
           next: (data:any)=>{
             if(data.token!=null){
-              this.toastService.showMessage(
-                'success',
-                'Sign Up',
-                'Persona creada exitosamente.'
-              );
+              // this.toastService.showMessage(
+              //   'success',
+              //   'Sign Up',
+              //   'Persona creada exitosamente.'
+              // );
               sessionStorage.setItem('token',data.token);
               this.mainService.setEmailFromToken();
               this.router.navigate(['/'])
             }else{
-              this.toastService.showMessage(
-                'danger',
-                'Sign Up',
-                'No se pudo crear la persona.'
-              );
+              // this.toastService.showMessage(
+              //   'danger',
+              //   'Sign Up',
+              //   'No se pudo crear la persona.'
+              // );
             }
           },error: (error)=>{
-            this.toastService.showMessage(
-              'danger',
-              'Sign Up',
-              'No se pudo crear la persona.'
-            );
+            // this.toastService.showMessage(
+            //   'danger',
+            //   'Sign Up',
+            //   'No se pudo crear la persona.'
+            // );
           }
         }
 
       )
     }else{
       this.signUpForm.markAllAsTouched();
-      this.toastService.showMessage(
-        'danger',
-        'Sign Up',
-        'Formulario invalido.'
-      );
+      // this.toastService.showMessage(
+      //   'danger',
+      //   'Sign Up',
+      //   'Formulario invalido.'
+      // );
     }
     this.isLoadding=false;
   }

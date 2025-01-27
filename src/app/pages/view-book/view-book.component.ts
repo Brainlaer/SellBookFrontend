@@ -3,7 +3,6 @@ import { ActivatedRoute, ParamMap, Router, RouterLinkActive } from '@angular/rou
 import { Book, BookGet } from 'src/app/models/book-view';
 import { MainService } from 'src/app/services/main.service';
 import { handleErrors } from '../../helpers/handleerrors';
-import { ToastService } from 'src/app/components/message/service/toast.service';
 import { CartService } from '../cart/service/cart.service';
 
 @Component({
@@ -39,7 +38,6 @@ export class ViewBookComponent implements OnInit{
     private activatedRoute:ActivatedRoute,
     private router:Router,
     private mainService:MainService,
-    private toastService:ToastService,
     private cartService:CartService
   ){}
 
@@ -66,7 +64,7 @@ export class ViewBookComponent implements OnInit{
             return data.id!=this.id;
           })
         },error:(error)=>{
-          handleErrors(error, this.toastService);
+          // handleErrors(error, this.toastService);
         }
       }
     )
@@ -87,7 +85,7 @@ export class ViewBookComponent implements OnInit{
           this.getmostRelevants();
           window.scrollTo(0, 0);
         },error: (error)=>{
-          handleErrors(error, this.toastService)
+          // handleErrors(error, this.toastService)
         }
       }
     )

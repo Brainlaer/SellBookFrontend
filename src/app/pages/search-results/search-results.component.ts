@@ -3,7 +3,6 @@ import { ActivatedRoute, NavigationEnd, ParamMap, Router, RouterLink } from '@an
 import { BookPreview } from 'src/app/models/book-preview';
 import { Category } from 'src/app/models/category';
 import { handleErrors } from '../../helpers/handleerrors';
-import { ToastService } from 'src/app/components/message/service/toast.service';
 import { MainService } from 'src/app/services/main.service';
 import { HttpParams } from '@angular/common/http';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
@@ -35,7 +34,6 @@ export class SearchResultsComponent implements OnInit{
     private mainService:MainService, 
     private route:ActivatedRoute, 
     private router:Router,
-    private toastService:ToastService,
     private fb:FormBuilder
   ){
     this.filterForm=fb.group({
@@ -106,7 +104,7 @@ export class SearchResultsComponent implements OnInit{
           this.categories=response.detail;
 
         },error:(error)=>{
-          handleErrors(error, this.toastService);
+          // handleErrors(error, this.toastService);
         }
       })
   }
@@ -130,7 +128,7 @@ export class SearchResultsComponent implements OnInit{
         this.books = response.content;
         console.log(this.books)
       }, error: (error) => {
-        handleErrors(error, this.toastService);
+        // handleErrors(error, this.toastService);
       }
     })
   }

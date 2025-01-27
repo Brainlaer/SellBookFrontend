@@ -3,7 +3,6 @@ import { Category } from 'src/app/models/category';
 import { BookPreview } from 'src/app/models/book-preview';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from 'src/app/services/main.service';
-import { ToastService } from 'src/app/components/message/service/toast.service';
 import { handleErrors } from '../../helpers/handleerrors';
 import { CartComponent } from '../cart/cart.component';
 import { CartService } from '../cart/service/cart.service';
@@ -24,7 +23,6 @@ export class HomeComponent implements OnInit{
   constructor( 
     private mainService:MainService, 
     private router:Router,
-    private toastService:ToastService
   ){}
 
   async ngOnInit(): Promise<void> {
@@ -48,7 +46,7 @@ export class HomeComponent implements OnInit{
       next: (response: any) => {
         this.bookPreviewList = response.content;
       }, error: (error) => {
-        handleErrors(error, this.toastService, 'Book');
+        // handleErrors(error, this.toastService, 'Book');
       }
     });
   };
@@ -59,7 +57,7 @@ export class HomeComponent implements OnInit{
         this.categories = data.detail;
         this.findBooksTopOnCategory();
       }, error: (error) => {
-        handleErrors(error, this.toastService, 'Category');
+        // handleErrors(error, this.toastService, 'Category');
       }
     })
   }
@@ -76,7 +74,7 @@ export class HomeComponent implements OnInit{
             const seccion={'seccion':category.name,'data':response.content}
             this.booksCategories.push(seccion);
           },error:(error)=>{
-            handleErrors(error, this.toastService, 'Book');
+            // handleErrors(error, this.toastService, 'Book');
           }
         })
     })

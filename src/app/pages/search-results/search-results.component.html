@@ -6,10 +6,10 @@
 <form action="" [formGroup]="filterForm">
   <div class="row gap-3" style="align-items: center;">
     <p class=" txt-bold">Busqueda por:</p>
-    <br-checkbox value="isxn" inputId="isxn" label="Isxn" [checked]="filterForm.get('isxn')?.value"></br-checkbox>
+    <!-- <br-checkbox value="isxn" inputId="isxn" label="Isxn" [checked]="filterForm.get('isxn')?.value"></br-checkbox>
     <br-checkbox value="title" inputId="title" label="Title" [checked]="filterForm.get('title')?.value"></br-checkbox>
     <br-checkbox value="author" inputId="author" label="Author" [checked]="filterForm.get('author')?.value"></br-checkbox>
-    <br-checkbox value="editorial" inputId="editorial" label="Editorial" [checked]="filterForm.get('editorial')?.value"></br-checkbox>
+    <br-checkbox value="editorial" inputId="editorial" label="Editorial" [checked]="filterForm.get('editorial')?.value"></br-checkbox> -->
   </div>
 </form>
 <div class="row">
@@ -23,10 +23,10 @@
 </div>
 
   <div class=" mb-5" [hidden]="hiddenTable">
-      <br-thumbnail 
+      <!-- <br-thumbnail 
       [items]="books" 
       redirect="/view_book"
-      ></br-thumbnail>
+      ></br-thumbnail> -->
   </div>
 
   <div [hidden]="hiddenLoad">

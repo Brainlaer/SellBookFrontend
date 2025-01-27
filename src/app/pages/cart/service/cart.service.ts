@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ToastService } from 'src/app/components/message/service/toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +7,6 @@ import { ToastService } from 'src/app/components/message/service/toast.service';
 export class CartService {
 
   constructor(
-    private toastService:ToastService
   ) { }
 
 
@@ -39,11 +37,11 @@ export class CartService {
 
     if (itemSaved) {
       // Si ya existe una vestimenta con la misma ID, solo incrementa las unidades
-      this.toastService.showMessage(
-        'warning',
-        'Cart',
-        `Libro: ${itemSaved.item.title}, ya existe en al carrito.`
-      );
+      // this.toastService.showMessage(
+      //   'warning',
+      //   'Cart',
+      //   `Libro: ${itemSaved.item.title}, ya existe en al carrito.`
+      // );
     } else {
       // Si no existe, agrega una nueva entrada al carrito
       const itemToSave = {
@@ -51,11 +49,11 @@ export class CartService {
         item: { ...item }
       };
       this.items.push(itemToSave);
-      this.toastService.showMessage(
-        'info',
-        'Cart',
-        `Libro: ${itemToSave.item.title}, se añadio al carrito.`
-      );
+      // this.toastService.showMessage(
+      //   'info',
+      //   'Cart',
+      //   `Libro: ${itemToSave.item.title}, se añadio al carrito.`
+      // );
       this.costo.next(this.costo.value + Number(item.cost));
     }
 
@@ -63,30 +61,30 @@ export class CartService {
   removeAll(){
     this.items=[];
     this.costo.next(0);
-    this.toastService.showMessage(
-      'success',
-      'Cart',
-      `El carrito se ha limpiado.`
-    );
+    // this.toastService.showMessage(
+    //   'success',
+    //   'Cart',
+    //   `El carrito se ha limpiado.`
+    // );
   }
   removeOne(itemSaved: any) {
     if (itemSaved.item.units > 1) {
       itemSaved.item.units--;
-      this.toastService.showMessage(
-        'success',
-        'Cart',
-        `Una unidad del libro: ${itemSaved.item.title}, ha sido removido.`
-      );
+      // this.toastService.showMessage(
+      //   'success',
+      //   'Cart',
+      //   `Una unidad del libro: ${itemSaved.item.title}, ha sido removido.`
+      // );
     } else {
       const index = this.items.indexOf(itemSaved);
       if (index > -1) {
         this.items.splice(index, 1);
       }
-      this.toastService.showMessage(
-        'success',
-        'Cart',
-        `Libro: ${itemSaved.item.title}, ha sido removido.`
-      );
+      // this.toastService.showMessage(
+      //   'success',
+      //   'Cart',
+      //   `Libro: ${itemSaved.item.title}, ha sido removido.`
+      // );
     }
     this.costo.next(this.costo.value - Number(itemSaved.item.cost));
   }
