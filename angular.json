@@ -64,10 +64,10 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "sellbookFrontend:build:production"
+              "buildTarget": "sellbookFrontend:build:production"
             },
             "development": {
-              "browserTarget": "sellbookFrontend:build:development"
+              "buildTarget": "sellbookFrontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sellbookFrontend:build"
+            "buildTarget": "sellbookFrontend:build"
             
           }
         },
