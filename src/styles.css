@@ -1,10 +1,4 @@
-@import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
-@import "primeicons/primeicons.css";
-@import "primeflex/primeflex.css";
-
-
-.column{
+/* .column{
     display: flex;
     flex: auto;
     flex-direction: column;
@@ -28,12 +22,11 @@
     flex-wrap: wrap;
 }.wrap-reverse{
     flex-wrap: wrap-reverse;
-}
+} */
 body{
     background-color: var(--main-color);
 
 }
-
 
 .br-button-icon>img{
     height: 20px;
@@ -44,7 +37,7 @@ body{
 .txt-bold{
     font-weight: bold;
 }
-:root {
+/* :root {
     --main-color:#D9D6CE;
     --main-color-disabled:#c0beb9;
     --main-txt-color: #211F1F;
@@ -72,7 +65,7 @@ body{
     --main-info-bg-color:#e7f0ff;
     --main-info-txt-color:#3570d0;
     --main-info-color-hover:#2b5aa7;
-  }
+  } */
   
 h1{
     color: var(--main-txt-color);

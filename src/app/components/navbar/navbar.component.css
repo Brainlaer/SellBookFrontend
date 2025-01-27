@@ -1,0 +1,12 @@
+.logo{
+    width: 36px;
+    height: auto;
+    border: solid 1px rgb(161, 161, 161);
+    border-radius: 19px;
+}
+.flex{
+    display: flex;
+}
+.items-center{
+    align-items: center;
+}
