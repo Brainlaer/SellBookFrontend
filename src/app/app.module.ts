@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -36,48 +36,40 @@ import { SaveInputComponent } from './components/save-input/save-input.component
 import { CheckboxComponent } from './components/form/checkbox/checkbox.component';
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    SignInComponent,
-    SignUpComponent,
-    NavbarComponent,
-    SearchResultsComponent,
-    HomeComponent,
-    FooterComponent,
-    ViewBookComponent,
-    ButtonDirective,
-    MessageComponent,
-    DropdownDirective,
-    InputDirective,
-    InputSearchBarDirective,
-    ButtonSearchBarDirective,
-    TableComponent,
-    ThumbnailComponent,
-    MiniThumbnailComponent,
-    SearchBarComponent,
-    DialogDirective,
-    DialogComponent,
-    SideBarComponent,
-    CartComponent,
-    ProfileComponent,
-    LabelInputComponent,
-    BillingComponent,
-    ThumbnailDetailsComponent,
-    CardComponent,
-    IconDirective,
-    SaveInputComponent,
-    CheckboxComponent
-    
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule    
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        SignInComponent,
+        SignUpComponent,
+        NavbarComponent,
+        SearchResultsComponent,
+        HomeComponent,
+        FooterComponent,
+        ViewBookComponent,
+        ButtonDirective,
+        MessageComponent,
+        DropdownDirective,
+        InputDirective,
+        InputSearchBarDirective,
+        ButtonSearchBarDirective,
+        TableComponent,
+        ThumbnailComponent,
+        MiniThumbnailComponent,
+        SearchBarComponent,
+        DialogDirective,
+        DialogComponent,
+        SideBarComponent,
+        CartComponent,
+        ProfileComponent,
+        LabelInputComponent,
+        BillingComponent,
+        ThumbnailDetailsComponent,
+        CardComponent,
+        IconDirective,
+        SaveInputComponent,
+        CheckboxComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
