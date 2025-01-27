@@ -8,9 +8,10 @@ import { HttpParams } from '@angular/common/http';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-search-results',
-  templateUrl: './search-results.component.html',
-  styleUrls: ['./search-results.component.css']
+    selector: 'app-search-results',
+    templateUrl: './search-results.component.html',
+    styleUrls: ['./search-results.component.css'],
+    standalone: false
 })
 export class SearchResultsComponent implements OnInit{
 

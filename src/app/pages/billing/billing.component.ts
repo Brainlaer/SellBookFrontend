@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart/service/cart.service';
 
 @Component({
-  selector: 'app-billing',
-  templateUrl: './billing.component.html',
-  styleUrls: ['./billing.component.css']
+    selector: 'app-billing',
+    templateUrl: './billing.component.html',
+    styleUrls: ['./billing.component.css'],
+    standalone: false
 })
 export class BillingComponent  implements OnInit{
 

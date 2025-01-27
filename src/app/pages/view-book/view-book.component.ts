@@ -6,9 +6,10 @@ import { handleErrors } from '../../helpers/handleerrors';
 import { CartService } from '../cart/service/cart.service';
 
 @Component({
-  selector: 'app-view-book',
-  templateUrl: './view-book.component.html',
-  styleUrls: ['./view-book.component.css']
+    selector: 'app-view-book',
+    templateUrl: './view-book.component.html',
+    styleUrls: ['./view-book.component.css'],
+    standalone: false
 })
 export class ViewBookComponent implements OnInit{
 

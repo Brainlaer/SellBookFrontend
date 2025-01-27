@@ -5,9 +5,10 @@ import { MainService } from 'src/app/services/main.service';
 import { handleErrors } from '../../helpers/handleerrors';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+    selector: 'app-sign-in',
+    templateUrl: './sign-in.component.html',
+    styleUrls: ['./sign-in.component.css'],
+    standalone: false
 })
 export class SignInComponent implements OnInit{
 
