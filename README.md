@@ -3,5 +3,7 @@
 <h2>More for SellBook</h2>
 <p>Backend: https://github.com/Branstivenson/SellBookBackend</p>
 <p>Frontend para Admin: https://github.com/Brainlaer/SellBookAdminFrontend</p>
-<h2>PC - Mobile</h2>
-<img src="https://github.com/user-attachments/assets/38d1181d-2f3f-453b-95fa-952857497bed">
+<h2>Preview</h2>
+
+https://github.com/user-attachments/assets/bff65979-10a1-4e3d-8925-f9310e0d5c4a
+
