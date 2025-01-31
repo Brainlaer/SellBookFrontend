@@ -24,12 +24,12 @@ const routes: Routes = [
   //   outlet:'navbar'
   // },
   {
-    path:'iniciar_session',
+    path:'login',
     component:SignInComponent,
     pathMatch:'full'
   },
   {
-    path:'registrarse',
+    path:'register',
     component:SignUpComponent,
     pathMatch:'full'
   },

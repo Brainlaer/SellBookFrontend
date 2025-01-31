@@ -1,0 +1,69 @@
+ <p-accordion [value]="['0','1','2']" [multiple]="true">
+      <p-accordion-panel value="0">
+        <p-accordion-header>Filtrar por:</p-accordion-header>
+        <p-accordion-content>
+          <form action="" [formGroup]="filterForm">
+            <div class="flex flex-col gap-2 mt-2">
+              <div class="flex items-center">
+                <p-checkbox inputId="filter2" name="isxn" value="isxn" formControlName="isxn" />
+                <label for="filter2" class="ml-2"> Isxn </label>
+              </div>
+              <div class="flex items-center">
+                <p-checkbox inputId="filter3" name="title" value="title" formControlName="title" />
+                <label for="filter3" class="ml-2"> Titulo </label>
+              </div>
+              <div class="flex items-center">
+                <p-checkbox inputId="filter4" name="author" value="author" formControlName="author" />
+                <label for="filter4" class="ml-2"> Autor </label>
+              </div>
+              <div class="flex items-center">
+                <p-checkbox inputId="filter1" name="editorial" value="editorial" formControlName="editorial" />
+                <label for="filter1" class="ml-2"> Editorial </label>
+              </div>
+            </div>
+          </form>
+        </p-accordion-content>
+      </p-accordion-panel>
+
+      <p-accordion-panel value="1">
+        <p-accordion-header>Categorías</p-accordion-header>
+        <p-accordion-content>
+          <div class="flex flex-col gap-2 mt-2">
+            <div class="field-checkbox">
+              <p-radiobutton [inputId]="'0'" name="'0'" [value]="0"
+                [(ngModel)]="selectedCategory" />
+              <label [for]="0" class="ml-2">Todas las categorías</label>
+            </div>
+            <div *ngFor="let category of categories" class="field-checkbox">
+                <p-radiobutton [inputId]="category.id" [name]="category.id" [value]="category.id"
+                  [(ngModel)]="selectedCategory" />
+                <label [for]="category.id" class="ml-2">{{ category.name }}</label>
+              </div>
+          </div>
+        </p-accordion-content>
+      </p-accordion-panel>
+
+
+      <p-accordion-panel value="2">
+        <p-accordion-header>Rango de precio</p-accordion-header>
+        <p-accordion-content>
+          <div class="flex flex-col gap-2 mt-2">
+            <div class="flex gap-2 items-center">
+              <p-floatlabel variant="on">
+                <p-inputnumber [(ngModel)]="min" inputId="min" />
+                <label for="min">Min</label>
+              </p-floatlabel>
+              <p>-</p>
+              <p-floatlabel variant="on">
+                <p-inputnumber [(ngModel)]="max" inputId="max" />
+                <label for="max">Max</label>
+              </p-floatlabel>
+            </div>
+            <div class="flex gap-2">
+              <p-button label="Apply" />
+            </div>
+          </div>
+        </p-accordion-content>
+      </p-accordion-panel>
+    </p-accordion>
+  

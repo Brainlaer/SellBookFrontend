@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
     selector: 'app-cart',
     templateUrl: './cart.component.html',
     styleUrls: ['./cart.component.css'],
-    standalone: false
+    standalone: true
 })
 export class CartComponent {
   visibleSideBar:boolean=false;

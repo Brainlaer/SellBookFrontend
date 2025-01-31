@@ -15,6 +15,11 @@ export class SignUpComponent implements OnInit {
   passVisible:string="password";
   showPassImg:boolean=true;
   isLoadding:boolean=false;
+  selectGender=[
+    {value:'otro', label:'Perfiero no decirlo'},
+    {value:'mujer', label:'Mujer'},
+    {value:'hombre', label:'Hombre'}
+  ]
 
   constructor(
     private mainService:MainService,

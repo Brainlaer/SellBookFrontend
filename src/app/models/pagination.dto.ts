@@ -1,0 +1,20 @@
+export interface paginationDto{
+    content:any[],
+    pageable:{
+        pageNumber:number,
+        pageSize:number,
+        sort:any,
+        offset:number,
+        paged:boolean,
+        unpaged:boolean
+    },
+    totalPages:number,
+    totalElements:number,
+    last:boolean,
+    size:number,
+    number:number,
+    sort:any,
+    numberOfElements:number,
+    first:true,
+    empty:false
+}

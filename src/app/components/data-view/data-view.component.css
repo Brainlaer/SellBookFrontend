@@ -1,0 +1,10 @@
+.image{
+    transition: .5s ease;
+    cursor: pointer;
+    border-radius: 5px;
+    
+}.image:hover{
+    scale: 1.1;
+    filter: contrast(120%);
+
+}

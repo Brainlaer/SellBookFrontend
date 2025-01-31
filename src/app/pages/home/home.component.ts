@@ -8,7 +8,6 @@ import { CartComponent } from '../cart/cart.component';
 import { CartService } from '../cart/service/cart.service';
 import { HttpParams } from '@angular/common/http';
 
-
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -20,7 +19,7 @@ export class HomeComponent implements OnInit{
   categories:Category[]=[];
   booksCategories:any[]=[];
   bookPreviewList:BookPreview[]=[];
-
+  noImage='assets/noimage.png'
   constructor( 
     private mainService:MainService, 
     private router:Router,
@@ -35,9 +34,30 @@ export class HomeComponent implements OnInit{
     window.location.href="/view_book/"+isxn;
   };
 
-  goToFindByCategory(category:number){
+  goToFindByCategory(category:string){
     this.router.navigate(['/search_results'],{queryParams:{category:category}});
   };
+  
+  getSeverity(units:any){
+    if(units<=0){
+      return 'danger';
+    }
+    else if(units>5){
+      return 'success';
+    }else{
+      return 'warn';
+    }
+  }
+  getTag(units:any){
+    if(units<=0){
+      return 'OUTOFSTOCK';
+    }
+    else if(units>5){
+      return 'INSTOCK';
+    }else{
+      return 'LOWSTOCK';
+    }
+  }
 
   async findLastestBooks() {
     let params = new HttpParams();
