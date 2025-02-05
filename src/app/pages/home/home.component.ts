@@ -30,9 +30,7 @@ export class HomeComponent implements OnInit{
     await this.findCategories();
   }
 
-  goSearchingById(isxn:number){
-    window.location.href="/view_book/"+isxn;
-  };
+
 
   goToFindByCategory(category:string){
     this.router.navigate(['/search_results'],{queryParams:{category:category}});

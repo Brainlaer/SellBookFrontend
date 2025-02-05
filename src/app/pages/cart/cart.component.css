@@ -1,0 +1,10 @@
+img {
+    height: 240px;
+    width: 180px;
+    object-fit: cover;
+    transition: .5s ease;
+    cursor: pointer;
+    border-radius: 5px;
+}::ng-deep .w-full>p-button>button{
+    width: 100%;
+}

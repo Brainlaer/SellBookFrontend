@@ -46,6 +46,13 @@ import { FloatLabelModule } from "primeng/floatlabel"
 import { DatePickerModule } from 'primeng/datepicker';
 import { FluidModule } from 'primeng/fluid';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { DialogModule } from 'primeng/dialog';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { Toast } from 'primeng/toast';
+import { Ripple } from 'primeng/ripple';
+import { CartService } from './pages/cart/service/cart.service';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -55,7 +62,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
         ViewBookComponent,
         ProfileComponent,
         BillingComponent,
-        HomeComponent
+        HomeComponent,
+        
     ],
     bootstrap: [AppComponent], 
     imports: [
@@ -73,7 +81,6 @@ import { InputNumberModule } from 'primeng/inputnumber';
         Card,
         ToggleSwitchModule,
         ToggleSwitch,
-        CartComponent,
         AccordionModule,
         CheckboxModule,
         RadioButton,
@@ -92,7 +99,13 @@ import { InputNumberModule } from 'primeng/inputnumber';
         FloatLabelModule,
         DatePickerModule,
         FluidModule,
-        InputNumberModule
+        InputNumberModule,
+        DialogModule,
+        TableModule,
+        CartComponent,
+        ToastModule,
+        Toast,
+        Ripple
     ], 
     providers: [
         provideHttpClient(withInterceptorsFromDi()),
@@ -104,7 +117,9 @@ import { InputNumberModule } from 'primeng/inputnumber';
                         darkModeSelector: '.my-app-dark'
                     }
                 }
-            })
+            }),
+            MessageService,
+            CartService
     ]
  })
 export class AppModule { }

@@ -34,7 +34,7 @@ const routes: Routes = [
     pathMatch:'full'
   },
   {
-    path:'view_book',
+    path:'view_book/:id',
     component:ViewBookComponent
   },
   {

@@ -2,14 +2,23 @@ import { Component } from '@angular/core';
 import { CartService } from './service/cart.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { TableModule } from 'primeng/table';
+import { DataViewModule } from 'primeng/dataview';
+import { DataView } from 'primeng/dataview';
+import { ButtonModule } from 'primeng/button';
+import { Tag } from 'primeng/tag';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-cart',
     templateUrl: './cart.component.html',
     styleUrls: ['./cart.component.css'],
-    standalone: true
+    standalone: true,
+    imports: [CommonModule, TableModule, ButtonModule, DataViewModule, Tag, DataView]
 })
 export class CartComponent {
+  noImage='assets/noimage.png'
+
   visibleSideBar:boolean=false;
   itemsHeader:any[]=[
     {label:'imagen',value:'image'},

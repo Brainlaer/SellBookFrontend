@@ -13,6 +13,7 @@
                                 [alt]="item.name"
                                 style="max-width: 300px"
                                 (error)="item.image=noImage"
+                                (click)="goToViewDetails(item.id)"
                             />
                             <p-tag
                                 [value]="getTag(item.units)"
@@ -53,6 +54,7 @@
                                     label="Buy Now"
                                     [disabled]="item.units === 0"
                                     class="flex-auto whitespace-nowrap"
+                                    (click)="addToCart(item)"
                                 ></button>
                                 <button pButton icon="pi pi-heart" outlined></button>
                             </div>

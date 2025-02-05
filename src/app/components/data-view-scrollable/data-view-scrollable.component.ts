@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DataView } from 'primeng/dataview';
 import { Tag } from 'primeng/tag';
 import { Rating } from 'primeng/rating';
@@ -6,6 +6,9 @@ import { ButtonModule } from 'primeng/button';
 import { SelectButton } from 'primeng/selectbutton';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { CartService } from 'src/app/pages/cart/service/cart.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -26,6 +29,18 @@ import { FormsModule } from '@angular/forms';
 export class DataViewScrollableComponent {
   @Input() items!:any;
   noImage = 'assets/noimage.png'
+
+  constructor(
+    private cartService:CartService,
+    private router:Router
+  ){
+
+  }
+  
+
+  addToCart(item:any){
+    this.cartService.addOne(item);
+  }
 
 
   getSeverity(units: any) {
@@ -48,4 +63,7 @@ export class DataViewScrollableComponent {
       return 'LOWSTOCK';
     }
   }
+  goToViewDetails(id:number){
+    this.router.navigateByUrl(`/view_book/${id}`)
+  };
 }

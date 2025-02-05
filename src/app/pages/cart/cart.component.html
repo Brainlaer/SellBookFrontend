@@ -1,13 +1,45 @@
-<!-- <br-side-bar [visible]="visibleSideBar" (hide)="visibleSideBar=false">
-  <br-table [headers]="itemsHeader" [items]="itemsBody" [action]="itemsActions" (emitRowId)="removefromCart($event)"></br-table> -->
-  <h1>Total:</h1>
-  <!-- <h2>$ {{totalCost$|async|number:totalCostLength+'.2-2'}}</h2> -->
-  <div class="row wrap center gap-1">
-    <button brButton severity="success" (click)="goToPay()">Ir a pagar
-      <img src="../../../assets/wallet.svg" alt="">
-    </button>
-    <button brButton severity="danger" (click)="cleanCart()">Limpiar el carrito
-      <img src="../../../assets/trash.svg" alt="">
-    </button>
-  </div>
-<!-- </br-side-bar> -->
+<div class="flex flex-col w-full">
+    <div class="flex justify-center" *ngFor="let item of itemsBody; let first = first" class="flex justify-center">
+        <div class="flex flex-col w-full p-3"
+            [ngClass]="{ 'border-t border-surface-200 dark:border-surface-700': !first }">
+            <div class="flex justify-center">
+                <img [src]="item.image" [alt]="item.title" (error)="item.image=noImage" />
+            </div>
+            <div class="flex">
+                <div class="flex.col w-full">
+                    <div class="flex flex-row mt-4 mb-2">
+                        <div class="flex flex-col">
+                            <span class="font-medium text-secondary text-sm">{{ item.title }}</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-row justify-between">
+                        <span class="text-xl font-semibold text-surface-900 dark:text-surface-0">{{
+                            '$' + item.cost
+                            }}</span>
+                        <div class="flex flex-row-reverse md:flex-row gap-2">
+                            <p-button icon="pi pi-trash" severity="danger" [outlined]="true"
+                                (onClick)="removefromCart(item)" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="flex mt-3" style="position: sticky; bottom:  -1.5rem; background-color: white;padding-bottom: 1.5rem;">
+    <div class="flex flex-col gap-4 w-full" style="border-top: solid rgb(192, 192, 192) .5px;">
+        <div class="flex">
+            <div class="flex flex-col w-full">
+                <h1 class="text-xl font-bold">Total:</h1>
+            <h2>$ {{totalCost$|async|number:totalCostLength+'.2-2'}}</h2>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="flex flex-col gap-2 w-full">
+                <p-button label="Ir a pagar" (onClick)="goToPay()"/>
+                <p-button label="Limpiar el carrito" severity="danger" [outlined]="true" (onClick)="cleanCart()"/>
+            </div>
+        </div>
+    </div>
+
+</div>

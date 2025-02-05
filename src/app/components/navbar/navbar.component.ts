@@ -15,6 +15,8 @@ import { DrawerModule } from 'primeng/drawer';
 import { CartComponent } from 'src/app/pages/cart/cart.component';
 import { Router } from '@angular/router';
 import { SpeedDialModule } from 'primeng/speeddial';
+import { CartService } from 'src/app/pages/cart/service/cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -29,14 +31,15 @@ export class NavbarComponent implements OnInit {
   items!: MenuItem[];
   itemsProfile!: MenuItem[];
   isVisibleDrawer: boolean = false;
+  totalItems$:Observable<number>=this.cartService.countItems();
 
   constructor(
-    private router: Router
+    private router: Router,
+    private cartService:CartService
   ) { }
 
   ngOnInit(): void {
-    this.items = [
-    ];
+    this.items = [];
     this.itemsProfile = [
       {
         label: 'Iniciar sesión',
@@ -54,6 +57,7 @@ export class NavbarComponent implements OnInit {
     const element = document.querySelector('html');
     element?.classList.toggle('my-app-dark');
   }
+
   toggleVisibleDrawer() {
     if (this.isVisibleDrawer) {
       return this.isVisibleDrawer = false;

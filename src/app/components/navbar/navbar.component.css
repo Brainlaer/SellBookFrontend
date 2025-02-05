@@ -15,4 +15,8 @@ p-avatar{
     cursor: pointer;
 }.position-absolute{
     position: absolute;
+}p-menubar{
+    position: fixed !important;
+    top: 0;
+    width: 100%;
 }
