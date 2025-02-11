@@ -53,6 +53,9 @@ import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { Ripple } from 'primeng/ripple';
 import { CartService } from './pages/cart/service/cart.service';
+import { StepperModule } from 'primeng/stepper';
+import { TextareaModule } from 'primeng/textarea';
+import { StepsModule } from 'primeng/steps';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -62,8 +65,7 @@ import { CartService } from './pages/cart/service/cart.service';
         ViewBookComponent,
         ProfileComponent,
         BillingComponent,
-        HomeComponent,
-        
+        HomeComponent
     ],
     bootstrap: [AppComponent], 
     imports: [
@@ -105,7 +107,10 @@ import { CartService } from './pages/cart/service/cart.service';
         CartComponent,
         ToastModule,
         Toast,
-        Ripple
+        Ripple,
+        StepperModule,
+        TextareaModule,
+        StepsModule
     ], 
     providers: [
         provideHttpClient(withInterceptorsFromDi()),
@@ -119,7 +124,7 @@ import { CartService } from './pages/cart/service/cart.service';
                 }
             }),
             MessageService,
-            CartService
+            CartService,
     ]
  })
 export class AppModule { }
