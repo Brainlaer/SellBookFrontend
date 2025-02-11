@@ -1,111 +1,82 @@
-import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { merge } from 'rxjs';
-import { SearchResultsComponent } from 'src/app/pages/search-results/search-results.component';
-import { IAction } from '../table/model/action';
+import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
+import { Menubar } from 'primeng/menubar';
+import { BadgeModule } from 'primeng/badge';
+import { AvatarModule } from 'primeng/avatar';
+import { InputTextModule } from 'primeng/inputtext';
+import { CommonModule } from '@angular/common';
+import { Ripple } from 'primeng/ripple';
+import { MenubarModule } from 'primeng/menubar';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { ToggleSwitch } from 'primeng/toggleswitch';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { DrawerModule } from 'primeng/drawer';
 import { CartComponent } from 'src/app/pages/cart/cart.component';
-import { ToastService } from '../message/service/toast.service';
+import { Router } from '@angular/router';
+import { SpeedDialModule } from 'primeng/speeddial';
+import { CartService } from 'src/app/pages/cart/service/cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrl: './navbar.component.css',
+  standalone: true,
+  imports: [Menubar, BadgeModule, AvatarModule, InputTextModule, Ripple, CommonModule, MenubarModule, SplitButtonModule, ToggleSwitch, FormsModule, ButtonModule, DrawerModule, CartComponent, SpeedDialModule],
 })
-export class NavbarComponent{
+export class NavbarComponent implements OnInit {
 
-  categoryParam!:string;
-  titleParam!:string;
-  authorParam!:string;
-  editorialParam!:string;
-  isxnParam!:string;
-  limitParam:string='50';
-  offsetParam:string='0';
+  isDark: boolean = false;
+  items!: MenuItem[];
+  itemsProfile!: MenuItem[];
+  isVisibleDrawer: boolean = false;
+  totalItems$:Observable<number>=this.cartService.countItems();
 
-
-  categorySearch!:number;
-  username:string;
-  token:string;
-  visible:boolean=false;
-  @ViewChild(CartComponent) cartComponent!: CartComponent;  
   constructor(
-    private route:ActivatedRoute, 
-    private router:Router,
-    private renderer:Renderer2,
-    private toastService:ToastService
-  ){
-      this.token=String(sessionStorage.getItem('token')||null);
-      this.username=sessionStorage.getItem('username')?.split('@').at(0)||'Iniciar Sessión';
-    }
+    private router: Router,
+    private cartService:CartService
+  ) { }
 
-  closeSession(){
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('username')
-    this.token='';
-    this.username='';
-    this.toastService.showMessage(
-      'success',
-      'Logout',
-      'Sessión cerrada exitosamente'
-    )
+  ngOnInit(): void {
+    this.items = [];
+    this.itemsProfile = [
+      {
+        label: 'Iniciar sesión',
+        icon: 'pi pi-sign-in',
+        routerLink: 'login'
+      }, {
+        label: 'Registrar',
+        icon: 'pi pi-user-plus',
+        routerLink: 'register'
+      }
+    ]
   }
 
-  onClickUser(){
+  toggleDarkMode() {
+    const element = document.querySelector('html');
+    element?.classList.toggle('my-app-dark');
+  }
+
+  toggleVisibleDrawer() {
+    if (this.isVisibleDrawer) {
+      return this.isVisibleDrawer = false;
+    } else {
+      return this.isVisibleDrawer = true;
+    }
+  }
+
+  navigateTo(uri: string) {
+    this.router.navigateByUrl(`${uri}`)
+  }
+
+  goToProfile(){
     if(sessionStorage.getItem('token')){
-      this.router.navigate(['/profile'],{queryParams:{id:String(sessionStorage.getItem('username'))}})
+      this.navigateTo('profile')
     }else{
-      this.router.navigateByUrl('iniciar_session')
+      this.navigateTo('login')
     }
   }
-  @ViewChild('spandible', { static: false }) divspandible!: ElementRef;
-  @ViewChild('showSpandible', { static: false }) imgspandible!: ElementRef;
-
-  onShowHideCart(){
-    this.cartComponent.showHideCart();
-  }
-  getCategory(){
-    this.route.queryParams.subscribe(params=>{
-      this.categoryParam=params['category'];
-      this.titleParam=params['title'];
-      this.authorParam=params['author'];
-      this.editorialParam=params['editorial'];
-      this.isxnParam=params['isxn'];
-    });   
-  }
-  sendValues(string:any){
-    this.getCategory();
-    this.router.navigate(['/search_results'],{queryParams:{title:string,category:this.categoryParam}});
-  }
-  
-  showHide(){
-    console.log(this.visible)
-    if(this.visible==true){
-      this.renderer.removeStyle(this.divspandible?.nativeElement, 'display');
-      this.renderer.removeStyle(this.imgspandible?.nativeElement, 'transform')
-      this.visible=false
-    } else{
-      this.renderer.setStyle(this.divspandible?.nativeElement, 'display', 'flex');
-      this.renderer.setStyle(this.imgspandible?.nativeElement, 'transform', 'rotate(0.5turn)');
-      this.visible=true
-    }
-  }
-
-
-
-  @HostListener('document:click', ['$event'])
-  handleClickOutside(event: Event) {
-    if (
-      this.visible &&
-      this.divspandible &&
-      !this.divspandible.nativeElement.contains(event.target) &&
-      !this.imgspandible.nativeElement.contains(event.target)
-    ) {
-      this.renderer.removeStyle(this.divspandible.nativeElement, 'display');
-      this.renderer.removeStyle(this.imgspandible.nativeElement, 'transform');
-      this.visible = false;
-    }
-  }
-
 
 
 }

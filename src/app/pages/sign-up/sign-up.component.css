@@ -21,4 +21,6 @@ small{
     font-weight: 600;
     font-family: serif;
     color:var(--main-error-txt-color);
+}::ng-deep .p-datepicker{
+    width: 100%;
 }

@@ -7,69 +7,124 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { HomeComponent } from './pages/home/home.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { ViewBookComponent } from './pages/view-book/view-book.component';
-import { ButtonDirective } from './components/button/button.directive';
-import { MessageComponent } from './components/message/message.component';
-import { DropdownDirective } from './components/dropdown/dropdown.directive';
-import { InputDirective } from './components/input/input.directive';
-import { InputSearchBarDirective } from './components/search-bar/input-search-bar.directive';
-import { ButtonSearchBarDirective } from './components/search-bar/button-search-bar.directive';
-import { TableComponent } from './components/table/table.component';
-import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
-import { MiniThumbnailComponent } from './components/mini-thumbnail/mini-thumbnail.component';
-import { SearchBarComponent } from './components/search-bar/search-bar/search-bar.component';
-import { DialogDirective } from './components/dialog/dialog.directive';
-import { DialogComponent } from './components/dialog/dialog/dialog.component';
-import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { LabelInputComponent } from './components/input/label-input/label-input.component';
 import { BillingComponent } from './pages/billing/billing.component';
-import { ThumbnailDetailsComponent } from './components/thumbnail-details/thumbnail-details.component';
-import { CardComponent } from './components/card/card.component';
-import { IconDirective } from './components/icon/icon.directive';
-import { SaveInputComponent } from './components/save-input/save-input.component';
-import { CheckboxComponent } from './components/form/checkbox/checkbox.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ButtonModule } from 'primeng/button';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { providePrimeNG } from 'primeng/config';
+import { MyPreset } from 'src/assets/my-preset';
+import { DataViewModule } from 'primeng/dataview';
 
+import { DataView } from 'primeng/dataview';
+import { Tag } from 'primeng/tag';
+import { Rating } from 'primeng/rating';
+import { SelectButton } from 'primeng/selectbutton';
+import { Card } from 'primeng/card';
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
+import { ToggleSwitch } from 'primeng/toggleswitch';
+import { AccordionModule } from 'primeng/accordion';
+import { CheckboxModule } from 'primeng/checkbox';
+import { RadioButton } from 'primeng/radiobutton';
+import { Fluid } from 'primeng/fluid';
+import { InputNumber } from 'primeng/inputnumber';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { InputTextModule } from 'primeng/inputtext';
+import { SelectModule } from 'primeng/select';
+import { FloatLabel } from 'primeng/floatlabel';
+import { DrawerModule } from 'primeng/drawer';
+import { DataViewComponent } from './components/data-view/data-view.component';
+import { DataViewScrollableComponent } from './components/data-view-scrollable/data-view-scrollable.component';
+import { FiltersComponent } from './components/filters/filters.component';
+import { Menubar } from 'primeng/menubar';
+import { FloatLabelModule } from "primeng/floatlabel"
+import { DatePickerModule } from 'primeng/datepicker';
+import { FluidModule } from 'primeng/fluid';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { DialogModule } from 'primeng/dialog';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { Toast } from 'primeng/toast';
+import { Ripple } from 'primeng/ripple';
+import { CartService } from './pages/cart/service/cart.service';
+import { StepperModule } from 'primeng/stepper';
+import { TextareaModule } from 'primeng/textarea';
+import { StepsModule } from 'primeng/steps';
 
 @NgModule({ declarations: [
         AppComponent,
         SignInComponent,
         SignUpComponent,
-        NavbarComponent,
         SearchResultsComponent,
-        HomeComponent,
-        FooterComponent,
         ViewBookComponent,
-        ButtonDirective,
-        MessageComponent,
-        DropdownDirective,
-        InputDirective,
-        InputSearchBarDirective,
-        ButtonSearchBarDirective,
-        TableComponent,
-        ThumbnailComponent,
-        MiniThumbnailComponent,
-        SearchBarComponent,
-        DialogDirective,
-        DialogComponent,
-        SideBarComponent,
-        CartComponent,
         ProfileComponent,
-        LabelInputComponent,
         BillingComponent,
-        ThumbnailDetailsComponent,
-        CardComponent,
-        IconDirective,
-        SaveInputComponent,
-        CheckboxComponent
+        HomeComponent
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent], 
+    imports: [
+        BrowserModule,
         AppRoutingModule,
         FormsModule,
-        ReactiveFormsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        ReactiveFormsModule,
+        NavbarComponent,
+        ButtonModule,
+        DataViewModule,
+        DataView,
+        Tag,
+        Rating,
+        SelectButton,
+        Card,
+        ToggleSwitchModule,
+        ToggleSwitch,
+        AccordionModule,
+        CheckboxModule,
+        RadioButton,
+        Fluid,
+        InputNumber,
+        InputGroupModule,
+        InputGroupAddonModule,
+        InputTextModule,
+        SelectModule,
+        FloatLabel,
+        DrawerModule,
+        DataViewComponent,
+        DataViewScrollableComponent,
+        FiltersComponent,
+        Menubar,
+        FloatLabelModule,
+        DatePickerModule,
+        FluidModule,
+        InputNumberModule,
+        DialogModule,
+        TableModule,
+        CartComponent,
+        ToastModule,
+        Toast,
+        Ripple,
+        StepperModule,
+        TextareaModule,
+        StepsModule
+    ], 
+    providers: [
+        provideHttpClient(withInterceptorsFromDi()),
+            provideAnimationsAsync(),
+            providePrimeNG({
+                theme: {
+                    preset: MyPreset,
+                    options:{
+                        darkModeSelector: '.my-app-dark'
+                    }
+                }
+            }),
+            MessageService,
+            CartService,
+    ]
+ })
 export class AppModule { }

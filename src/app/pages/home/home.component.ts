@@ -3,28 +3,26 @@ import { Category } from 'src/app/models/category';
 import { BookPreview } from 'src/app/models/book-preview';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from 'src/app/services/main.service';
-import { ToastService } from 'src/app/components/message/service/toast.service';
 import { handleErrors } from '../../helpers/handleerrors';
 import { CartComponent } from '../cart/cart.component';
 import { CartService } from '../cart/service/cart.service';
 import { HttpParams } from '@angular/common/http';
 
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css'],
+    standalone: false
 })
 export class HomeComponent implements OnInit{
 
   categories:Category[]=[];
   booksCategories:any[]=[];
   bookPreviewList:BookPreview[]=[];
-
+  noImage='assets/noimage.png'
   constructor( 
     private mainService:MainService, 
     private router:Router,
-    private toastService:ToastService
   ){}
 
   async ngOnInit(): Promise<void> {
@@ -32,13 +30,32 @@ export class HomeComponent implements OnInit{
     await this.findCategories();
   }
 
-  goSearchingById(isxn:number){
-    window.location.href="/view_book/"+isxn;
-  };
 
-  goToFindByCategory(category:number){
+
+  goToFindByCategory(category:string){
     this.router.navigate(['/search_results'],{queryParams:{category:category}});
   };
+  
+  getSeverity(units:any){
+    if(units<=0){
+      return 'danger';
+    }
+    else if(units>5){
+      return 'success';
+    }else{
+      return 'warn';
+    }
+  }
+  getTag(units:any){
+    if(units<=0){
+      return 'OUTOFSTOCK';
+    }
+    else if(units>5){
+      return 'INSTOCK';
+    }else{
+      return 'LOWSTOCK';
+    }
+  }
 
   async findLastestBooks() {
     let params = new HttpParams();
@@ -48,7 +65,7 @@ export class HomeComponent implements OnInit{
       next: (response: any) => {
         this.bookPreviewList = response.content;
       }, error: (error) => {
-        handleErrors(error, this.toastService, 'Book');
+        // handleErrors(error, this.toastService, 'Book');
       }
     });
   };
@@ -59,7 +76,7 @@ export class HomeComponent implements OnInit{
         this.categories = data.detail;
         this.findBooksTopOnCategory();
       }, error: (error) => {
-        handleErrors(error, this.toastService, 'Category');
+        // handleErrors(error, this.toastService, 'Category');
       }
     })
   }
@@ -76,7 +93,7 @@ export class HomeComponent implements OnInit{
             const seccion={'seccion':category.name,'data':response.content}
             this.booksCategories.push(seccion);
           },error:(error)=>{
-            handleErrors(error, this.toastService, 'Book');
+            // handleErrors(error, this.toastService, 'Book');
           }
         })
     })

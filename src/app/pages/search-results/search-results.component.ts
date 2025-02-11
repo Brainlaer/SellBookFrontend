@@ -1,24 +1,25 @@
-import { ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, ParamMap, Router, RouterLink } from '@angular/router';
 import { BookPreview } from 'src/app/models/book-preview';
 import { Category } from 'src/app/models/category';
 import { handleErrors } from '../../helpers/handleerrors';
-import { ToastService } from 'src/app/components/message/service/toast.service';
 import { MainService } from 'src/app/services/main.service';
 import { HttpParams } from '@angular/common/http';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { paginationDto } from 'src/app/models/pagination.dto';
 
 @Component({
-  selector: 'app-search-results',
-  templateUrl: './search-results.component.html',
-  styleUrls: ['./search-results.component.css']
+    selector: 'app-search-results',
+    templateUrl: './search-results.component.html',
+    styleUrls: ['./search-results.component.css'],
+    standalone: false
 })
 export class SearchResultsComponent implements OnInit{
 
-  limitParam:string='50';
+  limitParam:string='10';
   offsetParam:string='0';
 
-  books:any[]=[];
+  books!:paginationDto;
   filterForm!:FormGroup;
   currentCategory!:any;
 
@@ -30,12 +31,16 @@ export class SearchResultsComponent implements OnInit{
   hiddenEmpty:boolean=true;
 
 
+  selectedCategories:any;
+  min!:number;
+  max!:number;
+  noImage='assets/noimage.png'
+  isVisibleDrawer:boolean=false;
 
   constructor(
     private mainService:MainService, 
     private route:ActivatedRoute, 
     private router:Router,
-    private toastService:ToastService,
     private fb:FormBuilder
   ){
     this.filterForm=fb.group({
@@ -46,7 +51,13 @@ export class SearchResultsComponent implements OnInit{
       isxn: new FormControl('')
     })
   }
-
+  toggleVisibleDrawer(){
+    if(this.isVisibleDrawer){
+      return this.isVisibleDrawer=false;
+    }else{
+      return this.isVisibleDrawer=true;
+    }
+  }
   ngOnInit(): void {
     this.route.queryParams.subscribe(params=>{
       this.filterForm.patchValue({
@@ -56,33 +67,50 @@ export class SearchResultsComponent implements OnInit{
         'editorial':params['editorial'],
         'isxn':params['isxn'],
       })
-      this.currentCategory=this.categories.find((category)=>category.id==Number(this.filterForm.get('category')?.value))||{name:'Todos los generos'};
+      this.currentCategory=this.categories.find((category)=>category.id==this.filterForm.get('category')?.value)||{name:'Todos los generos'};
       this.findBooks();
     });    
     this.findAllCategories();
   }
 
+  getSeverity(units:any){
+    if(units<=0){
+      return 'danger';
+    }
+    else if(units>5){
+      return 'success';
+    }else{
+      return 'warn';
+    }
+  }
+  getTag(units:any){
+    if(units<=0){
+      return 'OUTOFSTOCK';
+    }
+    else if(units>5){
+      return 'INSTOCK';
+    }else{
+      return 'LOWSTOCK';
+    }
+  }
+
   goToViewBook(isxn:number){
     window.location.href="/view_book/"+isxn;
   }
+  screenWidth: number = window.innerWidth;
 
-
-
-
-
-  finishLoad(){
-    if(this.books.length>0){
-      this.hiddenEmpty=true;
-      this.hiddenTable=false;
-      this.hiddenLoad=true;
-
-    }else{
-      this.hiddenEmpty=false;
-      this.hiddenTable=true;
-      this.hiddenLoad=true;
-
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.screenWidth = window.innerWidth;
+    if(this.screenWidth>1100){
+      this.isVisibleDrawer=false;
     }
   }
+
+
+
+
+
   startLoad(){
       this.hiddenEmpty=true;
       this.hiddenTable=true;
@@ -106,7 +134,7 @@ export class SearchResultsComponent implements OnInit{
           this.categories=response.detail;
 
         },error:(error)=>{
-          handleErrors(error, this.toastService);
+          // handleErrors(error, this.toastService);
         }
       })
   }
@@ -127,10 +155,10 @@ export class SearchResultsComponent implements OnInit{
 
     this.mainService.getData('book', params).subscribe({
       next: (response: any) => {
-        this.books = response.content;
+        this.books = response;
         console.log(this.books)
       }, error: (error) => {
-        handleErrors(error, this.toastService);
+        // handleErrors(error, this.toastService);
       }
     })
   }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { BehaviorSubject } from 'rxjs';
-import { ToastService } from 'src/app/components/message/service/toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,94 +8,80 @@ import { ToastService } from 'src/app/components/message/service/toast.service';
 export class CartService {
 
   constructor(
-    private toastService:ToastService
+    private messageService: MessageService
   ) { }
-
 
   items: any[] = [];
   costo: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  totalItems: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+
 
   getAll() {
     return this.items;
-
   }
+  
   getTotal() {
     return this.costo.asObservable();
   }
 
-  addOne(itemSelected: any, units:number=1) {
-    const item={
-      id:itemSelected.isxn,
-      image:itemSelected.image,
-      title:itemSelected.title,
-      author:itemSelected.author,
-      cost:itemSelected.cost,
-      }
+  addOne(itemSelected: any, units: number = 1) {
+    const item = {
+      id: itemSelected.id,
+      image: itemSelected.image,
+      title: itemSelected.title,
+      author: itemSelected.author,
+      cost: itemSelected.cost,
+    }
     // Busca una vestimenta existente que coincida con el ID
-    let itemSaved = this.items.find(data =>
-      data.item.id == item.id
+    let itemSaved = this.items.find((item: any) =>
+      itemSelected.id == item.id
     );
-    console.log(itemSaved, item)
-
     if (itemSaved) {
       // Si ya existe una vestimenta con la misma ID, solo incrementa las unidades
-      this.toastService.showMessage(
-        'warning',
-        'Cart',
-        `Libro: ${itemSaved.item.title}, ya existe en al carrito.`
-      );
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Cart',
+        detail: `Libro: ${itemSaved.title}, ya existe en al carrito`
+      });
     } else {
       // Si no existe, agrega una nueva entrada al carrito
-      const itemToSave = {
-        id: this.items.length + 1,
-        item: { ...item }
-      };
-      this.items.push(itemToSave);
-      this.toastService.showMessage(
-        'info',
-        'Cart',
-        `Libro: ${itemToSave.item.title}, se añadio al carrito.`
-      );
+      this.items.push(item);
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Cart',
+        detail: `Libro: ${itemSelected.title}, se añadio al carrito.`
+      });
+      this.totalItems.next(this.items.length);
       this.costo.next(this.costo.value + Number(item.cost));
     }
-
   }
-  removeAll(){
-    this.items=[];
+
+  removeAll() {
+    this.items = [];
     this.costo.next(0);
-    this.toastService.showMessage(
-      'success',
-      'Cart',
-      `El carrito se ha limpiado.`
-    );
-  }
-  removeOne(itemSaved: any) {
-    if (itemSaved.item.units > 1) {
-      itemSaved.item.units--;
-      this.toastService.showMessage(
-        'success',
-        'Cart',
-        `Una unidad del libro: ${itemSaved.item.title}, ha sido removido.`
-      );
-    } else {
-      const index = this.items.indexOf(itemSaved);
-      if (index > -1) {
-        this.items.splice(index, 1);
-      }
-      this.toastService.showMessage(
-        'success',
-        'Cart',
-        `Libro: ${itemSaved.item.title}, ha sido removido.`
-      );
-    }
-    this.costo.next(this.costo.value - Number(itemSaved.item.cost));
+    this.totalItems.next(this.items.length)
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Cart',
+      detail: `El carrito se ha limpiado.`
+    });
   }
 
-  countItems(vestimentaList: any): boolean {
-    if (vestimentaList.length > 0) {
-      return true;
-    } else {
-      return false;
+  removeOne(itemSaved: any) {
+    const index = this.items.indexOf(itemSaved);
+    if (index > -1) {
+      this.items.splice(index, 1);
     }
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Cart',
+      detail: `Libro: ${itemSaved.title}, ha sido removido.`
+    });
+    this.totalItems.next(this.items.length);
+    this.costo.next(this.costo.value - Number(itemSaved.cost));
+  }
+
+  countItems() {
+    return this.totalItems.asObservable();
   }
 }

@@ -1,3 +1,6 @@
-.container{
-    padding: 10px;
+app-navbar{
+    position: sticky;
+    top: 0px;
+    z-index: 999;
+    height: 68px;
 }

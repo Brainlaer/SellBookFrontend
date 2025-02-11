@@ -5,7 +5,6 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { ViewBookComponent } from './pages/view-book/view-book.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { BillingComponent } from './pages/billing/billing.component';
  
@@ -20,22 +19,22 @@ const routes: Routes = [
     component:SearchResultsComponent,
     pathMatch:'full'
   },
-  {path:'navbar',
-    component:NavbarComponent,
-    outlet:'navbar'
-  },
+  // {path:'navbar',
+  //   component:NavbarComponent,
+  //   outlet:'navbar'
+  // },
   {
-    path:'iniciar_session',
+    path:'login',
     component:SignInComponent,
     pathMatch:'full'
   },
   {
-    path:'registrarse',
+    path:'register',
     component:SignUpComponent,
     pathMatch:'full'
   },
   {
-    path:'view_book',
+    path:'view_book/:id',
     component:ViewBookComponent
   },
   {

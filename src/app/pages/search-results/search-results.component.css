@@ -1,72 +1,28 @@
-.imagen{
-    width: 100px;
-    margin: 5px;
-    align-self: center;
-    border-radius: 4px;
-}
-.imagen:hover{
-    box-shadow: 0px 5px 5px 5px  #c0c0c0;
-    
-}
-.info-book{
-    text-align: center;
-}
-.centro{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    
+.accordion{
+    max-width: 400px;
+    width: 100%;
+    visibility: visible;
+    height: 92.5vh;
+    overflow-y: scroll;
+    position: sticky;
+    top: 68px;
+    z-index: 988;
+    border-right: solid 1px rgb(211, 211, 211);
 }
 
-.space{
-    justify-content: space-between;
+.accordion-drawer{
+    max-width: 400px;
+    width: 100%;
+    visibility: visible;
+    height: 92.5vh;
+    overflow-y: scroll;
+    z-index: 988;
+    border-right: solid 1px rgb(211, 211, 211);
 }
-.card-center{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;   
-}.card{
-    border:solid #1aaf9d 3px;
-    width: 206px;
-    border-radius: 20px;
-    background-color: #1b3735;
-}.card-img{
-    width: 100px;
-    height: 153px;
-    border-radius: 17px;
-    transition: transform 0.3s ease;
-}.card-body{
-    text-align: center;
-}.card-title{
-    color: #1aaf9d;
-    text-transform: uppercase;
-    max-width: 190px;
-}.card-text{
-    color: #1aaf9d;
-    max-width: 190px;
 
-}.category{
-    flex-wrap: wrap;
-}.card-img:hover{
 
-    transform: scale(1.09);
-    z-index: 1;
-}.btn{
+::ng-deep input {
     width: 100%;
 }
 
-.row-categories{
-    display: flex;
-    flex-direction: row;
-    overflow: scroll;
-    gap: 10px;
-    padding: 20px 20px;
-}.row-categories>button{
-    flex: none;
-}.load{
-    width: 100px;
-    height: 100px;
-}.empty-icon{
-    width: 100px;
-    height: 100px;
-}
+
