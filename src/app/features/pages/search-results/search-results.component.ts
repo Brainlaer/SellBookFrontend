@@ -2,7 +2,6 @@ import { ChangeDetectorRef, Component, HostListener, OnChanges, OnInit, SimpleCh
 import { ActivatedRoute, NavigationEnd, ParamMap, Router, RouterLink } from '@angular/router';
 import { BookPreview } from 'src/app/core/models/book-preview';
 import { Category } from 'src/app/core/models/category';
-import { HandleErrors } from '../../../core/utils/handleerrors';
 import { HttpParams } from '@angular/common/http';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { paginationDto } from 'src/app/core/models/pagination.dto';

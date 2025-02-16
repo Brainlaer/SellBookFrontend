@@ -13,7 +13,7 @@
 </div>
 
 <section>
-    <img *ngFor="let item of booksPreview" [src]="item.image" [alt]="item.title" (error)="item.image=handleImageError()" (click)="navigate('details',{id:item.id})">
+    <img *ngFor="let item of booksPreview" [src]="item.image" [alt]="item.title" (error)="item.image=onNoImage()" (click)="navigate('details',{id:item.id})">
 </section>
 
 <div class="flex gap-2 pt-8 pb-4 pl-4 pr-4">
@@ -26,9 +26,9 @@
         (click)="navigate('search_results',{category:category.id})" />
 </div>
 
-<div *ngFor="let categoryBooks of categoriesBooks">
-    <div class="flex gap-2 pt-8 pb-4 pl-4 pr-4">
-        <h1 class="text-2xl font-semibold">{{categoryBooks.seccion}}</h1>
+<div *ngFor="let categoryBooks of categoriesBooks" class="p-4">
+    <div class="flex gap-2 p-4">
+        <h1 class="text-2xl font-semibold">{{categoryBooks.categoryName}}</h1>
     </div>
-    <app-data-view-scrollable [items]="categoryBooks.data" />
+    <app-data-view-scrollable [items]="categoryBooks.books" />
 </div>

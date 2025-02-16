@@ -3,9 +3,8 @@ import { Category } from 'src/app/core/models/category';
 import { BookPreview } from 'src/app/core/models/book-preview';
 import { Params, Router } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
-import { HandleErrors } from 'src/app/core/utils/handleerrors';
-import { MessageService } from 'primeng/api';
 import { MainService } from 'src/app/core/services/main.service';
+import { noImage } from 'src/app/core/utils/constants';
 
 @Component({
     selector: 'app-home',
@@ -13,7 +12,7 @@ import { MainService } from 'src/app/core/services/main.service';
     styleUrls: ['./home.component.css'],
     standalone: false
 })
-export class HomeComponent extends HandleErrors implements OnInit {
+export class HomeComponent implements OnInit {
 
   categories:Category[]=[];
   categoriesBooks:any[]=[];
@@ -22,41 +21,22 @@ export class HomeComponent extends HandleErrors implements OnInit {
   constructor( 
     private mainService:MainService, 
     private router:Router,
-  ){
-    super();
-  }
+  ){  }
 
   async ngOnInit(): Promise<void> {
     await this.findLastestBooks();
     await this.findCategories();
+    await this.findBooksTopOnCategory();
+
   }
 
+  onNoImage(){
+    return noImage;
+  }
 
   navigate(uri:string,queryParams?:Params){
     this.router.navigate([uri],{queryParams:queryParams});
   };
-  
-  // getSeverity(units:any){
-  //   if(units<=0){
-  //     return 'danger';
-  //   }
-  //   else if(units>5){
-  //     return 'success';
-  //   }else{
-  //     return 'warn';
-  //   }
-  // }
-
-  // getTag(units:any){
-  //   if(units<=0){
-  //     return 'OUTOFSTOCK';
-  //   }
-  //   else if(units>5){
-  //     return 'INSTOCK';
-  //   }else{
-  //     return 'LOWSTOCK';
-  //   }
-  // }
 
   async findLastestBooks() {
     let params = new HttpParams();
@@ -66,16 +46,16 @@ export class HomeComponent extends HandleErrors implements OnInit {
       next: (response: any) => {
         this.booksPreview = response.content;
       }, error: (error) => {
-        this.handleErrors(error, 'Book');
       }
     });
   };
 
-  async findCategories() {
+  async findCategories():Promise<any> {
+    console.log(' await')
+
     await this.mainService.getData('category').subscribe({
       next: (data: any) => {
-        this.categories = data.detail;
-        this.findBooksTopOnCategory();
+        return this.categories = data.detail;
       }, error: (error) => {
         // handleErrors(error, this.toastService, 'Category');
       }
@@ -83,6 +63,7 @@ export class HomeComponent extends HandleErrors implements OnInit {
   }
 
   async findBooksTopOnCategory(){
+    console.log('no await')
     this.categories.forEach(async (category)=>{
       let params = new HttpParams();
       params = params.append('category', category.id);
@@ -91,10 +72,14 @@ export class HomeComponent extends HandleErrors implements OnInit {
 
       await this.mainService.getData(`book`, params).subscribe({
           next:(response:any)=>{
-            const seccion={'seccion':category.name,'data':response.content}
-            this.categoriesBooks.push(seccion);
+            if(Array(response.content).length>0){
+              const categoryBooks={'categoryName':category.name,'books':response.content}
+              return this.categoriesBooks.push(categoryBooks);
+            }else{
+              return console.warn(`La categoría ${category.name}, esta vacía`)
+            }
           },error:(error)=>{
-            // handleErrors(error, this.toastService, 'Book');
+            return console.error(`La categoría ${category.name}, no se encontró`)
           }
         })
     })

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HandleErrors } from '../../../core/utils/handleerrors';
 import { MainService } from 'src/app/core/services/main.service';
 
 @Component({

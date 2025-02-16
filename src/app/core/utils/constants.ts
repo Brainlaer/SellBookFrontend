@@ -1,0 +1,1 @@
+export const noImage='/assets/noimage.png'

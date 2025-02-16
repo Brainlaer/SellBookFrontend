@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../environments/environment';
+import { environment } from 'src/app/environments/environment';
 import { catchError, Observable, throwError } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
 

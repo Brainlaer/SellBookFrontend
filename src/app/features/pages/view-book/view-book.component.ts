@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, RouterLinkActive } from '@angular/router';
 import { Book, BookGet } from 'src/app/core/models/book-view';
-import { HandleErrors } from '../../../core/utils/handleerrors';
 import { CartService } from '../cart/service/cart.service';
 import { MainService } from 'src/app/core/services/main.service';
 
